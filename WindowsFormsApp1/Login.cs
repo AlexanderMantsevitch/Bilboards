@@ -32,7 +32,7 @@ namespace WindowsFormsApp1
             DataBase db = new DataBase();
             DataTable dataTable = new DataTable();
             MySqlDataAdapter adapter = new MySqlDataAdapter();
-
+            db.openConnection();
             MySqlCommand autorizathionSqlCommand = new MySqlCommand(" SELECT * FROM `users` WHERE `login` = @uL AND `password` = @uP ", db.getConnection());
             autorizathionSqlCommand.Parameters.Add("@uL" , MySqlDbType.VarChar ).Value = loginUser;
             autorizathionSqlCommand.Parameters.Add("@uP", MySqlDbType.VarChar).Value = passUser;
@@ -40,6 +40,7 @@ namespace WindowsFormsApp1
             adapter.SelectCommand = autorizathionSqlCommand;
             adapter.Fill(dataTable);
 
+            db.closeConnection();
             if (dataTable.Rows.Count > 0)
             {
 

@@ -19,10 +19,7 @@ namespace WindowsFormsApp1
            
         }
 
-        private void AdminInterface_Load(object sender, EventArgs e)
-        {
-
-        }
+       
 
         private void AdminInterface_FormClosed(object sender, FormClosedEventArgs e)
         {
@@ -38,14 +35,12 @@ namespace WindowsFormsApp1
            
         }
 
-        private void UserSurnameLabel_Click(object sender, EventArgs e)
+        private void usersListButton_Click(object sender, EventArgs e)
         {
-
-        }
-
-        private void UserNameLabel_Click(object sender, EventArgs e)
-        {
-
+            this.Hide();
+            UsersList usersList = new UsersList();
+            usersList.set_User(user);
+            usersList.Show();
         }
     }
 }

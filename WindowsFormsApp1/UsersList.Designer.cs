@@ -1,6 +1,6 @@
 ﻿namespace WindowsFormsApp1
 {
-    partial class AdminInterface
+    partial class UsersList
     {
         /// <summary>
         /// Required designer variable.
@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             this.panel1 = new System.Windows.Forms.Panel();
             this.panel3 = new System.Windows.Forms.Panel();
             this.UserNameLabel = new System.Windows.Forms.Label();
@@ -37,9 +38,14 @@
             this.viewingLogsButton = new System.Windows.Forms.Button();
             this.devicesListButton = new System.Windows.Forms.Button();
             this.usersListButton = new System.Windows.Forms.Button();
+            this.usersListGrid = new System.Windows.Forms.DataGridView();
+            this.panel4 = new System.Windows.Forms.Panel();
+            this.panel5 = new System.Windows.Forms.Panel();
             this.panel1.SuspendLayout();
             this.panel3.SuspendLayout();
             this.panel2.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.usersListGrid)).BeginInit();
+            this.panel4.SuspendLayout();
             this.SuspendLayout();
             // 
             // panel1
@@ -55,8 +61,8 @@
             this.panel1.Dock = System.Windows.Forms.DockStyle.Left;
             this.panel1.Location = new System.Drawing.Point(0, 0);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(214, 401);
-            this.panel1.TabIndex = 0;
+            this.panel1.Size = new System.Drawing.Size(214, 450);
+            this.panel1.TabIndex = 1;
             // 
             // panel3
             // 
@@ -141,7 +147,7 @@
             // 
             // usersListButton
             // 
-            this.usersListButton.BackColor = System.Drawing.SystemColors.Control;
+            this.usersListButton.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(215)))), ((int)(((byte)(215)))), ((int)(((byte)(215)))));
             this.usersListButton.FlatAppearance.BorderColor = System.Drawing.Color.DimGray;
             this.usersListButton.FlatAppearance.BorderSize = 0;
             this.usersListButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
@@ -153,36 +159,82 @@
             this.usersListButton.Text = "Список пользователей";
             this.usersListButton.TextImageRelation = System.Windows.Forms.TextImageRelation.TextAboveImage;
             this.usersListButton.UseVisualStyleBackColor = false;
-            this.usersListButton.Click += new System.EventHandler(this.usersListButton_Click);
             // 
-            // AdminInterface
+            // usersListGrid
+            // 
+            this.usersListGrid.AllowUserToAddRows = false;
+            this.usersListGrid.AllowUserToDeleteRows = false;
+            dataGridViewCellStyle2.BackColor = System.Drawing.Color.Silver;
+            dataGridViewCellStyle2.ForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.Color.RoyalBlue;
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.Color.White;
+            this.usersListGrid.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle2;
+            this.usersListGrid.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.usersListGrid.BackgroundColor = System.Drawing.SystemColors.ControlLight;
+            this.usersListGrid.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.usersListGrid.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.usersListGrid.Location = new System.Drawing.Point(0, 0);
+            this.usersListGrid.MaximumSize = new System.Drawing.Size(900, 900);
+            this.usersListGrid.MinimumSize = new System.Drawing.Size(495, 270);
+            this.usersListGrid.Name = "usersListGrid";
+            this.usersListGrid.RowHeadersWidth = 40;
+            this.usersListGrid.Size = new System.Drawing.Size(586, 450);
+            this.usersListGrid.TabIndex = 3;
+            // 
+            // panel4
+            // 
+            this.panel4.AutoScroll = true;
+            this.panel4.AutoSize = true;
+            this.panel4.Controls.Add(this.usersListGrid);
+            this.panel4.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panel4.Location = new System.Drawing.Point(214, 0);
+            this.panel4.Name = "panel4";
+            this.panel4.Size = new System.Drawing.Size(586, 450);
+            this.panel4.TabIndex = 4;
+            // 
+            // panel5
+            // 
+            this.panel5.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.panel5.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.panel5.Location = new System.Drawing.Point(214, 362);
+            this.panel5.Name = "panel5";
+            this.panel5.Size = new System.Drawing.Size(586, 88);
+            this.panel5.TabIndex = 5;
+            // 
+            // UsersList
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackColor = System.Drawing.SystemColors.Window;
-            this.ClientSize = new System.Drawing.Size(754, 401);
+            this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.panel5);
+            this.Controls.Add(this.panel4);
             this.Controls.Add(this.panel1);
-            this.MinimumSize = new System.Drawing.Size(740, 440);
-            this.Name = "AdminInterface";
-            this.Text = "Form1";
-            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.AdminInterface_FormClosed);
+            this.Name = "UsersList";
+            this.Text = "UsersList";
+            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.UsersList_FormClosed);
             this.panel1.ResumeLayout(false);
             this.panel3.ResumeLayout(false);
             this.panel2.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.usersListGrid)).EndInit();
+            this.panel4.ResumeLayout(false);
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
         #endregion
 
         private System.Windows.Forms.Panel panel1;
-        private System.Windows.Forms.Button usersListButton;
-        private System.Windows.Forms.Button devicesListButton;
-        private System.Windows.Forms.Button viewingLogsButton;
-        private System.Windows.Forms.Button logOutButton;
-        private System.Windows.Forms.Label UserSurnameLabel;
+        private System.Windows.Forms.Panel panel3;
         private System.Windows.Forms.Label UserNameLabel;
         private System.Windows.Forms.Panel panel2;
-        private System.Windows.Forms.Panel panel3;
+        private System.Windows.Forms.Label UserSurnameLabel;
+        private System.Windows.Forms.Button logOutButton;
+        private System.Windows.Forms.Button viewingLogsButton;
+        private System.Windows.Forms.Button devicesListButton;
+        private System.Windows.Forms.Button usersListButton;
+        private System.Windows.Forms.DataGridView usersListGrid;
+        private System.Windows.Forms.Panel panel4;
+        private System.Windows.Forms.Panel panel5;
     }
 }
