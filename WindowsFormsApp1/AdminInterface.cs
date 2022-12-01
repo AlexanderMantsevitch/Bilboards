@@ -16,5 +16,15 @@ namespace WindowsFormsApp1
         {
             InitializeComponent();
         }
+
+        private void AdminInterface_Load(object sender, EventArgs e)
+        {
+
+        }
+
+        private void AdminInterface_Deactivate(object sender, EventArgs e)
+        {
+            Application.Exit();
+        }
     }
 }

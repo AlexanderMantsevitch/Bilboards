@@ -36,24 +36,31 @@ namespace WindowsFormsApp1
 
             if (dataTable.Rows.Count > 0)
             {
-                foreach (DataColumn dc in dataTable.Columns)
-                {
 
-                    Console.Write("\t{0}", dc.ColumnName);
-
-                }
-                if (dataTable.Columns[2].Expression == "Admin")
+               foreach (DataRow a in dataTable.Rows)
                 {
                    
+                    if ( a["role"].Equals("Admin"))
+                    {
+                        this.Hide();
+                        AdminInterface adminInterface = new AdminInterface();
+                        adminInterface.Show();
+                        
+
+                    }
 
                 }
 
-
+               
+                
             }
 
             else errorAuthorizathionLbl.Text = "Неправильный логин или пароль";
         }
 
-  
+        private void Login_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }
