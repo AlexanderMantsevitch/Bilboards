@@ -8,3 +8,15 @@ E:\Программирование\Третий курс\WindowsFormsApp1\Windo
 E:\Программирование\Третий курс\WindowsFormsApp1\WindowsFormsApp1\obj\Debug\WindowsFormsApp1.exe
 E:\Программирование\Третий курс\WindowsFormsApp1\WindowsFormsApp1\obj\Debug\WindowsFormsApp1.pdb
 E:\Программирование\Третий курс\WindowsFormsApp1\WindowsFormsApp1\obj\Debug\WindowsFormsApp1.Login.resources
+E:\Программирование\Третий курс\WindowsFormsApp1\WindowsFormsApp1\bin\Debug\MySql.Data.dll
+E:\Программирование\Третий курс\WindowsFormsApp1\WindowsFormsApp1\bin\Debug\Google.Protobuf.dll
+E:\Программирование\Третий курс\WindowsFormsApp1\WindowsFormsApp1\bin\Debug\ZstdNet.dll
+E:\Программирование\Третий курс\WindowsFormsApp1\WindowsFormsApp1\bin\Debug\K4os.Compression.LZ4.Streams.dll
+E:\Программирование\Третий курс\WindowsFormsApp1\WindowsFormsApp1\bin\Debug\BouncyCastle.Crypto.dll
+E:\Программирование\Третий курс\WindowsFormsApp1\WindowsFormsApp1\bin\Debug\System.Memory.dll
+E:\Программирование\Третий курс\WindowsFormsApp1\WindowsFormsApp1\bin\Debug\System.Buffers.dll
+E:\Программирование\Третий курс\WindowsFormsApp1\WindowsFormsApp1\bin\Debug\K4os.Compression.LZ4.dll
+E:\Программирование\Третий курс\WindowsFormsApp1\WindowsFormsApp1\bin\Debug\K4os.Hash.xxHash.dll
+E:\Программирование\Третий курс\WindowsFormsApp1\WindowsFormsApp1\bin\Debug\MySql.Data.xml
+E:\Программирование\Третий курс\WindowsFormsApp1\WindowsFormsApp1\obj\Debug\WindowsFormsApp1.exe.config
+E:\Программирование\Третий курс\WindowsFormsApp1\WindowsFormsApp1\obj\Debug\WindowsFormsApp1.csproj.CopyComplete
