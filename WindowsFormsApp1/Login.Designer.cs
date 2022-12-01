@@ -164,6 +164,7 @@
             this.panel3.PerformLayout();
             this.panel2.ResumeLayout(false);
             this.ResumeLayout(false);
+            
 
         }
 

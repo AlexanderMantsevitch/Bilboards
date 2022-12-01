@@ -6,11 +6,25 @@ using System.Threading.Tasks;
 
 namespace WindowsFormsApp1
 {
-    class User
+   public class User
     {
-        private string nameUser = "Null";
-        private string surnameUser = "Null";
+        private string nameUser;
+        private string surnameUser;
 
+        public User ()
+        {
+
+            this.nameUser = "NULL";
+            this.surnameUser = "NULL";
+
+        }
+
+        public User (User user)
+        {
+            this.nameUser = user.get_nameUser();
+            this.surnameUser = user.get_surnameUser();
+
+        }
         public string get_nameUser ()
         {
             return this.nameUser;
