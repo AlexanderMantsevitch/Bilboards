@@ -20,6 +20,10 @@ namespace WindowsFormsApp1
 
         private void SignInButton_Click(object sender, EventArgs e)
         {
+            this.Hide();
+            AdminInterface adminInterface1 = new AdminInterface();
+            adminInterface1.Show();
+            return;
             String loginUser = LogintextBox.Text;
             String passUser = PasswordtextBox.Text;
 

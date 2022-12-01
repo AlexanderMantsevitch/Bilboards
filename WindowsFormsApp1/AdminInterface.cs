@@ -22,7 +22,7 @@ namespace WindowsFormsApp1
 
         }
 
-        private void AdminInterface_Deactivate(object sender, EventArgs e)
+        private void AdminInterface_FormClosed(object sender, FormClosedEventArgs e)
         {
             Application.Exit();
         }
