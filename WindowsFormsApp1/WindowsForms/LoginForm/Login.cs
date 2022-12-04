@@ -21,12 +21,9 @@ namespace WindowsFormsApp1
             
         }
 
-        private void SignInButton_Click(object sender, EventArgs e)
+        public void SignIn ()
         {
-            //this.Hide();
-            //AdminInterface adminInterface1 = new AdminInterface();
-            //adminInterface1.Show();
-            //return;
+
             String loginUser = LogintextBox.Text;
             String passUser = PasswordtextBox.Text;
 
@@ -61,14 +58,14 @@ namespace WindowsFormsApp1
                         {
                             NewPassword newPassword = new NewPassword(this);
                             newPassword.set_id(Convert.ToInt32(a["id"].ToString()));
-                           
+
                             newPassword.Show();
                             this.Hide();
-                            
 
-                           
 
-                          
+
+
+
                         }
                         else
                         {
@@ -89,13 +86,19 @@ namespace WindowsFormsApp1
 
                 else errorAuthorizathionLbl.Text = "Неправильный логин или пароль";
             }
-            catch (MySqlException )
+            catch (MySqlException)
             {
 
                 MessageBox.Show(" Нет соединения с базой данных");
-               
+
 
             }
+        }
+        private void SignInButton_Click(object sender, EventArgs e)
+        {
+            this.SignIn();
+
+            
            
         }
 
@@ -106,6 +109,13 @@ namespace WindowsFormsApp1
 
         private void AutorithationLabel_Click(object sender, EventArgs e)
         {
+
+        }
+        public void clear_textBox ()
+        {
+            LogintextBox.Text = "";
+            PasswordtextBox.Text = "";
+            errorAuthorizathionLbl.Text = "";
 
         }
     }
