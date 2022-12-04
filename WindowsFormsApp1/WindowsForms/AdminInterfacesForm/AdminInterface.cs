@@ -46,11 +46,11 @@ namespace WindowsFormsApp1
         {
            
         
-            PanelForm(new UsersList());
+            this.PanelForm(new UsersList(this));
             usersListButton.BackColor = Color.FromArgb(215,215,215);
         }
 
-        private void PanelForm (Form form)
+        public void PanelForm (Form form)
         {
             if (activeForm != null)
                 activeForm.Close();

@@ -33,9 +33,9 @@
             this.panel4 = new System.Windows.Forms.Panel();
             this.panel5 = new System.Windows.Forms.Panel();
             this.panel3 = new System.Windows.Forms.Panel();
+            this.removeUserButton = new System.Windows.Forms.Button();
             this.addUserButton = new System.Windows.Forms.Button();
             this.panel2 = new System.Windows.Forms.Panel();
-            this.removeUserButton = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.usersListGrid)).BeginInit();
             this.panel4.SuspendLayout();
             this.panel5.SuspendLayout();
@@ -95,23 +95,6 @@
             this.panel3.Size = new System.Drawing.Size(564, 47);
             this.panel3.TabIndex = 3;
             // 
-            // addUserButton
-            // 
-            this.addUserButton.Location = new System.Drawing.Point(390, 11);
-            this.addUserButton.Name = "addUserButton";
-            this.addUserButton.Size = new System.Drawing.Size(163, 30);
-            this.addUserButton.TabIndex = 0;
-            this.addUserButton.Text = "Добавить пользователя";
-            this.addUserButton.UseVisualStyleBackColor = true;
-            // 
-            // panel2
-            // 
-            this.panel2.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.panel2.Location = new System.Drawing.Point(0, 47);
-            this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(798, 39);
-            this.panel2.TabIndex = 2;
-            // 
             // removeUserButton
             // 
             this.removeUserButton.Location = new System.Drawing.Point(221, 11);
@@ -121,6 +104,24 @@
             this.removeUserButton.Text = "Удалить пользователя";
             this.removeUserButton.UseVisualStyleBackColor = true;
             this.removeUserButton.Click += new System.EventHandler(this.removeUserButton_Click);
+            // 
+            // addUserButton
+            // 
+            this.addUserButton.Location = new System.Drawing.Point(390, 11);
+            this.addUserButton.Name = "addUserButton";
+            this.addUserButton.Size = new System.Drawing.Size(163, 30);
+            this.addUserButton.TabIndex = 0;
+            this.addUserButton.Text = "Добавить пользователя";
+            this.addUserButton.UseVisualStyleBackColor = true;
+            this.addUserButton.Click += new System.EventHandler(this.addUserButton_Click);
+            // 
+            // panel2
+            // 
+            this.panel2.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.panel2.Location = new System.Drawing.Point(0, 47);
+            this.panel2.Name = "panel2";
+            this.panel2.Size = new System.Drawing.Size(798, 39);
+            this.panel2.TabIndex = 2;
             // 
             // UsersList
             // 

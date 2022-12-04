@@ -174,7 +174,7 @@
             this.Controls.Add(this.panel1);
             this.MinimumSize = new System.Drawing.Size(740, 440);
             this.Name = "AdminInterface";
-            this.Text = "Form1";
+            this.Text = "Система управления билбордами";
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.AdminInterface_FormClosed);
             this.panel1.ResumeLayout(false);
             this.panel3.ResumeLayout(false);
