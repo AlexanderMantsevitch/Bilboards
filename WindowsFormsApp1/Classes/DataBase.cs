@@ -13,6 +13,7 @@ namespace WindowsFormsApp1
 
         public void openConnection ()
         {
+
             if (connection.State == System.Data.ConnectionState.Closed)
                 connection.Open();
 

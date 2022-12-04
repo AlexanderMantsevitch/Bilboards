@@ -37,6 +37,7 @@
             this.viewingLogsButton = new System.Windows.Forms.Button();
             this.devicesListButton = new System.Windows.Forms.Button();
             this.usersListButton = new System.Windows.Forms.Button();
+            this.adminInterfacePanel = new System.Windows.Forms.Panel();
             this.panel1.SuspendLayout();
             this.panel3.SuspendLayout();
             this.panel2.SuspendLayout();
@@ -148,12 +149,20 @@
             this.usersListButton.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.usersListButton.Location = new System.Drawing.Point(-1, 139);
             this.usersListButton.Name = "usersListButton";
-            this.usersListButton.Size = new System.Drawing.Size(214, 42);
+            this.usersListButton.Size = new System.Drawing.Size(214, 51);
             this.usersListButton.TabIndex = 1;
             this.usersListButton.Text = "Список пользователей";
             this.usersListButton.TextImageRelation = System.Windows.Forms.TextImageRelation.TextAboveImage;
             this.usersListButton.UseVisualStyleBackColor = false;
             this.usersListButton.Click += new System.EventHandler(this.usersListButton_Click);
+            // 
+            // adminInterfacePanel
+            // 
+            this.adminInterfacePanel.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.adminInterfacePanel.Location = new System.Drawing.Point(214, 0);
+            this.adminInterfacePanel.Name = "adminInterfacePanel";
+            this.adminInterfacePanel.Size = new System.Drawing.Size(540, 401);
+            this.adminInterfacePanel.TabIndex = 1;
             // 
             // AdminInterface
             // 
@@ -161,6 +170,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.Window;
             this.ClientSize = new System.Drawing.Size(754, 401);
+            this.Controls.Add(this.adminInterfacePanel);
             this.Controls.Add(this.panel1);
             this.MinimumSize = new System.Drawing.Size(740, 440);
             this.Name = "AdminInterface";
@@ -184,5 +194,6 @@
         private System.Windows.Forms.Label UserNameLabel;
         private System.Windows.Forms.Panel panel2;
         private System.Windows.Forms.Panel panel3;
+        private System.Windows.Forms.Panel adminInterfacePanel;
     }
 }

@@ -30,6 +30,7 @@
         {
             this.panel1 = new System.Windows.Forms.Panel();
             this.panel3 = new System.Windows.Forms.Panel();
+            this.SignInButton = new System.Windows.Forms.Button();
             this.errorAuthorizathionLbl = new System.Windows.Forms.Label();
             this.loginLabel = new System.Windows.Forms.Label();
             this.PasswordtextBox = new System.Windows.Forms.TextBox();
@@ -37,7 +38,6 @@
             this.passwordLabel = new System.Windows.Forms.Label();
             this.panel2 = new System.Windows.Forms.Panel();
             this.AutorithationLabel = new System.Windows.Forms.Label();
-            this.SignInButton = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
             this.panel3.SuspendLayout();
             this.panel2.SuspendLayout();
@@ -66,6 +66,19 @@
             this.panel3.Name = "panel3";
             this.panel3.Size = new System.Drawing.Size(407, 161);
             this.panel3.TabIndex = 5;
+            // 
+            // SignInButton
+            // 
+            this.SignInButton.FlatAppearance.BorderColor = System.Drawing.Color.White;
+            this.SignInButton.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Silver;
+            this.SignInButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.SignInButton.Location = new System.Drawing.Point(182, 79);
+            this.SignInButton.Name = "SignInButton";
+            this.SignInButton.Size = new System.Drawing.Size(75, 23);
+            this.SignInButton.TabIndex = 6;
+            this.SignInButton.Text = "Войти";
+            this.SignInButton.UseVisualStyleBackColor = true;
+            this.SignInButton.Click += new System.EventHandler(this.SignInButton_Click);
             // 
             // errorAuthorizathionLbl
             // 
@@ -133,19 +146,7 @@
             this.AutorithationLabel.TabIndex = 0;
             this.AutorithationLabel.Text = "Авторизация";
             this.AutorithationLabel.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
-            // 
-            // SignInButton
-            // 
-            this.SignInButton.FlatAppearance.BorderColor = System.Drawing.Color.White;
-            this.SignInButton.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Silver;
-            this.SignInButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.SignInButton.Location = new System.Drawing.Point(182, 79);
-            this.SignInButton.Name = "SignInButton";
-            this.SignInButton.Size = new System.Drawing.Size(75, 23);
-            this.SignInButton.TabIndex = 6;
-            this.SignInButton.Text = "Войти";
-            this.SignInButton.UseVisualStyleBackColor = true;
-            this.SignInButton.Click += new System.EventHandler(this.SignInButton_Click);
+            this.AutorithationLabel.Click += new System.EventHandler(this.AutorithationLabel_Click);
             // 
             // Login
             // 
@@ -164,7 +165,6 @@
             this.panel3.PerformLayout();
             this.panel2.ResumeLayout(false);
             this.ResumeLayout(false);
-            
 
         }
 
