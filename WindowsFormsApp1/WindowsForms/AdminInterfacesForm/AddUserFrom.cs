@@ -1,4 +1,5 @@
-﻿using System;
+﻿using MySql.Data.MySqlClient;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -17,33 +18,39 @@ namespace WindowsFormsApp1.WindowsForms.AdminInterfacesForm
             InitializeComponent();
         }
 
-        private void textBox3_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void addUserLabel_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void postLabel_Click(object sender, EventArgs e)
-        {
-
-        }
-
-      
-
+       
         private void panelForm_Resize(object sender, EventArgs e)
         {
-            panel1.Location = new Point(((this.Width - panel1.Width) / 2) - 8,
-               ((this.Height - panel1.Height) / 2) - 19);
+            panelAddUser.Location = new Point(((this.Width - panelAddUser.Width) / 2) - 8,
+               ((this.Height - panelAddUser.Height) / 2) - 19);
 
         }
 
         private void addUserButton_Click(object sender, EventArgs e)
         {
+            try
+            {
+                DataBase db = new DataBase();
+                DataTable dataTable = new DataTable();
+                db.openConnection();
+                MySqlCommand addUser = new MySqlCommand("INSERT INTO `users` ( `name`, `surname`, `login`, `password`, `post`, `first_entry`) " +
+                    "VALUES (@n, @sn, @lg, '', @ps, '1')", db.getConnection());
+                addUser.Parameters.Add("@n", MySqlDbType.VarChar).Value = nameTextBox.Text;
+                addUser.Parameters.Add("@sn", MySqlDbType.VarChar).Value = surameTextBox.Text;
+                addUser.Parameters.Add("@lg", MySqlDbType.VarChar).Value = loginTextBox.Text;
+                addUser.Parameters.Add("@ps", MySqlDbType.VarChar).Value = postTextBox.Text;
 
+                addUser.ExecuteNonQuery();
+                db.closeConnection();
+                MessageBox.Show("Пользователь успешно добавлен");
+                nameTextBox.Text = ""; surameTextBox.Text = ""; loginTextBox.Text = ""; postTextBox.Text = "";
+            }
+            catch (MySqlException)
+            {
+
+                MessageBox.Show("Нет соединения с базой данных");
+
+            }
         }
     }
 }

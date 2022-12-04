@@ -42,12 +42,12 @@ namespace WindowsFormsApp1.WindowsForms.AdminInterfacesForm
             this.loginTextBox = new System.Windows.Forms.TextBox();
             this.surnameLabel = new System.Windows.Forms.Label();
             this.postTextBox = new System.Windows.Forms.TextBox();
-            this.panel1 = new System.Windows.Forms.Panel();
+            this.panelAddUser = new System.Windows.Forms.Panel();
             this.panel2 = new System.Windows.Forms.Panel();
             this.panel3 = new System.Windows.Forms.Panel();
             this.panel5.SuspendLayout();
             this.panelForm.SuspendLayout();
-            this.panel1.SuspendLayout();
+            this.panelAddUser.SuspendLayout();
             this.SuspendLayout();
             // 
             // panel5
@@ -63,7 +63,7 @@ namespace WindowsFormsApp1.WindowsForms.AdminInterfacesForm
             // panelForm
             // 
             this.panelForm.AutoSize = true;
-            this.panelForm.Controls.Add(this.panel1);
+            this.panelForm.Controls.Add(this.panelAddUser);
             this.panelForm.Controls.Add(this.panel3);
             this.panelForm.Controls.Add(this.panel2);
             this.panelForm.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -109,7 +109,7 @@ namespace WindowsFormsApp1.WindowsForms.AdminInterfacesForm
             this.addUserLabel.TabIndex = 0;
             this.addUserLabel.Text = "Добавить пользователя";
             this.addUserLabel.TextAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.addUserLabel.Click += new System.EventHandler(this.addUserLabel_Click);
+        
             // 
             // postLabel
             // 
@@ -120,7 +120,7 @@ namespace WindowsFormsApp1.WindowsForms.AdminInterfacesForm
             this.postLabel.Size = new System.Drawing.Size(88, 19);
             this.postLabel.TabIndex = 13;
             this.postLabel.Text = "Должность:";
-            this.postLabel.Click += new System.EventHandler(this.postLabel_Click);
+           
             // 
             // surameTextBox
             // 
@@ -163,22 +163,22 @@ namespace WindowsFormsApp1.WindowsForms.AdminInterfacesForm
             this.postTextBox.Size = new System.Drawing.Size(176, 20);
             this.postTextBox.TabIndex = 9;
             // 
-            // panel1
+            // panelAddUser
             // 
-            this.panel1.Controls.Add(this.addUserLabel);
-            this.panel1.Controls.Add(this.nameLabel);
-            this.panel1.Controls.Add(this.postTextBox);
-            this.panel1.Controls.Add(this.addUserButton);
-            this.panel1.Controls.Add(this.surnameLabel);
-            this.panel1.Controls.Add(this.nameTextBox);
-            this.panel1.Controls.Add(this.loginTextBox);
-            this.panel1.Controls.Add(this.loginLabel);
-            this.panel1.Controls.Add(this.postLabel);
-            this.panel1.Controls.Add(this.surameTextBox);
-            this.panel1.Location = new System.Drawing.Point(103, 72);
-            this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(297, 264);
-            this.panel1.TabIndex = 15;
+            this.panelAddUser.Controls.Add(this.addUserLabel);
+            this.panelAddUser.Controls.Add(this.nameLabel);
+            this.panelAddUser.Controls.Add(this.postTextBox);
+            this.panelAddUser.Controls.Add(this.addUserButton);
+            this.panelAddUser.Controls.Add(this.surnameLabel);
+            this.panelAddUser.Controls.Add(this.nameTextBox);
+            this.panelAddUser.Controls.Add(this.loginTextBox);
+            this.panelAddUser.Controls.Add(this.loginLabel);
+            this.panelAddUser.Controls.Add(this.postLabel);
+            this.panelAddUser.Controls.Add(this.surameTextBox);
+            this.panelAddUser.Location = new System.Drawing.Point(103, 72);
+            this.panelAddUser.Name = "panelAddUser";
+            this.panelAddUser.Size = new System.Drawing.Size(297, 264);
+            this.panelAddUser.TabIndex = 15;
             // 
             // panel2
             // 
@@ -211,8 +211,8 @@ namespace WindowsFormsApp1.WindowsForms.AdminInterfacesForm
             this.panel5.PerformLayout();
             this.panelForm.ResumeLayout(false);
             this.panelForm.PerformLayout();
-            this.panel1.ResumeLayout(false);
-            this.panel1.PerformLayout();
+            this.panelAddUser.ResumeLayout(false);
+            this.panelAddUser.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -231,7 +231,7 @@ namespace WindowsFormsApp1.WindowsForms.AdminInterfacesForm
         private System.Windows.Forms.Label postLabel;
         private System.Windows.Forms.Button addUserButton;
         private System.Windows.Forms.Panel panelForm;
-        private System.Windows.Forms.Panel panel1;
+        private System.Windows.Forms.Panel panelAddUser;
         private System.Windows.Forms.Panel panel3;
         private System.Windows.Forms.Panel panel2;
     }
