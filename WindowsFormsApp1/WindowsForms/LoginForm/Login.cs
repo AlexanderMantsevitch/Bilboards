@@ -24,25 +24,14 @@ namespace WindowsFormsApp1
         public void SignIn ()
         {
 
-            String loginUser = LogintextBox.Text;
-            String passUser = PasswordtextBox.Text;
-
             try
             {
 
-                DataBase db = new DataBase();
                 DataTable dataTable = new DataTable();
-                MySqlDataAdapter adapter = new MySqlDataAdapter();
+                DataAccesObject dao = new DataAccesObject();
+                dataTable = dao.authorizathion(LogintextBox.Text, PasswordtextBox.Text);
 
-                db.openConnection();
-                MySqlCommand autorizathionSqlCommand = new MySqlCommand(" SELECT * FROM `users` WHERE `login` = @uL AND `password` = @uP ", db.getConnection());
-                autorizathionSqlCommand.Parameters.Add("@uL", MySqlDbType.VarChar).Value = loginUser;
-                autorizathionSqlCommand.Parameters.Add("@uP", MySqlDbType.VarChar).Value = passUser;
 
-                adapter.SelectCommand = autorizathionSqlCommand;
-                adapter.Fill(dataTable);
-
-                db.closeConnection();
                 if (dataTable.Rows.Count > 0)
                 {
 
@@ -52,6 +41,7 @@ namespace WindowsFormsApp1
 
                         user.set_nameUser(a["name"].ToString());
                         user.set_surnameUser(a["surname"].ToString());
+                        user.set_id (Convert.ToInt32 (a["id"].ToString()));
                         Console.WriteLine(a["name"].ToString());
 
                         if (!Convert.ToBoolean(a["first_entry"].ToString()))
@@ -61,10 +51,6 @@ namespace WindowsFormsApp1
 
                             newPassword.Show();
                             this.Hide();
-
-
-
-
 
                         }
                         else
@@ -97,20 +83,10 @@ namespace WindowsFormsApp1
         private void SignInButton_Click(object sender, EventArgs e)
         {
             this.SignIn();
-
-            
            
         }
 
-        private void Login_Load(object sender, EventArgs e)
-        {
-
-        }
-
-        private void AutorithationLabel_Click(object sender, EventArgs e)
-        {
-
-        }
+      
         public void clear_textBox ()
         {
             LogintextBox.Text = "";

@@ -52,11 +52,12 @@
   <ItemGroup>
     <Compile Include="Classes\User.cs" />
     <Compile Include="Classes\DataBase.cs" />
-    <Compile Include="WindowsForms\AdminInterfacesForm\AddUserFrom.cs">
+    <Compile Include="DataAccesObject.cs" />
+    <Compile Include="WindowsForms\AdminInterfacesForm\AddUserForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="WindowsForms\AdminInterfacesForm\AddUserFrom.Designer.cs">
-      <DependentUpon>AddUserFrom.cs</DependentUpon>
+    <Compile Include="WindowsForms\AdminInterfacesForm\AddUserForm.Designer.cs">
+      <DependentUpon>AddUserForm.cs</DependentUpon>
     </Compile>
     <Compile Include="WindowsForms\AdminInterfacesForm\AdminInterface.cs">
       <SubType>Form</SubType>
@@ -84,8 +85,8 @@
     <Compile Include="WindowsForms\LoginForm\NewPassword.Designer.cs">
       <DependentUpon>NewPassword.cs</DependentUpon>
     </Compile>
-    <EmbeddedResource Include="WindowsForms\AdminInterfacesForm\AddUserFrom.resx">
-      <DependentUpon>AddUserFrom.cs</DependentUpon>
+    <EmbeddedResource Include="WindowsForms\AdminInterfacesForm\AddUserForm.resx">
+      <DependentUpon>AddUserForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="WindowsForms\AdminInterfacesForm\AdminInterface.resx">
       <DependentUpon>AdminInterface.cs</DependentUpon>

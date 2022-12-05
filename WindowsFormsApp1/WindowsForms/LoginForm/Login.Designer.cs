@@ -146,7 +146,7 @@
             this.AutorithationLabel.TabIndex = 0;
             this.AutorithationLabel.Text = "Авторизация";
             this.AutorithationLabel.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
-            this.AutorithationLabel.Click += new System.EventHandler(this.AutorithationLabel_Click);
+          
             // 
             // Login
             // 
@@ -159,7 +159,6 @@
             this.Name = "Login";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Login";
-            this.Load += new System.EventHandler(this.Login_Load);
             this.panel1.ResumeLayout(false);
             this.panel3.ResumeLayout(false);
             this.panel3.PerformLayout();

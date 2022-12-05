@@ -11,9 +11,9 @@ using System.Windows.Forms;
 
 namespace WindowsFormsApp1.WindowsForms.AdminInterfacesForm
 {
-    public partial class AddUserFrom : Form
+    public partial class AddUserForm : Form
     {
-        public AddUserFrom()
+        public AddUserForm()
         {
             InitializeComponent();
         }
@@ -30,18 +30,10 @@ namespace WindowsFormsApp1.WindowsForms.AdminInterfacesForm
         {
             try
             {
-                DataBase db = new DataBase();
-                DataTable dataTable = new DataTable();
-                db.openConnection();
-                MySqlCommand addUser = new MySqlCommand("INSERT INTO `users` ( `name`, `surname`, `login`, `password`, `post`, `first_entry`) " +
-                    "VALUES (@n, @sn, @lg, '', @ps, '1')", db.getConnection());
-                addUser.Parameters.Add("@n", MySqlDbType.VarChar).Value = nameTextBox.Text;
-                addUser.Parameters.Add("@sn", MySqlDbType.VarChar).Value = surameTextBox.Text;
-                addUser.Parameters.Add("@lg", MySqlDbType.VarChar).Value = loginTextBox.Text;
-                addUser.Parameters.Add("@ps", MySqlDbType.VarChar).Value = postTextBox.Text;
 
-                addUser.ExecuteNonQuery();
-                db.closeConnection();
+
+                DataAccesObject dao = new DataAccesObject();
+                dao.addUsers(nameTextBox.Text, surameTextBox.Text, loginTextBox.Text, postTextBox.Text);
                 MessageBox.Show("Пользователь успешно добавлен");
                 nameTextBox.Text = ""; surameTextBox.Text = ""; loginTextBox.Text = ""; postTextBox.Text = "";
             }

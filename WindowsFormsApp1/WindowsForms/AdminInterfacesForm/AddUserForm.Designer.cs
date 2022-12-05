@@ -2,7 +2,7 @@
 
 namespace WindowsFormsApp1.WindowsForms.AdminInterfacesForm
 {
-    partial class AddUserFrom
+    partial class AddUserForm
     {
         /// <summary>
         /// Required designer variable.

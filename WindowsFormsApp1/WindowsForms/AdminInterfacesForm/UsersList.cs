@@ -15,9 +15,9 @@ namespace WindowsFormsApp1
 {
     public partial class UsersList : Form
     {
-        DataBase db = new DataBase();
+        DataAccesObject dao = new DataAccesObject();
         DataTable dataTable = new DataTable();
-        MySqlDataAdapter adapter = new MySqlDataAdapter();
+        
         AdminInterface parentForm;
         public UsersList(AdminInterface parentForm)
         {
@@ -26,15 +26,8 @@ namespace WindowsFormsApp1
             this.parentForm = parentForm;
             try
             {
-                db.openConnection();
-                MySqlCommand autorizathionSqlCommand = new MySqlCommand(" SELECT `id`, `surname`, `name`, `role` FROM `users` ", db.getConnection());
-
-
-                adapter.SelectCommand = autorizathionSqlCommand;
-                adapter.Fill(dataTable);
-                db.closeConnection();
-
-                usersListGrid.DataSource = dataTable;
+               
+                usersListGrid.DataSource = dao.selectDataUsers(); 
                 usersListGrid.Update();
             }
             catch (MySqlException)
@@ -50,18 +43,10 @@ namespace WindowsFormsApp1
         {
             try
             {
-                db.openConnection();
-                MySqlCommand deleteUser = new MySqlCommand("DELETE FROM `USERS` WHERE `ID` = @id;", db.getConnection());
-                deleteUser.Parameters.Add("@id", MySqlDbType.Int32).Value = usersListGrid.CurrentRow.Cells[0].Value;
-                deleteUser.ExecuteNonQuery();
-            
-                dataTable = new DataTable();
-                    MySqlCommand usersListCommand = new MySqlCommand(" SELECT `id`, `surname`, `name`,`post`,`role` FROM `users` ", db.getConnection());
-                adapter.SelectCommand = usersListCommand;
-                adapter.Fill(dataTable);
-                db.closeConnection();
 
-                usersListGrid.DataSource = dataTable;
+                
+                dao.deleteRows("users",Convert.ToInt32(usersListGrid.CurrentRow.Cells[0].Value));
+                usersListGrid.DataSource = dao.selectDataUsers();
                 usersListGrid.Update();
 
                 
@@ -77,7 +62,7 @@ namespace WindowsFormsApp1
 
         private void addUserButton_Click(object sender, EventArgs e)
         {
-            parentForm.PanelForm(new AddUserFrom());
+            parentForm.PanelForm(new AddUserForm());
         }
     }
 }

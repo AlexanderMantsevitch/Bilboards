@@ -10,6 +10,7 @@ namespace WindowsFormsApp1
     {
         private string nameUser;
         private string surnameUser;
+        private int id;
 
         public User ()
         {
@@ -47,6 +48,17 @@ namespace WindowsFormsApp1
         public void set_surnameUser(string userSurname)
         {
             this.surnameUser = userSurname;
+        }
+
+        public void set_id (int id)
+        {
+            this.id = id;
+
+        }
+
+        public int get_id ()
+        {
+            return this.id;
         }
     }
 }

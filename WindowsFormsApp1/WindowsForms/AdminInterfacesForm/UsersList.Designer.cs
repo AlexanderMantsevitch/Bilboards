@@ -36,6 +36,7 @@
             this.removeUserButton = new System.Windows.Forms.Button();
             this.addUserButton = new System.Windows.Forms.Button();
             this.panel2 = new System.Windows.Forms.Panel();
+            this.choose = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.usersListGrid)).BeginInit();
             this.panel4.SuspendLayout();
             this.panel5.SuspendLayout();
@@ -87,6 +88,7 @@
             // 
             // panel3
             // 
+            this.panel3.Controls.Add(this.choose);
             this.panel3.Controls.Add(this.removeUserButton);
             this.panel3.Controls.Add(this.addUserButton);
             this.panel3.Dock = System.Windows.Forms.DockStyle.Right;
@@ -123,6 +125,15 @@
             this.panel2.Size = new System.Drawing.Size(798, 39);
             this.panel2.TabIndex = 2;
             // 
+            // choose
+            // 
+            this.choose.Location = new System.Drawing.Point(52, 11);
+            this.choose.Name = "choose";
+            this.choose.Size = new System.Drawing.Size(163, 30);
+            this.choose.TabIndex = 2;
+            this.choose.Text = "Выбрать";
+            this.choose.UseVisualStyleBackColor = true;
+            // 
             // UsersList
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -150,5 +161,6 @@
         private System.Windows.Forms.Panel panel3;
         private System.Windows.Forms.Panel panel2;
         private System.Windows.Forms.Button removeUserButton;
+        private System.Windows.Forms.Button choose;
     }
 }
