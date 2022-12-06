@@ -33,10 +33,10 @@
             this.panel4 = new System.Windows.Forms.Panel();
             this.panel5 = new System.Windows.Forms.Panel();
             this.panel3 = new System.Windows.Forms.Panel();
+            this.chooseButton = new System.Windows.Forms.Button();
             this.removeUserButton = new System.Windows.Forms.Button();
             this.addUserButton = new System.Windows.Forms.Button();
             this.panel2 = new System.Windows.Forms.Panel();
-            this.choose = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.usersListGrid)).BeginInit();
             this.panel4.SuspendLayout();
             this.panel5.SuspendLayout();
@@ -54,11 +54,14 @@
             this.usersListGrid.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
             this.usersListGrid.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.usersListGrid.BackgroundColor = System.Drawing.SystemColors.ControlLight;
+            this.usersListGrid.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.usersListGrid.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.usersListGrid.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.usersListGrid.ImeMode = System.Windows.Forms.ImeMode.Off;
             this.usersListGrid.Location = new System.Drawing.Point(0, 0);
             this.usersListGrid.MinimumSize = new System.Drawing.Size(495, 270);
             this.usersListGrid.Name = "usersListGrid";
+            this.usersListGrid.ReadOnly = true;
             this.usersListGrid.RowHeadersWidth = 40;
             this.usersListGrid.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.usersListGrid.Size = new System.Drawing.Size(800, 450);
@@ -88,7 +91,7 @@
             // 
             // panel3
             // 
-            this.panel3.Controls.Add(this.choose);
+            this.panel3.Controls.Add(this.chooseButton);
             this.panel3.Controls.Add(this.removeUserButton);
             this.panel3.Controls.Add(this.addUserButton);
             this.panel3.Dock = System.Windows.Forms.DockStyle.Right;
@@ -96,6 +99,16 @@
             this.panel3.Name = "panel3";
             this.panel3.Size = new System.Drawing.Size(564, 47);
             this.panel3.TabIndex = 3;
+            // 
+            // chooseButton
+            // 
+            this.chooseButton.Location = new System.Drawing.Point(35, 11);
+            this.chooseButton.Name = "chooseButton";
+            this.chooseButton.Size = new System.Drawing.Size(180, 30);
+            this.chooseButton.TabIndex = 2;
+            this.chooseButton.Text = "Выбрать пользователя";
+            this.chooseButton.UseVisualStyleBackColor = true;
+            this.chooseButton.Click += new System.EventHandler(this.chooseButton_Click);
             // 
             // removeUserButton
             // 
@@ -125,15 +138,6 @@
             this.panel2.Size = new System.Drawing.Size(798, 39);
             this.panel2.TabIndex = 2;
             // 
-            // choose
-            // 
-            this.choose.Location = new System.Drawing.Point(52, 11);
-            this.choose.Name = "choose";
-            this.choose.Size = new System.Drawing.Size(163, 30);
-            this.choose.TabIndex = 2;
-            this.choose.Text = "Выбрать";
-            this.choose.UseVisualStyleBackColor = true;
-            // 
             // UsersList
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -161,6 +165,6 @@
         private System.Windows.Forms.Panel panel3;
         private System.Windows.Forms.Panel panel2;
         private System.Windows.Forms.Button removeUserButton;
-        private System.Windows.Forms.Button choose;
+        private System.Windows.Forms.Button chooseButton;
     }
 }

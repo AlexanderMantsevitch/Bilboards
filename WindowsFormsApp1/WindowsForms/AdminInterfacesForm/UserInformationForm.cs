@@ -12,9 +12,26 @@ namespace WindowsFormsApp1.WindowsForms.AdminInterfacesForm
 {
     public partial class UserInformationForm : Form
     {
-        public UserInformationForm()
+        private DataAccesObject dao = new DataAccesObject();
+        private AdminInterface parentForm;
+        public UserInformationForm(User user, AdminInterface parentForm)
         {
             InitializeComponent();
+            this.parentForm = parentForm;
+
+            formName.Text = "Пользователь: " + user.Login;
+            idLabel.Text = "Id: " + user.Id;
+            namUserLabel.Text = "Имя: " + user.Name;
+            surnameLabel.Text = "Фамилия: " + user.Surname;
+            roleLabel.Text = "Роль в системе: " + user.Role;
+            postLabel.Text = "Должность: " + user.Post;
+
+            devicesListGried.DataSource = dao.selectAvailableDevices(user.Id);
+            devicesListGried.Update();
+
+
         }
+
+       
     }
 }

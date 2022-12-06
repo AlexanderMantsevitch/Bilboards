@@ -44,7 +44,7 @@ namespace WindowsFormsApp1
             try
             {
 
-                
+                dao.setVarChar("devices", "owner_id", 0);
                 dao.deleteRows("users",Convert.ToInt32(usersListGrid.CurrentRow.Cells[0].Value));
                 usersListGrid.DataSource = dao.selectDataUsers();
                 usersListGrid.Update();
@@ -63,6 +63,18 @@ namespace WindowsFormsApp1
         private void addUserButton_Click(object sender, EventArgs e)
         {
             parentForm.PanelForm(new AddUserForm());
+        }
+
+        private void chooseButton_Click(object sender, EventArgs e)
+        {
+            
+            
+            User user = new User (dao.selectDataUser(Convert.ToInt32(usersListGrid.CurrentRow.Cells[0].Value)).Rows[0]);
+            parentForm.PanelForm(new UserInformationForm(user, parentForm));
+            
+            
+            
+
         }
     }
 }

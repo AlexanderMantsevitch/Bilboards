@@ -48,13 +48,8 @@ namespace WindowsFormsApp1.WindowsForms.LoginForm
             {
                 if (PasswordtextBox.Text.Equals(dublicatePasswordTextBox.Text)) 
                 {
-                    DataBase db = new DataBase();
-                    db.openConnection();
-                    MySqlCommand changePassword = new MySqlCommand("UPDATE `users` SET `password` = @uP , " +
-                        " `first_entry` = 1 WHERE `users`.`id` = @id", db.getConnection());
-                    changePassword.Parameters.Add("@uP", MySqlDbType.VarChar).Value = PasswordtextBox.Text;
-                    changePassword.Parameters.Add("@id", MySqlDbType.Int32).Value = id;
-                    changePassword.ExecuteNonQuery();
+                    DataAccesObject dao = new DataAccesObject();
+                    dao.changePassword(PasswordtextBox.Text, id);
                     parentForm.clear_textBox();
                     parentForm.Show();
                     parentForm.SignIn();

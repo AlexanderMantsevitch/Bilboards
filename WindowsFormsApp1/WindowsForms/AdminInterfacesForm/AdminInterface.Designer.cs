@@ -111,6 +111,7 @@
             this.logOutButton.TabIndex = 4;
             this.logOutButton.Text = "Выйти из аккаунта";
             this.logOutButton.UseVisualStyleBackColor = false;
+            this.logOutButton.Click += new System.EventHandler(this.logOutButton_Click);
             // 
             // viewingLogsButton
             // 

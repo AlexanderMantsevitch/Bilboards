@@ -18,6 +18,7 @@ namespace WindowsFormsApp1
         public Login()
         {
             InitializeComponent();
+
             
         }
 
@@ -39,9 +40,12 @@ namespace WindowsFormsApp1
                     foreach (DataRow a in dataTable.Rows)
                     {
 
-                        user.set_nameUser(a["name"].ToString());
-                        user.set_surnameUser(a["surname"].ToString());
-                        user.set_id (Convert.ToInt32 (a["id"].ToString()));
+                        user.Name = (a["name"].ToString());
+                        user.Surname = (a["surname"].ToString());
+                        user.Id = (Convert.ToInt32 (a["id"].ToString()));
+                        user.Post = (a["post"].ToString());
+                        user.Role = ((a["role"].ToString()));
+                        user.Login = (a["login"].ToString());
                         Console.WriteLine(a["name"].ToString());
 
                         if (!Convert.ToBoolean(a["first_entry"].ToString()))
@@ -50,7 +54,9 @@ namespace WindowsFormsApp1
                             newPassword.set_id(Convert.ToInt32(a["id"].ToString()));
 
                             newPassword.Show();
+                            this.clear_textBox();
                             this.Hide();
+                            
 
                         }
                         else
@@ -58,7 +64,7 @@ namespace WindowsFormsApp1
                             if (a["role"].Equals("Admin"))
                             {
                                 this.Hide();
-                                AdminInterface adminInterface = new AdminInterface();
+                                AdminInterface adminInterface = new AdminInterface(this);
                                 adminInterface.set_User(user);
                                 adminInterface.Show();
 
@@ -82,8 +88,10 @@ namespace WindowsFormsApp1
         }
         private void SignInButton_Click(object sender, EventArgs e)
         {
+            
             this.SignIn();
-           
+            clear_textBox();
+
         }
 
       

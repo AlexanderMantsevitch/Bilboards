@@ -16,13 +16,17 @@ namespace WindowsFormsApp1
         private Form activeForm;
         private const int countButton = 3;
         Button[] arrayButton = new Button[countButton];
-        public AdminInterface()
+        private Form parentForm = new Form();
+        bool flagLogout = false;
+
+        public AdminInterface(Form parentForm)
         {
             InitializeComponent();
            
             arrayButton[0] = usersListButton;
             arrayButton[1] = devicesListButton;
             arrayButton[2] = viewingLogsButton;
+            this.parentForm = parentForm;
            
         }
 
@@ -30,14 +34,14 @@ namespace WindowsFormsApp1
 
         private void AdminInterface_FormClosed(object sender, FormClosedEventArgs e)
         {
-            Application.Exit();
+            if (!flagLogout) Application.Exit();
         }
 
         public void set_User (User user_loginForm)
         {
             this.user = user_loginForm;
-            UserNameLabel.Text = user.get_nameUser();
-            UserSurnameLabel.Text = user.get_surnameUser();
+            UserNameLabel.Text = user.Name;
+            UserSurnameLabel.Text = user.Surname;
            
            
         }
@@ -70,6 +74,13 @@ namespace WindowsFormsApp1
             form.Show();
 
         }
-        
+
+        private void logOutButton_Click(object sender, EventArgs e)
+        {
+            flagLogout = true;
+            parentForm.Show();
+            this.Close();
+
+        }
     }
 }
