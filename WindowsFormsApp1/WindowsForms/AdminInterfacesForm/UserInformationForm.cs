@@ -29,9 +29,29 @@ namespace WindowsFormsApp1.WindowsForms.AdminInterfacesForm
             devicesListGried.DataSource = dao.selectAvailableDevices(user.Id);
             devicesListGried.Update();
 
+            DataTable dataTable = new DataTable();
+            dataTable = dao.select("devices", "*");
+
+
+            foreach (DataRow dataRow in dataTable.Rows)
+            {
+                chooseDeviceComboBox.Items.Add(dataRow["name"].ToString());
+               
+            }
+
 
         }
 
-       
+        private void addDeviceUser_Click(object sender, EventArgs e)
+        {
+            for (int i = 0; i < 10; i++)
+            {
+
+                dao.addDevice("Bilboard#" + i);
+
+            }
+        }
+
+
     }
 }

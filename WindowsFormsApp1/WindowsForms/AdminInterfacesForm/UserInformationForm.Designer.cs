@@ -29,7 +29,7 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(UserInformationForm));
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             this.formName = new System.Windows.Forms.Label();
             this.namUserLabel = new System.Windows.Forms.Label();
             this.surnameLabel = new System.Windows.Forms.Label();
@@ -44,6 +44,7 @@
             this.panel3 = new System.Windows.Forms.Panel();
             this.addDeviceUser = new System.Windows.Forms.Button();
             this.panel4 = new System.Windows.Forms.Panel();
+            this.chooseDeviceComboBox = new System.Windows.Forms.ComboBox();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.panel2.SuspendLayout();
@@ -159,14 +160,14 @@
             this.devicesListGried.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.devicesListGried.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.devicesListGried.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle5.BackColor = System.Drawing.SystemColors.Menu;
-            dataGridViewCellStyle5.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            dataGridViewCellStyle5.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle5.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle5.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle5.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.devicesListGried.DefaultCellStyle = dataGridViewCellStyle5;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Menu;
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.devicesListGried.DefaultCellStyle = dataGridViewCellStyle1;
             this.devicesListGried.Dock = System.Windows.Forms.DockStyle.Fill;
             this.devicesListGried.Location = new System.Drawing.Point(0, 0);
             this.devicesListGried.Name = "devicesListGried";
@@ -195,21 +196,32 @@
             // 
             // addDeviceUser
             // 
-            this.addDeviceUser.Location = new System.Drawing.Point(26, 6);
+            this.addDeviceUser.Location = new System.Drawing.Point(24, 15);
             this.addDeviceUser.Name = "addDeviceUser";
-            this.addDeviceUser.Size = new System.Drawing.Size(164, 28);
+            this.addDeviceUser.Size = new System.Drawing.Size(164, 21);
             this.addDeviceUser.TabIndex = 0;
             this.addDeviceUser.Text = "Добавить устройство";
             this.addDeviceUser.UseVisualStyleBackColor = true;
+            this.addDeviceUser.Click += new System.EventHandler(this.addDeviceUser_Click);
             // 
             // panel4
             // 
+            this.panel4.Controls.Add(this.chooseDeviceComboBox);
             this.panel4.Controls.Add(this.addDeviceUser);
             this.panel4.Dock = System.Windows.Forms.DockStyle.Right;
-            this.panel4.Location = new System.Drawing.Point(307, 0);
+            this.panel4.Location = new System.Drawing.Point(88, 0);
             this.panel4.Name = "panel4";
-            this.panel4.Size = new System.Drawing.Size(193, 53);
+            this.panel4.Size = new System.Drawing.Size(412, 53);
             this.panel4.TabIndex = 1;
+            // 
+            // chooseDeviceComboBox
+            // 
+            this.chooseDeviceComboBox.FormattingEnabled = true;
+            this.chooseDeviceComboBox.Location = new System.Drawing.Point(194, 15);
+            this.chooseDeviceComboBox.Name = "chooseDeviceComboBox";
+            this.chooseDeviceComboBox.Size = new System.Drawing.Size(206, 21);
+            this.chooseDeviceComboBox.TabIndex = 1;
+            this.chooseDeviceComboBox.Text = "Выберите устройство";
             // 
             // UserInformationForm
             // 
@@ -248,5 +260,6 @@
         private System.Windows.Forms.Panel panel3;
         private System.Windows.Forms.Button addDeviceUser;
         private System.Windows.Forms.Panel panel4;
+        private System.Windows.Forms.ComboBox chooseDeviceComboBox;
     }
 }

@@ -12,6 +12,21 @@ namespace WindowsFormsApp1
     {
         private DataBase db = new DataBase();
         private MySqlDataAdapter adapter = new MySqlDataAdapter();
+
+        public DataTable select (string table, string field)
+        {
+            DataTable dataTable = new DataTable();
+            db.openConnection();
+            MySqlCommand autorizathionSqlCommand = new MySqlCommand(" SELECT" + field + " FROM `" + table + "`", db.getConnection());
+         
+            adapter.SelectCommand = autorizathionSqlCommand;
+            adapter.Fill(dataTable);
+
+            db.closeConnection();
+            return dataTable;
+
+
+        }
         public void setVarChar (string table, string field, int value)
         {
             db.openConnection();
@@ -26,9 +41,8 @@ namespace WindowsFormsApp1
         public DataTable authorizathion (string loginUser, string passwordUser)
         {
             DataTable dataTable = new DataTable();
-            
-           
-           
+
+            db.openConnection();
             MySqlCommand autorizathionSqlCommand = new MySqlCommand(" SELECT * FROM `users` WHERE `login` = @uL AND `password` = @uP ", db.getConnection());
             autorizathionSqlCommand.Parameters.Add("@uP", MySqlDbType.VarChar).Value = passwordUser;
             autorizathionSqlCommand.Parameters.Add("@uL", MySqlDbType.VarChar).Value = loginUser;
@@ -92,6 +106,14 @@ namespace WindowsFormsApp1
             addUser.ExecuteNonQuery();
             db.closeConnection();
 
+        }
+        public void addDevice (string name)
+        {
+            db.openConnection();
+            MySqlCommand addDevices = new MySqlCommand("INSERT INTO `devices` (`name`) " + "VALUES (@n)", db.getConnection());
+            addDevices.Parameters.Add("@n", MySqlDbType.VarChar).Value = name;
+            addDevices.ExecuteNonQuery();
+            db.closeConnection();
         }
         public void changePassword (string password, int id)
         {
