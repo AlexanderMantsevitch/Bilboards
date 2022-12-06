@@ -16,6 +16,7 @@ namespace WindowsFormsApp1.WindowsForms.AdminInterfacesForm
         public AddUserForm()
         {
             InitializeComponent();
+            errorLbl.Text = "";
         }
 
        
@@ -30,12 +31,19 @@ namespace WindowsFormsApp1.WindowsForms.AdminInterfacesForm
         {
             try
             {
+                if (!(surameTextBox.Text.Equals("") || nameTextBox.Text.Equals("") || loginTextBox.Text.Equals("")))
+                 {
+                    errorLbl.Text = "";
+                    DataAccesObject dao = new DataAccesObject();
+                    dao.addUsers(nameTextBox.Text, surameTextBox.Text, loginTextBox.Text, postTextBox.Text);
+                    MessageBox.Show("Пользователь успешно добавлен");
+                    nameTextBox.Text = ""; surameTextBox.Text = ""; loginTextBox.Text = ""; postTextBox.Text = "";
+                }
+                else
+                {
+                    errorLbl.Text = "Заполните поля: имя, фамилия, login";
 
-
-                DataAccesObject dao = new DataAccesObject();
-                dao.addUsers(nameTextBox.Text, surameTextBox.Text, loginTextBox.Text, postTextBox.Text);
-                MessageBox.Show("Пользователь успешно добавлен");
-                nameTextBox.Text = ""; surameTextBox.Text = ""; loginTextBox.Text = ""; postTextBox.Text = "";
+                }
             }
             catch (MySqlException)
             {

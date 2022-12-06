@@ -44,12 +44,18 @@ namespace WindowsFormsApp1
             try
             {
 
-                dao.setVarChar("devices", "owner_id", 0);
-                dao.deleteRows("users",Convert.ToInt32(usersListGrid.CurrentRow.Cells[0].Value));
-                usersListGrid.DataSource = dao.selectDataUsers();
-                usersListGrid.Update();
 
-                
+                DialogResult dialogResult = MessageBox.Show("Вы точно хотите удалить выбранного пользователя?", " ", MessageBoxButtons.YesNo);
+                if (dialogResult == DialogResult.Yes)
+                {
+
+
+                    dao.deleteUserinDevices("devices", "owner_id", 0, Convert.ToInt32(usersListGrid.CurrentRow.Cells[0].Value));
+                    dao.deleteRows("users", Convert.ToInt32(usersListGrid.CurrentRow.Cells[0].Value));
+                    usersListGrid.DataSource = dao.selectDataUsers();
+                    usersListGrid.Update();
+
+                }
            
                 
             }

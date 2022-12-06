@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using WindowsFormsApp1.Classes;
 
 namespace WindowsFormsApp1.WindowsForms.AdminInterfacesForm
 {
@@ -14,6 +15,7 @@ namespace WindowsFormsApp1.WindowsForms.AdminInterfacesForm
     {
         private DataAccesObject dao = new DataAccesObject();
         private AdminInterface parentForm;
+        private User user;
         public UserInformationForm(User user, AdminInterface parentForm)
         {
             InitializeComponent();
@@ -28,7 +30,8 @@ namespace WindowsFormsApp1.WindowsForms.AdminInterfacesForm
 
             devicesListGried.DataSource = dao.selectAvailableDevices(user.Id);
             devicesListGried.Update();
-
+            this.user = user;
+            chooseDeviceComboBox.Items.Clear();
             DataTable dataTable = new DataTable();
             dataTable = dao.select("devices", "*");
 
@@ -44,14 +47,52 @@ namespace WindowsFormsApp1.WindowsForms.AdminInterfacesForm
 
         private void addDeviceUser_Click(object sender, EventArgs e)
         {
-            for (int i = 0; i < 10; i++)
+           
+            if (!chooseDeviceComboBox.Text.Equals("Выберите устройство"))
             {
+                DataTable dataTable = new DataTable();
+                dataTable = dao.selectDataDevice(chooseDeviceComboBox.Text);
+                Device device = new Device(dataTable.Rows[0]);
+                
+                if (device.Owner_id == 0)
+                {
+                    
+                    dao.addDeviceToUser(chooseDeviceComboBox.Text, user.Id);
+                    devicesListGried.DataSource = dao.selectAvailableDevices(user.Id);
+                    devicesListGried.Update();
 
-                dao.addDevice("Bilboard#" + i);
+                }
+                else
+                {
+
+                    
+                    DialogResult dialogResult = MessageBox.Show("Вы хотите поменять владельца " +
+                        new User(dao.selectDataUser(device.Owner_id).Rows[0]).Login + " на " + user.Login, " " , MessageBoxButtons.YesNo);
+                    if (dialogResult == DialogResult.Yes)
+                    {
+                        dao.addDeviceToUser(chooseDeviceComboBox.Text, user.Id);
+                        devicesListGried.DataSource = dao.selectAvailableDevices(user.Id);
+                        devicesListGried.Update();
+                    }
+                    
+
+                }
 
             }
         }
 
+        private void deleteUserButton_Click(object sender, EventArgs e)
+        {
+            DialogResult dialogResult = MessageBox.Show("Вы точно хотите удалить выбранного пользователя?", " ", MessageBoxButtons.YesNo);
+            if (dialogResult == DialogResult.Yes)
+            {
 
+
+                dao.deleteUserinDevices("devices", "owner_id", 0, user.Id);
+                dao.deleteRows("users", user.Id);
+                parentForm.PanelForm(new UsersList(parentForm));
+
+            }
+        }
     }
 }

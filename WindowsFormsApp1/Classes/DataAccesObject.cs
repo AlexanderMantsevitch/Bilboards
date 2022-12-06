@@ -27,13 +27,14 @@ namespace WindowsFormsApp1
 
 
         }
-        public void setVarChar (string table, string field, int value)
+        public void deleteUserinDevices (string table, string field, int value, int id)
         {
             db.openConnection();
-            MySqlCommand changePassword = new MySqlCommand("UPDATE `" + table + "` SET `" +field +"` = @v , " +
-                " `first_entry` = 1 WHERE `users`.`id` = @id", db.getConnection());
-            changePassword.Parameters.Add("@v", MySqlDbType.Int32).Value = value;
-            changePassword.ExecuteNonQuery();
+            MySqlCommand changeField = new MySqlCommand("UPDATE `" + table + "` SET `" +field +"` = @v " +
+                " WHERE `" +table+"`.`"+field+"` = @id", db.getConnection());
+            changeField.Parameters.Add("@v", MySqlDbType.Int32).Value = value;
+            changeField.Parameters.Add("@id", MySqlDbType.Int32).Value = id;
+            changeField.ExecuteNonQuery();
             db.closeConnection();
 
 
@@ -140,6 +141,43 @@ namespace WindowsFormsApp1
             db.closeConnection();
 
             return dataTable;
+
+        }
+        public DataTable selectDataDevice (string name)
+        {
+            db.openConnection();
+            DataTable dataTable = new DataTable();
+            MySqlCommand selectDataCommand = new MySqlCommand(" SELECT * FROM `devices` WHERE `name` = @dN", db.getConnection());
+            selectDataCommand.Parameters.Add("@dN", MySqlDbType.VarChar).Value = name;
+            adapter.SelectCommand = selectDataCommand;
+            adapter.Fill(dataTable);
+            db.closeConnection();
+
+            return dataTable;
+
+        }
+        public DataTable selectDataDevice(int id)
+        {
+            db.openConnection();
+            DataTable dataTable = new DataTable();
+            MySqlCommand selectDataCommand = new MySqlCommand(" SELECT * FROM `devices` WHERE `owner_id` = @id", db.getConnection());
+            selectDataCommand.Parameters.Add("@id", MySqlDbType.Int32).Value = id;
+            adapter.SelectCommand = selectDataCommand;
+            adapter.Fill(dataTable);
+            db.closeConnection();
+
+            return dataTable;
+
+        }
+        public void addDeviceToUser (string nameDevice, int idUser)
+        {
+            db.openConnection();
+            MySqlCommand addDevice = new MySqlCommand("UPDATE `devices` SET `owner_id` = @id  WHERE `devices`.`name` = @dN", db.getConnection());
+            addDevice.Parameters.Add("@dN", MySqlDbType.VarChar).Value = nameDevice;
+            addDevice.Parameters.Add("@id", MySqlDbType.Int32).Value = idUser;
+            addDevice.ExecuteNonQuery();
+            db.closeConnection();
+
 
         }
     }

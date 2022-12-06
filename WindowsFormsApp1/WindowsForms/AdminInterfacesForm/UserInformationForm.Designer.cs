@@ -45,6 +45,7 @@
             this.addDeviceUser = new System.Windows.Forms.Button();
             this.panel4 = new System.Windows.Forms.Panel();
             this.chooseDeviceComboBox = new System.Windows.Forms.ComboBox();
+            this.deleteUserButton = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.panel2.SuspendLayout();
@@ -196,9 +197,9 @@
             // 
             // addDeviceUser
             // 
-            this.addDeviceUser.Location = new System.Drawing.Point(24, 15);
+            this.addDeviceUser.Location = new System.Drawing.Point(149, 6);
             this.addDeviceUser.Name = "addDeviceUser";
-            this.addDeviceUser.Size = new System.Drawing.Size(164, 21);
+            this.addDeviceUser.Size = new System.Drawing.Size(136, 21);
             this.addDeviceUser.TabIndex = 0;
             this.addDeviceUser.Text = "Добавить устройство";
             this.addDeviceUser.UseVisualStyleBackColor = true;
@@ -206,22 +207,33 @@
             // 
             // panel4
             // 
+            this.panel4.Controls.Add(this.deleteUserButton);
             this.panel4.Controls.Add(this.chooseDeviceComboBox);
             this.panel4.Controls.Add(this.addDeviceUser);
             this.panel4.Dock = System.Windows.Forms.DockStyle.Right;
-            this.panel4.Location = new System.Drawing.Point(88, 0);
+            this.panel4.Location = new System.Drawing.Point(0, 0);
             this.panel4.Name = "panel4";
-            this.panel4.Size = new System.Drawing.Size(412, 53);
+            this.panel4.Size = new System.Drawing.Size(500, 53);
             this.panel4.TabIndex = 1;
             // 
             // chooseDeviceComboBox
             // 
             this.chooseDeviceComboBox.FormattingEnabled = true;
-            this.chooseDeviceComboBox.Location = new System.Drawing.Point(194, 15);
+            this.chooseDeviceComboBox.Location = new System.Drawing.Point(291, 6);
             this.chooseDeviceComboBox.Name = "chooseDeviceComboBox";
             this.chooseDeviceComboBox.Size = new System.Drawing.Size(206, 21);
             this.chooseDeviceComboBox.TabIndex = 1;
             this.chooseDeviceComboBox.Text = "Выберите устройство";
+            // 
+            // deleteUserButton
+            // 
+            this.deleteUserButton.Location = new System.Drawing.Point(7, 6);
+            this.deleteUserButton.Name = "deleteUserButton";
+            this.deleteUserButton.Size = new System.Drawing.Size(136, 21);
+            this.deleteUserButton.TabIndex = 2;
+            this.deleteUserButton.Text = "Удалить пользователя";
+            this.deleteUserButton.UseVisualStyleBackColor = true;
+            this.deleteUserButton.Click += new System.EventHandler(this.deleteUserButton_Click);
             // 
             // UserInformationForm
             // 
@@ -261,5 +273,6 @@
         private System.Windows.Forms.Button addDeviceUser;
         private System.Windows.Forms.Panel panel4;
         private System.Windows.Forms.ComboBox chooseDeviceComboBox;
+        private System.Windows.Forms.Button deleteUserButton;
     }
 }
