@@ -66,6 +66,12 @@
     <Compile Include="WindowsForms\AdminInterfacesForm\AdminInterface.Designer.cs">
       <DependentUpon>AdminInterface.cs</DependentUpon>
     </Compile>
+    <Compile Include="WindowsForms\AdminInterfacesForm\editUserForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="WindowsForms\AdminInterfacesForm\editUserForm.Designer.cs">
+      <DependentUpon>editUserForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="WindowsForms\AdminInterfacesForm\UserInformationForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -97,6 +103,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="WindowsForms\AdminInterfacesForm\AdminInterface.resx">
       <DependentUpon>AdminInterface.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="WindowsForms\AdminInterfacesForm\editUserForm.resx">
+      <DependentUpon>editUserForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="WindowsForms\AdminInterfacesForm\UserInformationForm.resx">
       <DependentUpon>UserInformationForm.cs</DependentUpon>

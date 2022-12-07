@@ -84,6 +84,19 @@ namespace WindowsFormsApp1
 
 
         }
+        public void UpdateUser (string newName, string newSurname, string newPost, int id)
+        {
+            db.openConnection();
+            MySqlCommand updateUser = new MySqlCommand("UPDATE `users` SET `name` = @uN , " +
+                " `surname` = @uS, `post` = @uP WHERE `users`.`id` = @id", db.getConnection());
+           updateUser.Parameters.Add("@uN", MySqlDbType.VarChar).Value = newName;
+           updateUser.Parameters.Add("@uS", MySqlDbType.VarChar).Value = newSurname;
+           updateUser.Parameters.Add("@uP", MySqlDbType.VarChar).Value = newPost;
+           updateUser.Parameters.Add("@id", MySqlDbType.Int32).Value = id;
+           updateUser.ExecuteNonQuery();
+            db.closeConnection();
+
+        }
         public void deleteRows(string table, int id)
         {
             db.openConnection();

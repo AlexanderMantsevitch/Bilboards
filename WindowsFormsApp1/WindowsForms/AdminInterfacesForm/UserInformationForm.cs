@@ -94,5 +94,10 @@ namespace WindowsFormsApp1.WindowsForms.AdminInterfacesForm
 
             }
         }
+
+        private void editButton_Click(object sender, EventArgs e)
+        {
+            parentForm.PanelForm(new editUserForm(user, parentForm));
+        }
     }
 }
