@@ -54,10 +54,16 @@
     <Compile Include="Classes\User.cs" />
     <Compile Include="Classes\DataBase.cs" />
     <Compile Include="Classes\DataAccesObject.cs" />
-    <Compile Include="WindowsForms\AdminInterfacesForm\AddUserForm.cs">
+    <Compile Include="WindowsForms\AdminInterfacesForm\DevicesList\DevicesListForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="WindowsForms\AdminInterfacesForm\AddUserForm.Designer.cs">
+    <Compile Include="WindowsForms\AdminInterfacesForm\DevicesList\DevicesListForm.Designer.cs">
+      <DependentUpon>DevicesListForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="WindowsForms\AdminInterfacesForm\UsersList\AddUserForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="WindowsForms\AdminInterfacesForm\UsersList\AddUserForm.Designer.cs">
       <DependentUpon>AddUserForm.cs</DependentUpon>
     </Compile>
     <Compile Include="WindowsForms\AdminInterfacesForm\AdminInterface.cs">
@@ -66,16 +72,16 @@
     <Compile Include="WindowsForms\AdminInterfacesForm\AdminInterface.Designer.cs">
       <DependentUpon>AdminInterface.cs</DependentUpon>
     </Compile>
-    <Compile Include="WindowsForms\AdminInterfacesForm\editUserForm.cs">
+    <Compile Include="WindowsForms\AdminInterfacesForm\UsersList\editUserForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="WindowsForms\AdminInterfacesForm\editUserForm.Designer.cs">
+    <Compile Include="WindowsForms\AdminInterfacesForm\UsersList\editUserForm.Designer.cs">
       <DependentUpon>editUserForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="WindowsForms\AdminInterfacesForm\UserInformationForm.cs">
+    <Compile Include="WindowsForms\AdminInterfacesForm\UsersList\UserInformationForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="WindowsForms\AdminInterfacesForm\UserInformationForm.Designer.cs">
+    <Compile Include="WindowsForms\AdminInterfacesForm\UsersList\UserInformationForm.Designer.cs">
       <DependentUpon>UserInformationForm.cs</DependentUpon>
     </Compile>
     <Compile Include="WindowsForms\LoginForm\Login.cs">
@@ -86,10 +92,10 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="WindowsForms\AdminInterfacesForm\UsersList.cs">
+    <Compile Include="WindowsForms\AdminInterfacesForm\UsersList\UsersList.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="WindowsForms\AdminInterfacesForm\UsersList.Designer.cs">
+    <Compile Include="WindowsForms\AdminInterfacesForm\UsersList\UsersList.Designer.cs">
       <DependentUpon>UsersList.cs</DependentUpon>
     </Compile>
     <Compile Include="WindowsForms\LoginForm\NewPassword.cs">
@@ -98,16 +104,19 @@
     <Compile Include="WindowsForms\LoginForm\NewPassword.Designer.cs">
       <DependentUpon>NewPassword.cs</DependentUpon>
     </Compile>
-    <EmbeddedResource Include="WindowsForms\AdminInterfacesForm\AddUserForm.resx">
+    <EmbeddedResource Include="WindowsForms\AdminInterfacesForm\DevicesList\DevicesListForm.resx">
+      <DependentUpon>DevicesListForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="WindowsForms\AdminInterfacesForm\UsersList\AddUserForm.resx">
       <DependentUpon>AddUserForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="WindowsForms\AdminInterfacesForm\AdminInterface.resx">
       <DependentUpon>AdminInterface.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="WindowsForms\AdminInterfacesForm\editUserForm.resx">
+    <EmbeddedResource Include="WindowsForms\AdminInterfacesForm\UsersList\editUserForm.resx">
       <DependentUpon>editUserForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="WindowsForms\AdminInterfacesForm\UserInformationForm.resx">
+    <EmbeddedResource Include="WindowsForms\AdminInterfacesForm\UsersList\UserInformationForm.resx">
       <DependentUpon>UserInformationForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="WindowsForms\LoginForm\Login.resx">
@@ -122,7 +131,7 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
-    <EmbeddedResource Include="WindowsForms\AdminInterfacesForm\UsersList.resx">
+    <EmbeddedResource Include="WindowsForms\AdminInterfacesForm\UsersList\UsersList.resx">
       <DependentUpon>UsersList.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="WindowsForms\LoginForm\NewPassword.resx">

@@ -140,6 +140,7 @@
             this.devicesListButton.TabIndex = 2;
             this.devicesListButton.Text = "Список устройств";
             this.devicesListButton.UseVisualStyleBackColor = false;
+            this.devicesListButton.Click += new System.EventHandler(this.devicesListButton_Click);
             // 
             // usersListButton
             // 

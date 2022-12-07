@@ -182,6 +182,18 @@ namespace WindowsFormsApp1
             return dataTable;
 
         }
+        public DataTable selectDataDevice()
+        {
+            db.openConnection();
+            DataTable dataTable = new DataTable();
+            MySqlCommand selectDataCommand = new MySqlCommand(" SELECT * FROM `devices`", db.getConnection());
+            adapter.SelectCommand = selectDataCommand;
+            adapter.Fill(dataTable);
+            db.closeConnection();
+
+            return dataTable;
+
+        }
         public void addDeviceToUser (string nameDevice, int idUser)
         {
             db.openConnection();

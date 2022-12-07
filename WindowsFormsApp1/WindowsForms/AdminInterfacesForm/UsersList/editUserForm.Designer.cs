@@ -56,16 +56,16 @@
             this.editUserPanel.Controls.Add(this.loginLabel);
             this.editUserPanel.Controls.Add(this.postLabel);
             this.editUserPanel.Controls.Add(this.surameTextBox);
-            this.editUserPanel.Location = new System.Drawing.Point(249, 93);
+            this.editUserPanel.Location = new System.Drawing.Point(249, 57);
             this.editUserPanel.Name = "editUserPanel";
-            this.editUserPanel.Size = new System.Drawing.Size(302, 264);
+            this.editUserPanel.Size = new System.Drawing.Size(302, 267);
             this.editUserPanel.TabIndex = 16;
             // 
             // errorLbl
             // 
             this.errorLbl.AutoSize = true;
             this.errorLbl.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(186)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.errorLbl.Location = new System.Drawing.Point(103, 193);
+            this.errorLbl.Location = new System.Drawing.Point(100, 211);
             this.errorLbl.Name = "errorLbl";
             this.errorLbl.Size = new System.Drawing.Size(194, 13);
             this.errorLbl.TabIndex = 15;
@@ -76,16 +76,16 @@
             this.addUserLabel.Font = new System.Drawing.Font("Times New Roman", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.addUserLabel.Location = new System.Drawing.Point(20, 15);
             this.addUserLabel.Name = "addUserLabel";
-            this.addUserLabel.Size = new System.Drawing.Size(277, 30);
+            this.addUserLabel.Size = new System.Drawing.Size(277, 49);
             this.addUserLabel.TabIndex = 0;
-            this.addUserLabel.Text = "Добавить пользователя";
+            this.addUserLabel.Text = "Редактировать профиль пользователя";
             this.addUserLabel.TextAlign = System.Drawing.ContentAlignment.TopCenter;
             // 
             // nameLabel
             // 
             this.nameLabel.AutoSize = true;
             this.nameLabel.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.nameLabel.Location = new System.Drawing.Point(63, 59);
+            this.nameLabel.Location = new System.Drawing.Point(60, 77);
             this.nameLabel.Name = "nameLabel";
             this.nameLabel.Size = new System.Drawing.Size(40, 19);
             this.nameLabel.TabIndex = 10;
@@ -93,14 +93,14 @@
             // 
             // postTextBox
             // 
-            this.postTextBox.Location = new System.Drawing.Point(106, 170);
+            this.postTextBox.Location = new System.Drawing.Point(103, 188);
             this.postTextBox.Name = "postTextBox";
             this.postTextBox.Size = new System.Drawing.Size(176, 20);
             this.postTextBox.TabIndex = 9;
             // 
             // saveUserButton
             // 
-            this.saveUserButton.Location = new System.Drawing.Point(143, 213);
+            this.saveUserButton.Location = new System.Drawing.Point(140, 231);
             this.saveUserButton.Name = "saveUserButton";
             this.saveUserButton.Size = new System.Drawing.Size(82, 26);
             this.saveUserButton.TabIndex = 14;
@@ -112,7 +112,7 @@
             // 
             this.surnameLabel.AutoSize = true;
             this.surnameLabel.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.surnameLabel.Location = new System.Drawing.Point(28, 97);
+            this.surnameLabel.Location = new System.Drawing.Point(25, 115);
             this.surnameLabel.Name = "surnameLabel";
             this.surnameLabel.Size = new System.Drawing.Size(75, 19);
             this.surnameLabel.TabIndex = 11;
@@ -120,14 +120,14 @@
             // 
             // nameTextBox
             // 
-            this.nameTextBox.Location = new System.Drawing.Point(106, 60);
+            this.nameTextBox.Location = new System.Drawing.Point(103, 78);
             this.nameTextBox.Name = "nameTextBox";
             this.nameTextBox.Size = new System.Drawing.Size(176, 20);
             this.nameTextBox.TabIndex = 6;
             // 
             // loginTextBox
             // 
-            this.loginTextBox.Location = new System.Drawing.Point(106, 132);
+            this.loginTextBox.Location = new System.Drawing.Point(103, 150);
             this.loginTextBox.Name = "loginTextBox";
             this.loginTextBox.Size = new System.Drawing.Size(176, 20);
             this.loginTextBox.TabIndex = 8;
@@ -136,7 +136,7 @@
             // 
             this.loginLabel.AutoSize = true;
             this.loginLabel.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.loginLabel.Location = new System.Drawing.Point(54, 133);
+            this.loginLabel.Location = new System.Drawing.Point(51, 151);
             this.loginLabel.Name = "loginLabel";
             this.loginLabel.Size = new System.Drawing.Size(46, 19);
             this.loginLabel.TabIndex = 12;
@@ -146,7 +146,7 @@
             // 
             this.postLabel.AutoSize = true;
             this.postLabel.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.postLabel.Location = new System.Drawing.Point(12, 170);
+            this.postLabel.Location = new System.Drawing.Point(9, 188);
             this.postLabel.Name = "postLabel";
             this.postLabel.Size = new System.Drawing.Size(88, 19);
             this.postLabel.TabIndex = 13;
@@ -154,7 +154,7 @@
             // 
             // surameTextBox
             // 
-            this.surameTextBox.Location = new System.Drawing.Point(106, 96);
+            this.surameTextBox.Location = new System.Drawing.Point(103, 114);
             this.surameTextBox.Name = "surameTextBox";
             this.surameTextBox.Size = new System.Drawing.Size(176, 20);
             this.surameTextBox.TabIndex = 7;

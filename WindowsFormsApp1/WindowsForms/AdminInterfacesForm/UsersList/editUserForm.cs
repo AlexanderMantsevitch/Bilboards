@@ -32,13 +32,19 @@ namespace WindowsFormsApp1.WindowsForms.AdminInterfacesForm
 
         private void saveUserButton_Click(object sender, EventArgs e)
         {
-            DataAccesObject dao = new DataAccesObject();
-            user.Name = nameTextBox.Text;
-            user.Surname = surameTextBox.Text;
-            user.Post = postTextBox.Text;
-            dao.UpdateUser(nameTextBox.Text, surameTextBox.Text, postTextBox.Text, user.Id);
-            parentForm.PanelForm(new UserInformationForm(user, parentForm));
-            
+            if (!(surameTextBox.Text.Equals("") || nameTextBox.Text.Equals("")))
+            {
+                DataAccesObject dao = new DataAccesObject();
+                user.Name = nameTextBox.Text;
+                user.Surname = surameTextBox.Text;
+                user.Post = postTextBox.Text;
+                dao.UpdateUser(nameTextBox.Text, surameTextBox.Text, postTextBox.Text, user.Id);
+                parentForm.PanelForm(new UserInformationForm(user, parentForm));
+            }
+            else
+            {
+                errorLbl.Text = "Заполните поля: имя, фамилия";
+            }
 
         }
 
