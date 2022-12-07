@@ -27,7 +27,7 @@ namespace WindowsFormsApp1
 
 
         }
-        public void deleteRows (string table, string field, int value, int id)
+        public void updateCell (string table, string field, int value, int id)
         {
             db.openConnection();
             MySqlCommand changeField = new MySqlCommand("UPDATE `" + table + "` SET `" +field +"` = @v " +

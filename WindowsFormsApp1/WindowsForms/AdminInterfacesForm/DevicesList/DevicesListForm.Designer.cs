@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             this.panel5 = new System.Windows.Forms.Panel();
             this.panel3 = new System.Windows.Forms.Panel();
             this.chooseDeviceButton = new System.Windows.Forms.Button();
@@ -71,6 +71,7 @@
             this.chooseDeviceButton.TabIndex = 2;
             this.chooseDeviceButton.Text = "Выбрать устройство";
             this.chooseDeviceButton.UseVisualStyleBackColor = true;
+            this.chooseDeviceButton.Click += new System.EventHandler(this.chooseDeviceButton_Click);
             // 
             // removeDeviceButton
             // 
@@ -80,6 +81,7 @@
             this.removeDeviceButton.TabIndex = 1;
             this.removeDeviceButton.Text = "Удалить устройство";
             this.removeDeviceButton.UseVisualStyleBackColor = true;
+            this.removeDeviceButton.Click += new System.EventHandler(this.removeDeviceButton_Click);
             // 
             // addDeviceButton
             // 
@@ -103,11 +105,11 @@
             // 
             this.devicesListGrid.AllowUserToAddRows = false;
             this.devicesListGrid.AllowUserToDeleteRows = false;
-            dataGridViewCellStyle1.BackColor = System.Drawing.Color.Silver;
-            dataGridViewCellStyle1.ForeColor = System.Drawing.Color.Black;
-            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.Color.RoyalBlue;
-            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.Color.White;
-            this.devicesListGrid.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle2.BackColor = System.Drawing.Color.Silver;
+            dataGridViewCellStyle2.ForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.Color.RoyalBlue;
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.Color.White;
+            this.devicesListGrid.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle2;
             this.devicesListGrid.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.devicesListGrid.BackgroundColor = System.Drawing.SystemColors.ControlLight;
             this.devicesListGrid.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;

@@ -89,7 +89,7 @@ namespace WindowsFormsApp1.WindowsForms.AdminInterfacesForm
             {
 
 
-                deviceDAO.deleteRows("devices", "owner_id", 0, user.Id);
+                deviceDAO.updateCell("devices", "owner_id", 0, user.Id);
                 deviceDAO.deleteRows("users", user.Id);
                 parentForm.PanelForm(new UsersList(parentForm));
 

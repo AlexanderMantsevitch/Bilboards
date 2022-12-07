@@ -51,7 +51,7 @@ namespace WindowsFormsApp1
                 {
 
 
-                    dao.deleteRows("devices", "owner_id", 0, Convert.ToInt32(usersListGrid.CurrentRow.Cells[0].Value));
+                    dao.updateCell("devices", "owner_id", 0, Convert.ToInt32(usersListGrid.CurrentRow.Cells[0].Value));
                     dao.deleteRows("users", Convert.ToInt32(usersListGrid.CurrentRow.Cells[0].Value));
                     usersListGrid.DataSource = dao.selectDataUsers();
                     usersListGrid.Update();

@@ -38,6 +38,7 @@
       <HintPath>C:\Program Files (x86)\MySQL\MySQL Connector NET 8.0.31\Assemblies\v4.5.2\MySql.Data.dll</HintPath>
     </Reference>
     <Reference Include="System" />
+    <Reference Include="System.Configuration" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
@@ -61,6 +62,12 @@
     </Compile>
     <Compile Include="WindowsForms\AdminInterfacesForm\DevicesList\AddDeviceForm.Designer.cs">
       <DependentUpon>AddDeviceForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="WindowsForms\AdminInterfacesForm\DevicesList\DevicesInformation.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="WindowsForms\AdminInterfacesForm\DevicesList\DevicesInformation.Designer.cs">
+      <DependentUpon>DevicesInformation.cs</DependentUpon>
     </Compile>
     <Compile Include="WindowsForms\AdminInterfacesForm\DevicesList\DevicesListForm.cs">
       <SubType>Form</SubType>
@@ -114,6 +121,9 @@
     </Compile>
     <EmbeddedResource Include="WindowsForms\AdminInterfacesForm\DevicesList\AddDeviceForm.resx">
       <DependentUpon>AddDeviceForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="WindowsForms\AdminInterfacesForm\DevicesList\DevicesInformation.resx">
+      <DependentUpon>DevicesInformation.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="WindowsForms\AdminInterfacesForm\DevicesList\DevicesListForm.resx">
       <DependentUpon>DevicesListForm.cs</DependentUpon>
