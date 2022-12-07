@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using WindowsFormsApp1.Classes;
 
 namespace WindowsFormsApp1.WindowsForms.AdminInterfacesForm
 {
@@ -34,7 +35,7 @@ namespace WindowsFormsApp1.WindowsForms.AdminInterfacesForm
         {
             if (!(surameTextBox.Text.Equals("") || nameTextBox.Text.Equals("")))
             {
-                DataAccesObject dao = new DataAccesObject();
+                UserDataAccesObject dao = new UserDataAccesObject();
                 user.Name = nameTextBox.Text;
                 user.Surname = surameTextBox.Text;
                 user.Post = postTextBox.Text;

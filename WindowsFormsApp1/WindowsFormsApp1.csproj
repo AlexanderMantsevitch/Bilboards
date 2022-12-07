@@ -51,9 +51,11 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Classes\Device.cs" />
+    <Compile Include="Classes\DeviceDataAccesObject.cs" />
     <Compile Include="Classes\User.cs" />
     <Compile Include="Classes\DataBase.cs" />
     <Compile Include="Classes\DataAccesObject.cs" />
+    <Compile Include="Classes\UserDataAccesObject.cs" />
     <Compile Include="WindowsForms\AdminInterfacesForm\DevicesList\DevicesListForm.cs">
       <SubType>Form</SubType>
     </Compile>

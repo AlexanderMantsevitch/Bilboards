@@ -9,13 +9,14 @@ using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using WindowsFormsApp1.Classes;
 using WindowsFormsApp1.WindowsForms.AdminInterfacesForm;
 
 namespace WindowsFormsApp1
 {
     public partial class UsersList : Form
     {
-        DataAccesObject dao = new DataAccesObject();
+        UserDataAccesObject dao = new UserDataAccesObject();
         DataTable dataTable = new DataTable();
         
         AdminInterface parentForm;
@@ -50,7 +51,7 @@ namespace WindowsFormsApp1
                 {
 
 
-                    dao.deleteUserinDevices("devices", "owner_id", 0, Convert.ToInt32(usersListGrid.CurrentRow.Cells[0].Value));
+                    dao.deleteRows("devices", "owner_id", 0, Convert.ToInt32(usersListGrid.CurrentRow.Cells[0].Value));
                     dao.deleteRows("users", Convert.ToInt32(usersListGrid.CurrentRow.Cells[0].Value));
                     usersListGrid.DataSource = dao.selectDataUsers();
                     usersListGrid.Update();

@@ -28,7 +28,9 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(AdminInterface));
             this.panel1 = new System.Windows.Forms.Panel();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.panel3 = new System.Windows.Forms.Panel();
             this.UserNameLabel = new System.Windows.Forms.Label();
             this.panel2 = new System.Windows.Forms.Panel();
@@ -39,6 +41,7 @@
             this.usersListButton = new System.Windows.Forms.Button();
             this.adminInterfacePanel = new System.Windows.Forms.Panel();
             this.panel1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.panel3.SuspendLayout();
             this.panel2.SuspendLayout();
             this.SuspendLayout();
@@ -47,6 +50,7 @@
             // 
             this.panel1.BackColor = System.Drawing.SystemColors.Control;
             this.panel1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.panel1.Controls.Add(this.pictureBox1);
             this.panel1.Controls.Add(this.panel3);
             this.panel1.Controls.Add(this.panel2);
             this.panel1.Controls.Add(this.logOutButton);
@@ -59,12 +63,22 @@
             this.panel1.Size = new System.Drawing.Size(214, 401);
             this.panel1.TabIndex = 0;
             // 
+            // pictureBox1
+            // 
+            this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
+            this.pictureBox1.Location = new System.Drawing.Point(61, 11);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(90, 79);
+            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pictureBox1.TabIndex = 0;
+            this.pictureBox1.TabStop = false;
+            // 
             // panel3
             // 
             this.panel3.Controls.Add(this.UserNameLabel);
-            this.panel3.Location = new System.Drawing.Point(0, 99);
+            this.panel3.Location = new System.Drawing.Point(0, 113);
             this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(213, 23);
+            this.panel3.Size = new System.Drawing.Size(213, 34);
             this.panel3.TabIndex = 8;
             // 
             // UserNameLabel
@@ -73,7 +87,7 @@
             this.UserNameLabel.Font = new System.Drawing.Font("Calibri", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.UserNameLabel.Location = new System.Drawing.Point(0, 0);
             this.UserNameLabel.Name = "UserNameLabel";
-            this.UserNameLabel.Size = new System.Drawing.Size(213, 23);
+            this.UserNameLabel.Size = new System.Drawing.Size(213, 34);
             this.UserNameLabel.TabIndex = 5;
             this.UserNameLabel.Text = "UserName";
             this.UserNameLabel.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -81,9 +95,9 @@
             // panel2
             // 
             this.panel2.Controls.Add(this.UserSurnameLabel);
-            this.panel2.Location = new System.Drawing.Point(0, 77);
+            this.panel2.Location = new System.Drawing.Point(0, 88);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(213, 23);
+            this.panel2.Size = new System.Drawing.Size(213, 31);
             this.panel2.TabIndex = 7;
             // 
             // UserSurnameLabel
@@ -93,7 +107,7 @@
             this.UserSurnameLabel.Location = new System.Drawing.Point(0, 0);
             this.UserSurnameLabel.Name = "UserSurnameLabel";
             this.UserSurnameLabel.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.UserSurnameLabel.Size = new System.Drawing.Size(213, 23);
+            this.UserSurnameLabel.Size = new System.Drawing.Size(213, 31);
             this.UserSurnameLabel.TabIndex = 6;
             this.UserSurnameLabel.Text = "UserSurName";
             this.UserSurnameLabel.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -105,7 +119,7 @@
             this.logOutButton.FlatAppearance.BorderSize = 0;
             this.logOutButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.logOutButton.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.logOutButton.Location = new System.Drawing.Point(-1, 283);
+            this.logOutButton.Location = new System.Drawing.Point(-1, 264);
             this.logOutButton.Name = "logOutButton";
             this.logOutButton.Size = new System.Drawing.Size(214, 42);
             this.logOutButton.TabIndex = 4;
@@ -120,7 +134,7 @@
             this.viewingLogsButton.FlatAppearance.BorderSize = 0;
             this.viewingLogsButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.viewingLogsButton.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.viewingLogsButton.Location = new System.Drawing.Point(-1, 235);
+            this.viewingLogsButton.Location = new System.Drawing.Point(0, 226);
             this.viewingLogsButton.Name = "viewingLogsButton";
             this.viewingLogsButton.Size = new System.Drawing.Size(214, 42);
             this.viewingLogsButton.TabIndex = 3;
@@ -179,6 +193,7 @@
             this.Text = "Система управления билбордами";
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.AdminInterface_FormClosed);
             this.panel1.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.panel3.ResumeLayout(false);
             this.panel2.ResumeLayout(false);
             this.ResumeLayout(false);
@@ -197,5 +212,6 @@
         private System.Windows.Forms.Panel panel2;
         private System.Windows.Forms.Panel panel3;
         private System.Windows.Forms.Panel adminInterfacePanel;
+        private System.Windows.Forms.PictureBox pictureBox1;
     }
 }

@@ -8,6 +8,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using WindowsFormsApp1.Classes;
 using WindowsFormsApp1.WindowsForms.LoginForm;
 
 namespace WindowsFormsApp1
@@ -29,7 +30,7 @@ namespace WindowsFormsApp1
             {
 
                 DataTable dataTable = new DataTable();
-                DataAccesObject dao = new DataAccesObject();
+                UserDataAccesObject dao = new UserDataAccesObject();
                 dataTable = dao.authorizathion(LogintextBox.Text, PasswordtextBox.Text);
 
 
@@ -42,7 +43,7 @@ namespace WindowsFormsApp1
 
                         user.Name = (a["name"].ToString());
                         user.Surname = (a["surname"].ToString());
-                        user.Id = (Convert.ToInt32 (a["id"].ToString()));
+                        user.Id = (Convert.ToInt32(a["id"].ToString()));
                         user.Post = (a["post"].ToString());
                         user.Role = ((a["role"].ToString()));
                         user.Login = (a["login"].ToString());
@@ -55,8 +56,9 @@ namespace WindowsFormsApp1
 
                             newPassword.Show();
                             this.clear_textBox();
+                            this.errorAuthorizathionLbl.Text = "";
                             this.Hide();
-                            
+
 
                         }
                         else
@@ -76,7 +78,11 @@ namespace WindowsFormsApp1
 
                 }
 
-                else errorAuthorizathionLbl.Text = "Неправильный логин или пароль";
+                else
+                {
+                    Console.WriteLine("go");
+                    this.errorAuthorizathionLbl.Text = "Неправильный логин или пароль";
+                }
             }
             catch (MySqlException)
             {
@@ -88,9 +94,11 @@ namespace WindowsFormsApp1
         }
         private void SignInButton_Click(object sender, EventArgs e)
         {
-            
+
+            errorAuthorizathionLbl.Text = "";
             this.SignIn();
             clear_textBox();
+
 
         }
 
@@ -99,7 +107,7 @@ namespace WindowsFormsApp1
         {
             LogintextBox.Text = "";
             PasswordtextBox.Text = "";
-            errorAuthorizathionLbl.Text = "";
+           
 
         }
     }

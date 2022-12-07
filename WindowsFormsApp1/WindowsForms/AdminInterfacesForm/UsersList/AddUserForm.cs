@@ -8,6 +8,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using WindowsFormsApp1.Classes;
 
 namespace WindowsFormsApp1.WindowsForms.AdminInterfacesForm
 {
@@ -31,13 +32,18 @@ namespace WindowsFormsApp1.WindowsForms.AdminInterfacesForm
         {
             try
             {
+                UserDataAccesObject dao = new UserDataAccesObject();
                 if (!(surameTextBox.Text.Equals("") || nameTextBox.Text.Equals("") || loginTextBox.Text.Equals("")))
                  {
-                    errorLbl.Text = "";
-                    DataAccesObject dao = new DataAccesObject();
-                    dao.addUsers(nameTextBox.Text, surameTextBox.Text, loginTextBox.Text, postTextBox.Text);
-                    MessageBox.Show("Пользователь успешно добавлен");
-                    nameTextBox.Text = ""; surameTextBox.Text = ""; loginTextBox.Text = ""; postTextBox.Text = "";
+                    if (dao.selectDataUser(loginTextBox.Text).Rows.Count == 0)
+                    {
+                        errorLbl.Text = "";
+
+                        dao.addUsers(nameTextBox.Text, surameTextBox.Text, loginTextBox.Text, postTextBox.Text);
+                        MessageBox.Show("Пользователь успешно добавлен");
+                        nameTextBox.Text = ""; surameTextBox.Text = ""; loginTextBox.Text = ""; postTextBox.Text = "";
+                    }
+                    else errorLbl.Text = "Пользователь с таким логином уже существует";
                 }
                 else
                 {

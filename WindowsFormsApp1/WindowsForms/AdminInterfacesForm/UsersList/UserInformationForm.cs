@@ -13,7 +13,8 @@ namespace WindowsFormsApp1.WindowsForms.AdminInterfacesForm
 {
     public partial class UserInformationForm : Form
     {
-        private DataAccesObject dao = new DataAccesObject();
+        private UserDataAccesObject userDAO = new UserDataAccesObject();
+        private DeviceDataAccesObject deviceDAO = new DeviceDataAccesObject();
         private AdminInterface parentForm;
         private User user;
         public UserInformationForm(User user, AdminInterface parentForm)
@@ -28,12 +29,12 @@ namespace WindowsFormsApp1.WindowsForms.AdminInterfacesForm
             roleLabel.Text = "Роль в системе: " + user.Role;
             postLabel.Text = "Должность: " + user.Post;
 
-            devicesListGried.DataSource = dao.selectAvailableDevices(user.Id);
+            devicesListGried.DataSource = deviceDAO.selectAvailableDevices(user.Id);
             devicesListGried.Update();
             this.user = user;
             chooseDeviceComboBox.Items.Clear();
             DataTable dataTable = new DataTable();
-            dataTable = dao.select("devices", "*");
+            dataTable = deviceDAO.select("devices", "*");
 
 
             foreach (DataRow dataRow in dataTable.Rows)
@@ -51,14 +52,14 @@ namespace WindowsFormsApp1.WindowsForms.AdminInterfacesForm
             if (!chooseDeviceComboBox.Text.Equals("Выберите устройство"))
             {
                 DataTable dataTable = new DataTable();
-                dataTable = dao.selectDataDevice(chooseDeviceComboBox.Text);
+                dataTable = deviceDAO.selectDataDevice(chooseDeviceComboBox.Text);
                 Device device = new Device(dataTable.Rows[0]);
                 
                 if (device.Owner_id == 0)
                 {
                     
-                    dao.addDeviceToUser(chooseDeviceComboBox.Text, user.Id);
-                    devicesListGried.DataSource = dao.selectAvailableDevices(user.Id);
+                    deviceDAO.addDeviceToUser(chooseDeviceComboBox.Text, user.Id);
+                    devicesListGried.DataSource = deviceDAO.selectAvailableDevices(user.Id);
                     devicesListGried.Update();
 
                 }
@@ -67,11 +68,11 @@ namespace WindowsFormsApp1.WindowsForms.AdminInterfacesForm
 
                     
                     DialogResult dialogResult = MessageBox.Show("Вы хотите поменять владельца " +
-                        new User(dao.selectDataUser(device.Owner_id).Rows[0]).Login + " на " + user.Login, " " , MessageBoxButtons.YesNo);
+                        new User(userDAO.selectDataUser(device.Owner_id).Rows[0]).Login + " на " + user.Login, " " , MessageBoxButtons.YesNo);
                     if (dialogResult == DialogResult.Yes)
                     {
-                        dao.addDeviceToUser(chooseDeviceComboBox.Text, user.Id);
-                        devicesListGried.DataSource = dao.selectAvailableDevices(user.Id);
+                        deviceDAO.addDeviceToUser(chooseDeviceComboBox.Text, user.Id);
+                        devicesListGried.DataSource = deviceDAO.selectAvailableDevices(user.Id);
                         devicesListGried.Update();
                     }
                     
@@ -88,8 +89,8 @@ namespace WindowsFormsApp1.WindowsForms.AdminInterfacesForm
             {
 
 
-                dao.deleteUserinDevices("devices", "owner_id", 0, user.Id);
-                dao.deleteRows("users", user.Id);
+                deviceDAO.deleteRows("devices", "owner_id", 0, user.Id);
+                deviceDAO.deleteRows("users", user.Id);
                 parentForm.PanelForm(new UsersList(parentForm));
 
             }

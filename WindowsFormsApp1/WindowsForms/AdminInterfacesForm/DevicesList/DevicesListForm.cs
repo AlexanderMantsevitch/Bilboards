@@ -8,6 +8,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using WindowsFormsApp1.Classes;
 
 namespace WindowsFormsApp1.WindowsForms.AdminInterfacesForm.DevicesList
 {
@@ -15,7 +16,7 @@ namespace WindowsFormsApp1.WindowsForms.AdminInterfacesForm.DevicesList
     {
 
        
-        DataAccesObject dao = new DataAccesObject();
+        DeviceDataAccesObject dao = new DeviceDataAccesObject();
         AdminInterface parentForm;
         public DevicesListForm(AdminInterface parentForm)
         

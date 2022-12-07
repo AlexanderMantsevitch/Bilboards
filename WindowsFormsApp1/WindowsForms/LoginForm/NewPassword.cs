@@ -8,6 +8,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using WindowsFormsApp1.Classes;
 
 namespace WindowsFormsApp1.WindowsForms.LoginForm
 {
@@ -48,7 +49,7 @@ namespace WindowsFormsApp1.WindowsForms.LoginForm
             {
                 if (PasswordtextBox.Text.Equals(dublicatePasswordTextBox.Text)) 
                 {
-                    DataAccesObject dao = new DataAccesObject();
+                    UserDataAccesObject dao = new UserDataAccesObject();
                     dao.changePassword(PasswordtextBox.Text, id);
                     parentForm.clear_textBox();
                     parentForm.Show();

@@ -89,7 +89,7 @@ namespace WindowsFormsApp1.WindowsForms.AdminInterfacesForm
             this.panelAddUser.Controls.Add(this.surameTextBox);
             this.panelAddUser.Location = new System.Drawing.Point(103, 72);
             this.panelAddUser.Name = "panelAddUser";
-            this.panelAddUser.Size = new System.Drawing.Size(302, 264);
+            this.panelAddUser.Size = new System.Drawing.Size(360, 264);
             this.panelAddUser.TabIndex = 15;
             // 
             // errorLbl
