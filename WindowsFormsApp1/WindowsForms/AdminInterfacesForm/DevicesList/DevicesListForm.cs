@@ -39,6 +39,7 @@ namespace WindowsFormsApp1.WindowsForms.AdminInterfacesForm.DevicesList
 
         private void addDeviceButton_Click(object sender, EventArgs e)
         {
+            parentForm.PanelForm(new AddDeviceForm());
 
         }
     }

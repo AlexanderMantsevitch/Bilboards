@@ -17,7 +17,7 @@ namespace WindowsFormsApp1
         {
             DataTable dataTable = new DataTable();
             db.openConnection();
-            MySqlCommand autorizathionSqlCommand = new MySqlCommand(" SELECT" + field + " FROM `" + table + "`", db.getConnection());
+            MySqlCommand autorizathionSqlCommand = new MySqlCommand(" SELECT `" + field + "` FROM `" + table + "`", db.getConnection());
          
             adapter.SelectCommand = autorizathionSqlCommand;
             adapter.Fill(dataTable);

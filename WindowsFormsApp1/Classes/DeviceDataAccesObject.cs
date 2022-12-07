@@ -10,11 +10,13 @@ namespace WindowsFormsApp1.Classes
 {
     class DeviceDataAccesObject: DataAccesObject
     {
-        public void addDevice(string name)
+        public void addDevice(string name, string type, int id_owner)
         {
             db.openConnection();
-            MySqlCommand addDevices = new MySqlCommand("INSERT INTO `devices` (`name`) " + "VALUES (@n)", db.getConnection());
+            MySqlCommand addDevices = new MySqlCommand("INSERT INTO `devices` (`name`, `type`, `owner_id`) " + "VALUES (@n, @t,@id)", db.getConnection());
             addDevices.Parameters.Add("@n", MySqlDbType.VarChar).Value = name;
+            addDevices.Parameters.Add("@t", MySqlDbType.VarChar).Value = type;
+            addDevices.Parameters.Add("@id", MySqlDbType.Int32).Value = id_owner;
             addDevices.ExecuteNonQuery();
             db.closeConnection();
         }

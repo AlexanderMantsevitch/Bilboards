@@ -56,6 +56,12 @@
     <Compile Include="Classes\DataBase.cs" />
     <Compile Include="Classes\DataAccesObject.cs" />
     <Compile Include="Classes\UserDataAccesObject.cs" />
+    <Compile Include="WindowsForms\AdminInterfacesForm\DevicesList\AddDeviceForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="WindowsForms\AdminInterfacesForm\DevicesList\AddDeviceForm.Designer.cs">
+      <DependentUpon>AddDeviceForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="WindowsForms\AdminInterfacesForm\DevicesList\DevicesListForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -106,6 +112,9 @@
     <Compile Include="WindowsForms\LoginForm\NewPassword.Designer.cs">
       <DependentUpon>NewPassword.cs</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="WindowsForms\AdminInterfacesForm\DevicesList\AddDeviceForm.resx">
+      <DependentUpon>AddDeviceForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="WindowsForms\AdminInterfacesForm\DevicesList\DevicesListForm.resx">
       <DependentUpon>DevicesListForm.cs</DependentUpon>
     </EmbeddedResource>
