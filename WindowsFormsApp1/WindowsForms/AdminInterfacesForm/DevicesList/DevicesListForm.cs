@@ -16,13 +16,17 @@ namespace WindowsFormsApp1.WindowsForms.AdminInterfacesForm.DevicesList
     {
 
        
-        DeviceDataAccesObject dao = new DeviceDataAccesObject();
-        AdminInterface parentForm;
-        public DevicesListForm(AdminInterface parentForm)
+        private DeviceDataAccesObject dao = new DeviceDataAccesObject();
+        private LogsDataAccesObject logDAO = new LogsDataAccesObject();
+        private AdminInterface parentForm;
+        private User user;
+        public DevicesListForm(AdminInterface parentForm, User user)
         
         {
             InitializeComponent();
+          
             this.parentForm = parentForm;
+            this.user = user;
             try
             {
                
@@ -41,7 +45,7 @@ namespace WindowsFormsApp1.WindowsForms.AdminInterfacesForm.DevicesList
 
         private void addDeviceButton_Click(object sender, EventArgs e)
         {
-            parentForm.PanelForm(new AddDeviceForm());
+            parentForm.PanelForm(new AddDeviceForm(user));
 
         }
 
@@ -56,7 +60,7 @@ namespace WindowsFormsApp1.WindowsForms.AdminInterfacesForm.DevicesList
                 {
 
 
-                    
+                    logDAO.addNotation(user, "Устройство " + devicesListGrid.CurrentRow.Cells["name"].Value + " было удалено");
                     dao.deleteRows("devices", Convert.ToInt32(devicesListGrid.CurrentRow.Cells[0].Value));
                     devicesListGrid.DataSource = dao.selectDataDevice();
                     devicesListGrid.Update();

@@ -16,15 +16,19 @@ namespace WindowsFormsApp1
 {
     public partial class UsersList : Form
     {
-        UserDataAccesObject dao = new UserDataAccesObject();
-        DataTable dataTable = new DataTable();
+        private UserDataAccesObject dao = new UserDataAccesObject();
+        private LogsDataAccesObject logDAO = new LogsDataAccesObject();
+        private DataTable dataTable = new DataTable();
+        private User user;
         
         AdminInterface parentForm;
-        public UsersList(AdminInterface parentForm)
+        public UsersList(AdminInterface parentForm, User user)
         {
 
             InitializeComponent();
             this.parentForm = parentForm;
+            this.user = user;
+           
             try
             {
                
@@ -42,42 +46,45 @@ namespace WindowsFormsApp1
 
         private void removeUserButton_Click(object sender, EventArgs e)
         {
-            try
+            
+           // try
             {
 
 
                 DialogResult dialogResult = MessageBox.Show("Вы точно хотите удалить выбранного пользователя?", " ", MessageBoxButtons.YesNo);
                 if (dialogResult == DialogResult.Yes)
                 {
-
-
+                  
+                    logDAO.addNotation(user, "Пользователь " + usersListGrid.CurrentRow.Cells["login"].Value + " был удален");
+                   
                     dao.updateCell("devices", "owner_id", 0, Convert.ToInt32(usersListGrid.CurrentRow.Cells[0].Value));
                     dao.deleteRows("users", Convert.ToInt32(usersListGrid.CurrentRow.Cells[0].Value));
                     usersListGrid.DataSource = dao.selectDataUsers();
                     usersListGrid.Update();
+                    
 
                 }
            
                 
             }
-            catch (MySqlException)
-            {
-                MessageBox.Show(" Нет соединения с базой данных");
+            //catch (MySqlException)
+            //{
+            //    MessageBox.Show(" Нет соединения с базой данных");
 
-            }
+            //}
         }
 
         private void addUserButton_Click(object sender, EventArgs e)
         {
-            parentForm.PanelForm(new AddUserForm());
+            parentForm.PanelForm(new AddUserForm(user));
         }
 
         private void chooseButton_Click(object sender, EventArgs e)
         {
             
             
-            User user = new User (dao.selectDataUser(Convert.ToInt32(usersListGrid.CurrentRow.Cells[0].Value)).Rows[0]);
-            parentForm.PanelForm(new UserInformationForm(user, parentForm));
+            User currentUser = new User (dao.selectDataUser(Convert.ToInt32(usersListGrid.CurrentRow.Cells[0].Value)).Rows[0]);
+            parentForm.PanelForm(new UserInformationForm(currentUser, parentForm, user));
             
             
             

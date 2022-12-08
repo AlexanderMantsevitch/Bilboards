@@ -15,23 +15,27 @@ namespace WindowsFormsApp1.WindowsForms.AdminInterfacesForm
     {
         private UserDataAccesObject userDAO = new UserDataAccesObject();
         private DeviceDataAccesObject deviceDAO = new DeviceDataAccesObject();
+        private LogsDataAccesObject logDAO = new LogsDataAccesObject();
         private AdminInterface parentForm;
+        private User currentUser;
         private User user;
-        public UserInformationForm(User user, AdminInterface parentForm)
+
+        public UserInformationForm(User currentUser, AdminInterface parentForm, User user)
         {
             InitializeComponent();
             this.parentForm = parentForm;
 
-            formName.Text = "Пользователь: " + user.Login;
-            idLabel.Text = "Id: " + user.Id;
-            namUserLabel.Text = "Имя: " + user.Name;
-            surnameLabel.Text = "Фамилия: " + user.Surname;
-            roleLabel.Text = "Роль в системе: " + user.Role;
-            postLabel.Text = "Должность: " + user.Post;
+            formName.Text = "Пользователь: " + currentUser.Login;
+            idLabel.Text = "Id: " + currentUser.Id;
+            namUserLabel.Text = "Имя: " + currentUser.Name;
+            surnameLabel.Text = "Фамилия: " + currentUser.Surname;
+            roleLabel.Text = "Роль в системе: " + currentUser.Role;
+            postLabel.Text = "Должность: " + currentUser.Post;
 
-            devicesListGried.DataSource = deviceDAO.selectAvailableDevices(user.Id);
-            devicesListGried.Update();
             this.user = user;
+            devicesListGried.DataSource = deviceDAO.selectAvailableDevices(currentUser.Id);
+            devicesListGried.Update();
+            this.currentUser = currentUser;
             chooseDeviceComboBox.Items.Clear();
             DataTable dataTable = new DataTable();
             dataTable = deviceDAO.select("devices", "*");
@@ -58,9 +62,10 @@ namespace WindowsFormsApp1.WindowsForms.AdminInterfacesForm
                 if (device.Owner_id == 0)
                 {
                     
-                    deviceDAO.addDeviceToUser(chooseDeviceComboBox.Text, user.Id);
-                    devicesListGried.DataSource = deviceDAO.selectAvailableDevices(user.Id);
+                    deviceDAO.addDeviceToUser(chooseDeviceComboBox.Text, currentUser.Id);
+                    devicesListGried.DataSource = deviceDAO.selectAvailableDevices(currentUser.Id);
                     devicesListGried.Update();
+                    logDAO.addNotation(user, "Пользователю " + currentUser.Login + " назначено устройство " + device.Name);
 
                 }
                 else
@@ -68,12 +73,13 @@ namespace WindowsFormsApp1.WindowsForms.AdminInterfacesForm
 
                     
                     DialogResult dialogResult = MessageBox.Show("Вы хотите поменять владельца " +
-                        new User(userDAO.selectDataUser(device.Owner_id).Rows[0]).Login + " на " + user.Login, " " , MessageBoxButtons.YesNo);
+                        new User(userDAO.selectDataUser(device.Owner_id).Rows[0]).Login + " на " + currentUser.Login, " " , MessageBoxButtons.YesNo);
                     if (dialogResult == DialogResult.Yes)
                     {
-                        deviceDAO.addDeviceToUser(chooseDeviceComboBox.Text, user.Id);
-                        devicesListGried.DataSource = deviceDAO.selectAvailableDevices(user.Id);
+                        deviceDAO.addDeviceToUser(chooseDeviceComboBox.Text, currentUser.Id);
+                        devicesListGried.DataSource = deviceDAO.selectAvailableDevices(currentUser.Id);
                         devicesListGried.Update();
+                        logDAO.addNotation(user, "Пользователю " + currentUser.Login + " назначено устройство " + device.Name);
                     }
                     
 
@@ -89,16 +95,18 @@ namespace WindowsFormsApp1.WindowsForms.AdminInterfacesForm
             {
 
 
-                deviceDAO.updateCell("devices", "owner_id", 0, user.Id);
-                deviceDAO.deleteRows("users", user.Id);
-                parentForm.PanelForm(new UsersList(parentForm));
+                deviceDAO.updateCell("devices", "owner_id", 0, currentUser.Id);
+                deviceDAO.deleteRows("users", currentUser.Id);
+                logDAO.addNotation(user, "Пользователь " + currentUser.Login + " был удален");
+                parentForm.PanelForm(new UsersList(parentForm,user));
+
 
             }
         }
 
         private void editButton_Click(object sender, EventArgs e)
         {
-            parentForm.PanelForm(new editUserForm(user, parentForm));
+            parentForm.PanelForm(new editUserForm(currentUser, parentForm, user));
         }
     }
 }

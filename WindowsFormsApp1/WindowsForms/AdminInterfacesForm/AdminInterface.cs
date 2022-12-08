@@ -13,14 +13,14 @@ namespace WindowsFormsApp1
 {
     public partial class AdminInterface : Form
     {
-        private User user = new User();
+        private User user;
         private Form activeForm;
         private const int countButton = 3;
         Button[] arrayButton = new Button[countButton];
         private Form parentForm = new Form();
         bool flagLogout = false;
 
-        public AdminInterface(Form parentForm)
+        public AdminInterface(Form parentForm, User user)
         {
             InitializeComponent();
            
@@ -28,7 +28,8 @@ namespace WindowsFormsApp1
             arrayButton[1] = devicesListButton;
             arrayButton[2] = viewingLogsButton;
             this.parentForm = parentForm;
-           
+            this.user = user;
+            
         }
 
        
@@ -38,20 +39,12 @@ namespace WindowsFormsApp1
             if (!flagLogout) Application.Exit();
         }
 
-        public void set_User (User user_loginForm)
-        {
-            this.user = user_loginForm;
-            UserNameLabel.Text = user.Name;
-            UserSurnameLabel.Text = user.Surname;
-           
-           
-        }
 
         private void usersListButton_Click(object sender, EventArgs e)
         {
            
         
-            this.PanelForm(new UsersList(this));
+            this.PanelForm(new UsersList(this, user));
             usersListButton.BackColor = Color.FromArgb(215,215,215);
         }
 
@@ -86,7 +79,7 @@ namespace WindowsFormsApp1
 
         private void devicesListButton_Click(object sender, EventArgs e)
         {
-            this.PanelForm(new DevicesListForm(this));
+            this.PanelForm(new DevicesListForm(this, user));
             devicesListButton.BackColor = Color.FromArgb(215, 215, 215);
         }
     }

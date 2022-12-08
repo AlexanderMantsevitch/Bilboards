@@ -14,10 +14,13 @@ namespace WindowsFormsApp1.WindowsForms.AdminInterfacesForm
 {
     public partial class AddUserForm : Form
     {
-        public AddUserForm()
+        User user;
+        LogsDataAccesObject logDAO = new LogsDataAccesObject();
+        public AddUserForm( User user)
         {
             InitializeComponent();
             errorLbl.Text = "";
+            this.user = user;
         }
 
        
@@ -40,6 +43,7 @@ namespace WindowsFormsApp1.WindowsForms.AdminInterfacesForm
                         errorLbl.Text = "";
 
                         dao.addUsers(nameTextBox.Text, surameTextBox.Text, loginTextBox.Text, postTextBox.Text);
+                        logDAO.addNotation(user, "Пользователь " + loginTextBox.Text + " был добавлен");
                         MessageBox.Show("Пользователь успешно добавлен");
                         nameTextBox.Text = ""; surameTextBox.Text = ""; loginTextBox.Text = ""; postTextBox.Text = "";
                     }

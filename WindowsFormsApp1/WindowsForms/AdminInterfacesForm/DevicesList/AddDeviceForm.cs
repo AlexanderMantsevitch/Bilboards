@@ -16,11 +16,14 @@ namespace WindowsFormsApp1.WindowsForms.AdminInterfacesForm.DevicesList
        
         DeviceDataAccesObject deviceDAO = new DeviceDataAccesObject();
         UserDataAccesObject userDAO = new UserDataAccesObject();
+        LogsDataAccesObject logDAO = new LogsDataAccesObject();
+        User user;
 
-        public AddDeviceForm()
+        public AddDeviceForm(User user)
         {
             InitializeComponent();
 
+            this.user = user;
             
             typeComboBox.Items.Add("Bilboard");
             typeComboBox.Items.Add("TV");
@@ -53,7 +56,9 @@ namespace WindowsFormsApp1.WindowsForms.AdminInterfacesForm.DevicesList
                         deviceDAO.addDevice(nameTextBox.Text, typeComboBox.Text, 0);
 
                     }
+                    logDAO.addNotation(user, "Устройство " + nameTextBox.Text + " было добавлено");
                     MessageBox.Show("Устройство успешно добавлено");
+                    typeComboBox.Text = ""; nameTextBox.Text = ""; usersComboBox.Text = ""; 
                 }
                 else errorLbl.Text = "Устройство с таким названием уже существует";
             }

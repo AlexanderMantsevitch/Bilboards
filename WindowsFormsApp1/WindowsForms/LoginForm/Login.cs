@@ -15,7 +15,7 @@ namespace WindowsFormsApp1
 {
     public partial class Login : Form
     {
-        private User user = new User();
+        
         public Login()
         {
             InitializeComponent();
@@ -41,13 +41,8 @@ namespace WindowsFormsApp1
                     foreach (DataRow a in dataTable.Rows)
                     {
 
-                        user.Name = (a["name"].ToString());
-                        user.Surname = (a["surname"].ToString());
-                        user.Id = (Convert.ToInt32(a["id"].ToString()));
-                        user.Post = (a["post"].ToString());
-                        user.Role = ((a["role"].ToString()));
-                        user.Login = (a["login"].ToString());
-                        Console.WriteLine(a["name"].ToString());
+                         
+       
 
                         if (!Convert.ToBoolean(a["first_entry"].ToString()))
                         {
@@ -66,8 +61,8 @@ namespace WindowsFormsApp1
                             if (a["role"].Equals("Admin"))
                             {
                                 this.Hide();
-                                AdminInterface adminInterface = new AdminInterface(this);
-                                adminInterface.set_User(user);
+                                User user = new User(a);
+                                AdminInterface adminInterface = new AdminInterface(this, user);
                                 adminInterface.Show();
 
 
