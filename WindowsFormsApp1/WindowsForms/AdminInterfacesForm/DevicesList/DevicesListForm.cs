@@ -25,7 +25,9 @@ namespace WindowsFormsApp1.WindowsForms.AdminInterfacesForm.DevicesList
             this.parentForm = parentForm;
             try
             {
+               
                 this.devicesListGrid.DataSource = dao.selectDataDevice();
+
                 devicesListGrid.Update();
 
             }
@@ -72,7 +74,10 @@ namespace WindowsFormsApp1.WindowsForms.AdminInterfacesForm.DevicesList
 
         private void chooseDeviceButton_Click(object sender, EventArgs e)
         {
-            parentForm.PanelForm(new DevicesInformation());
+
+            Console.WriteLine(devicesListGrid.CurrentRow.Cells[0].Value);
+            Device device = new Device(dao.selectDataDevice(Convert.ToInt32(devicesListGrid.CurrentRow.Cells[0].Value)).Rows[0]);
+            parentForm.PanelForm(new DevicesInformation(device));
         }
     }
 }

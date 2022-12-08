@@ -52,10 +52,11 @@ namespace WindowsFormsApp1.Classes
         {
             db.openConnection();
             DataTable dataTable = new DataTable();
-            MySqlCommand selectDataCommand = new MySqlCommand(" SELECT * FROM `devices` WHERE `owner_id` = @id", db.getConnection());
+            MySqlCommand selectDataCommand = new MySqlCommand(" SELECT * FROM `devices` WHERE `id` = @id", db.getConnection());
             selectDataCommand.Parameters.Add("@id", MySqlDbType.Int32).Value = id;
             adapter.SelectCommand = selectDataCommand;
             adapter.Fill(dataTable);
+            Console.WriteLine("tut"); 
             db.closeConnection();
 
             return dataTable;

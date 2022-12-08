@@ -11,21 +11,33 @@ using System.Net.Sockets;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using WindowsFormsApp1.Classes;
 
 namespace WindowsFormsApp1.WindowsForms.AdminInterfacesForm.DevicesList
 {
     public partial class DevicesInformation : Form
     {
         private UdpClient client;
-        bool flag = true;
-        public DevicesInformation()
+        UserDataAccesObject userDAO = new UserDataAccesObject();
+        public DevicesInformation(Device device)
         {
             InitializeComponent();
             try
+
             {
-                SendMessageFromSocket(48655);
-                Console.WriteLine("he");
-                udpConnection(int.Parse(ConfigurationManager.AppSettings.Get("port")));
+                idLabel.Text = "Id: " + device.Id;
+                deviceNameLabel.Text = "Устройство: " + device.Name;
+                ownerLabel.Text = "Владелец: " + (userDAO.selectDataUser(device.Owner_id).Rows[0])["login"].ToString();
+                typeLabel.Text = "Тип: " + device.Type;
+                statusLabel.Text = "Статус: " + device.Status;
+                if (device.Status.Equals("on"))
+                {
+                    SendMessageFromSocket(48655);
+                    udpConnection(int.Parse(ConfigurationManager.AppSettings.Get("port")));
+                }
+                
+
+
             }
             catch (Exception ex)
             {
@@ -67,9 +79,9 @@ namespace WindowsFormsApp1.WindowsForms.AdminInterfacesForm.DevicesList
         {
 
                 client = new UdpClient(port);
-                while (flag)
+                while (true)
                 {
-
+          
                 try
                 {
                     var data = await client.ReceiveAsync();
@@ -94,9 +106,16 @@ namespace WindowsFormsApp1.WindowsForms.AdminInterfacesForm.DevicesList
 
         private void DevicesInformation_FormClosed(object sender, FormClosedEventArgs e)
         {
-            flag = false;
-            client.Close();
-            
+            try
+            {
+
+               
+            }
+            catch (System.NullReferenceException)
+            {
+
+
+            }
         }
     }
 

@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(DevicesInformation));
             this.panel1 = new System.Windows.Forms.Panel();
             this.typeLabel = new System.Windows.Forms.Label();
             this.ownerLabel = new System.Windows.Forms.Label();
@@ -38,6 +39,7 @@
             this.panel4 = new System.Windows.Forms.Panel();
             this.panel5 = new System.Windows.Forms.Panel();
             this.translationPictureBox = new System.Windows.Forms.PictureBox();
+            this.statusLabel = new System.Windows.Forms.Label();
             this.panel1.SuspendLayout();
             this.panel5.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.translationPictureBox)).BeginInit();
@@ -45,6 +47,7 @@
             // 
             // panel1
             // 
+            this.panel1.Controls.Add(this.statusLabel);
             this.panel1.Controls.Add(this.typeLabel);
             this.panel1.Controls.Add(this.ownerLabel);
             this.panel1.Controls.Add(this.idLabel);
@@ -131,12 +134,23 @@
             // translationPictureBox
             // 
             this.translationPictureBox.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.translationPictureBox.Image = ((System.Drawing.Image)(resources.GetObject("translationPictureBox.Image")));
             this.translationPictureBox.Location = new System.Drawing.Point(0, 0);
             this.translationPictureBox.Name = "translationPictureBox";
             this.translationPictureBox.Size = new System.Drawing.Size(406, 334);
-            this.translationPictureBox.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.translationPictureBox.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.translationPictureBox.TabIndex = 0;
             this.translationPictureBox.TabStop = false;
+            // 
+            // statusLabel
+            // 
+            this.statusLabel.AutoSize = true;
+            this.statusLabel.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.statusLabel.Location = new System.Drawing.Point(21, 140);
+            this.statusLabel.Name = "statusLabel";
+            this.statusLabel.Size = new System.Drawing.Size(100, 19);
+            this.statusLabel.TabIndex = 4;
+            this.statusLabel.Text = "Статус: status";
             // 
             // DevicesInformation
             // 
@@ -172,5 +186,6 @@
         private System.Windows.Forms.Panel panel4;
         private System.Windows.Forms.Panel panel5;
         private System.Windows.Forms.PictureBox translationPictureBox;
+        private System.Windows.Forms.Label statusLabel;
     }
 }

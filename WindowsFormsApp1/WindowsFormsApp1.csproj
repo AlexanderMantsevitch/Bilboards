@@ -53,6 +53,7 @@
   <ItemGroup>
     <Compile Include="Classes\Device.cs" />
     <Compile Include="Classes\DeviceDataAccesObject.cs" />
+    <Compile Include="Classes\UDPConnection.cs" />
     <Compile Include="Classes\User.cs" />
     <Compile Include="Classes\DataBase.cs" />
     <Compile Include="Classes\DataAccesObject.cs" />

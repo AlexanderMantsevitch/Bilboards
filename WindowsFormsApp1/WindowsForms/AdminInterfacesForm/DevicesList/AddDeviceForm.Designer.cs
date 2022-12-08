@@ -28,7 +28,9 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.panelAddUser = new System.Windows.Forms.Panel();
+            this.panelAddDevice = new System.Windows.Forms.Panel();
+            this.typeComboBox = new System.Windows.Forms.ComboBox();
+            this.usersComboBox = new System.Windows.Forms.ComboBox();
             this.errorLbl = new System.Windows.Forms.Label();
             this.addDeviceLabel = new System.Windows.Forms.Label();
             this.nameLabel = new System.Windows.Forms.Label();
@@ -36,26 +38,40 @@
             this.typeLabel = new System.Windows.Forms.Label();
             this.nameTextBox = new System.Windows.Forms.TextBox();
             this.ownerLabel = new System.Windows.Forms.Label();
-            this.usersComboBox = new System.Windows.Forms.ComboBox();
-            this.typeComboBox = new System.Windows.Forms.ComboBox();
-            this.panelAddUser.SuspendLayout();
+            this.panelAddDevice.SuspendLayout();
             this.SuspendLayout();
             // 
-            // panelAddUser
+            // panelAddDevice
             // 
-            this.panelAddUser.Controls.Add(this.typeComboBox);
-            this.panelAddUser.Controls.Add(this.usersComboBox);
-            this.panelAddUser.Controls.Add(this.errorLbl);
-            this.panelAddUser.Controls.Add(this.addDeviceLabel);
-            this.panelAddUser.Controls.Add(this.nameLabel);
-            this.panelAddUser.Controls.Add(this.addDeviceButton);
-            this.panelAddUser.Controls.Add(this.typeLabel);
-            this.panelAddUser.Controls.Add(this.nameTextBox);
-            this.panelAddUser.Controls.Add(this.ownerLabel);
-            this.panelAddUser.Location = new System.Drawing.Point(220, 93);
-            this.panelAddUser.Name = "panelAddUser";
-            this.panelAddUser.Size = new System.Drawing.Size(360, 264);
-            this.panelAddUser.TabIndex = 16;
+            this.panelAddDevice.Controls.Add(this.typeComboBox);
+            this.panelAddDevice.Controls.Add(this.usersComboBox);
+            this.panelAddDevice.Controls.Add(this.errorLbl);
+            this.panelAddDevice.Controls.Add(this.addDeviceLabel);
+            this.panelAddDevice.Controls.Add(this.nameLabel);
+            this.panelAddDevice.Controls.Add(this.addDeviceButton);
+            this.panelAddDevice.Controls.Add(this.typeLabel);
+            this.panelAddDevice.Controls.Add(this.nameTextBox);
+            this.panelAddDevice.Controls.Add(this.ownerLabel);
+            this.panelAddDevice.Location = new System.Drawing.Point(220, 93);
+            this.panelAddDevice.Name = "panelAddDevice";
+            this.panelAddDevice.Size = new System.Drawing.Size(360, 264);
+            this.panelAddDevice.TabIndex = 16;
+            // 
+            // typeComboBox
+            // 
+            this.typeComboBox.FormattingEnabled = true;
+            this.typeComboBox.Location = new System.Drawing.Point(106, 94);
+            this.typeComboBox.Name = "typeComboBox";
+            this.typeComboBox.Size = new System.Drawing.Size(176, 21);
+            this.typeComboBox.TabIndex = 17;
+            // 
+            // usersComboBox
+            // 
+            this.usersComboBox.FormattingEnabled = true;
+            this.usersComboBox.Location = new System.Drawing.Point(106, 131);
+            this.usersComboBox.Name = "usersComboBox";
+            this.usersComboBox.Size = new System.Drawing.Size(176, 21);
+            this.usersComboBox.TabIndex = 16;
             // 
             // errorLbl
             // 
@@ -124,40 +140,25 @@
             this.ownerLabel.TabIndex = 12;
             this.ownerLabel.Text = "Владелец:";
             // 
-            // usersComboBox
-            // 
-            this.usersComboBox.FormattingEnabled = true;
-            this.usersComboBox.Location = new System.Drawing.Point(106, 131);
-            this.usersComboBox.Name = "usersComboBox";
-            this.usersComboBox.Size = new System.Drawing.Size(176, 21);
-            this.usersComboBox.TabIndex = 16;
-            // 
-            // typeComboBox
-            // 
-            this.typeComboBox.FormattingEnabled = true;
-            this.typeComboBox.Location = new System.Drawing.Point(106, 94);
-            this.typeComboBox.Name = "typeComboBox";
-            this.typeComboBox.Size = new System.Drawing.Size(176, 21);
-            this.typeComboBox.TabIndex = 17;
-            // 
             // AddDeviceForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
-            this.Controls.Add(this.panelAddUser);
+            this.Controls.Add(this.panelAddDevice);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "AddDeviceForm";
             this.Text = "AddDeviceForm";
-            this.panelAddUser.ResumeLayout(false);
-            this.panelAddUser.PerformLayout();
+            this.Resize += new System.EventHandler(this.AddDeviceForm_Resize);
+            this.panelAddDevice.ResumeLayout(false);
+            this.panelAddDevice.PerformLayout();
             this.ResumeLayout(false);
 
         }
 
         #endregion
 
-        private System.Windows.Forms.Panel panelAddUser;
+        private System.Windows.Forms.Panel panelAddDevice;
         private System.Windows.Forms.Label errorLbl;
         private System.Windows.Forms.Label addDeviceLabel;
         private System.Windows.Forms.Label nameLabel;

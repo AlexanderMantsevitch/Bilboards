@@ -27,7 +27,7 @@ namespace WindowsFormsApp1.WindowsForms.AdminInterfacesForm.DevicesList
             DataTable dataTable = new DataTable();
            
             dataTable = userDAO.select("users", "login");
-
+            errorLbl.Text = "";
 
             foreach (DataRow dataRow in dataTable.Rows)
             {
@@ -40,15 +40,34 @@ namespace WindowsFormsApp1.WindowsForms.AdminInterfacesForm.DevicesList
         {
             if (!(typeComboBox.Text.Equals("") || nameTextBox.Text.Equals("")))
             {
-                if (deviceDAO.selectDataDevice(typeComboBox.Text).Rows.Count == 0)
+                if (deviceDAO.selectDataDevice(nameTextBox.Text).Rows.Count == 0)
                 {
-                    User user = new User(userDAO.selectDataUser(usersComboBox.Text).Rows[0]);
-                    deviceDAO.addDevice(nameTextBox.Text, typeComboBox.Text, user.Id);
+                    Console.WriteLine(deviceDAO.selectDataDevice(typeComboBox.Text).Rows.Count);
+                    if (!usersComboBox.Text.Equals(""))
+                    {
+                        User user = new User(userDAO.selectDataUser(usersComboBox.Text).Rows[0]);
+                        deviceDAO.addDevice(nameTextBox.Text, typeComboBox.Text, user.Id);
+                    }
+                    else
+                    {
+                        deviceDAO.addDevice(nameTextBox.Text, typeComboBox.Text, 0);
+
+                    }
+                    MessageBox.Show("Устройство успешно добавлено");
                 }
                 else errorLbl.Text = "Устройство с таким названием уже существует";
             }
             else errorLbl.Text = "Заполните поля: название и тип";
 
+        }
+
+        private void AddDeviceForm_Resize(object sender, EventArgs e)
+        {
+            
+                panelAddDevice.Location = new Point(((this.Width - panelAddDevice.Width) / 2) - 8,
+                   ((this.Height - panelAddDevice.Height) / 2) - 19);
+
+            
         }
     }
 }
