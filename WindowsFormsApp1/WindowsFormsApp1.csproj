@@ -77,6 +77,12 @@
     <Compile Include="WindowsForms\AdminInterfacesForm\DevicesList\DevicesListForm.Designer.cs">
       <DependentUpon>DevicesListForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="WindowsForms\AdminInterfacesForm\Logs\LogsForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="WindowsForms\AdminInterfacesForm\Logs\LogsForm.Designer.cs">
+      <DependentUpon>LogsForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="WindowsForms\AdminInterfacesForm\UsersList\AddUserForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -129,6 +135,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="WindowsForms\AdminInterfacesForm\DevicesList\DevicesListForm.resx">
       <DependentUpon>DevicesListForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="WindowsForms\AdminInterfacesForm\Logs\LogsForm.resx">
+      <DependentUpon>LogsForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="WindowsForms\AdminInterfacesForm\UsersList\AddUserForm.resx">
       <DependentUpon>AddUserForm.cs</DependentUpon>

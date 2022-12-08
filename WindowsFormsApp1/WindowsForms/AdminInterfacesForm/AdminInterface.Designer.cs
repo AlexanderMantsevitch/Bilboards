@@ -140,6 +140,7 @@
             this.viewingLogsButton.TabIndex = 3;
             this.viewingLogsButton.Text = "Просмотр логов";
             this.viewingLogsButton.UseVisualStyleBackColor = false;
+            this.viewingLogsButton.Click += new System.EventHandler(this.viewingLogsButton_Click);
             // 
             // devicesListButton
             // 

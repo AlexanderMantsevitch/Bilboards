@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using WindowsFormsApp1.WindowsForms.AdminInterfacesForm;
 using WindowsFormsApp1.WindowsForms.AdminInterfacesForm.DevicesList;
 
 namespace WindowsFormsApp1
@@ -81,6 +82,12 @@ namespace WindowsFormsApp1
         {
             this.PanelForm(new DevicesListForm(this, user));
             devicesListButton.BackColor = Color.FromArgb(215, 215, 215);
+        }
+
+        private void viewingLogsButton_Click(object sender, EventArgs e)
+        {
+            this.PanelForm(new LogsForm(user));
+            viewingLogsButton.BackColor = Color.FromArgb(215, 215, 215);
         }
     }
 }
