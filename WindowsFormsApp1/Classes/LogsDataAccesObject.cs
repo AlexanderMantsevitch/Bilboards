@@ -73,7 +73,7 @@ namespace WindowsFormsApp1.Classes
         {
             db.openConnection();
             DataTable dataTable = new DataTable();
-            MySqlCommand selectDataCommand = new MySqlCommand(" SELECT * FROM `logs` WHERE  `date` >= @fr AND `date` =< @to AND `user` = @uL", db.getConnection());
+            MySqlCommand selectDataCommand = new MySqlCommand(" SELECT * FROM `logs` WHERE  `date` >= @fr AND `date` <= @to AND `user` = @uL", db.getConnection());
             selectDataCommand.Parameters.Add("@fr", MySqlDbType.Date).Value = fromDateTime.Date;
             selectDataCommand.Parameters.Add("@to", MySqlDbType.Date).Value = toDateTime.Date;
             selectDataCommand.Parameters.Add("@uL", MySqlDbType.VarChar).Value = username;

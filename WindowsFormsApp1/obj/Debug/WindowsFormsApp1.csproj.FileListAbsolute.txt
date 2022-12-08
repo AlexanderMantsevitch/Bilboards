@@ -30,3 +30,12 @@ E:\Программирование\Третий курс\WindowsFormsApp1\Windo
 E:\Программирование\Третий курс\WindowsFormsApp1\WindowsFormsApp1\obj\Debug\WindowsFormsApp1.WindowsForms.AdminInterfacesForm.DevicesList.AddDeviceForm.resources
 E:\Программирование\Третий курс\WindowsFormsApp1\WindowsFormsApp1\obj\Debug\WindowsFormsApp1.WindowsForms.AdminInterfacesForm.DevicesList.DevicesInformation.resources
 E:\Программирование\Третий курс\WindowsFormsApp1\WindowsFormsApp1\obj\Debug\WindowsFormsApp1.WindowsForms.AdminInterfacesForm.LogsForm.resources
+E:\Программирование\Третий курс\WindowsFormsApp1\WindowsFormsApp1\bin\Debug\Microsoft.IO.RecyclableMemoryStream.dll
+E:\Программирование\Третий курс\WindowsFormsApp1\WindowsFormsApp1\bin\Debug\Microsoft.IO.RecyclableMemoryStream.xml
+E:\Программирование\Третий курс\WindowsFormsApp1\WindowsFormsApp1\bin\Debug\ClosedXML.dll
+E:\Программирование\Третий курс\WindowsFormsApp1\WindowsFormsApp1\bin\Debug\DocumentFormat.OpenXml.dll
+E:\Программирование\Третий курс\WindowsFormsApp1\WindowsFormsApp1\bin\Debug\ExcelNumberFormat.dll
+E:\Программирование\Третий курс\WindowsFormsApp1\WindowsFormsApp1\bin\Debug\ClosedXML.pdb
+E:\Программирование\Третий курс\WindowsFormsApp1\WindowsFormsApp1\bin\Debug\ClosedXML.xml
+E:\Программирование\Третий курс\WindowsFormsApp1\WindowsFormsApp1\bin\Debug\DocumentFormat.OpenXml.xml
+E:\Программирование\Третий курс\WindowsFormsApp1\WindowsFormsApp1\bin\Debug\ExcelNumberFormat.xml

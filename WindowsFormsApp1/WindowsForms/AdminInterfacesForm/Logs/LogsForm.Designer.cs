@@ -28,13 +28,14 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             this.panel2 = new System.Windows.Forms.Panel();
             this.okButton = new System.Windows.Forms.Button();
             this.panel3 = new System.Windows.Forms.Panel();
             this.userComboBox = new System.Windows.Forms.ComboBox();
             this.label3 = new System.Windows.Forms.Label();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.resetLabel = new System.Windows.Forms.Label();
             this.resetButton = new System.Windows.Forms.Button();
             this.toLabel = new System.Windows.Forms.Label();
             this.fromLabel = new System.Windows.Forms.Label();
@@ -44,7 +45,7 @@
             this.filterLabel = new System.Windows.Forms.Label();
             this.logsListGrid = new System.Windows.Forms.DataGridView();
             this.panel4 = new System.Windows.Forms.Panel();
-            this.resetLabel = new System.Windows.Forms.Label();
+            this.saveExcelButton = new System.Windows.Forms.Button();
             this.panel2.SuspendLayout();
             this.panel3.SuspendLayout();
             this.panel1.SuspendLayout();
@@ -54,14 +55,15 @@
             // 
             // panel2
             // 
+            this.panel2.Controls.Add(this.saveExcelButton);
             this.panel2.Controls.Add(this.okButton);
             this.panel2.Controls.Add(this.panel3);
             this.panel2.Controls.Add(this.panel1);
             this.panel2.Controls.Add(this.filterLabel);
             this.panel2.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.panel2.Location = new System.Drawing.Point(0, 351);
+            this.panel2.Location = new System.Drawing.Point(0, 347);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(800, 99);
+            this.panel2.Size = new System.Drawing.Size(800, 103);
             this.panel2.TabIndex = 4;
             // 
             // okButton
@@ -116,6 +118,16 @@
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(188, 99);
             this.panel1.TabIndex = 2;
+            // 
+            // resetLabel
+            // 
+            this.resetLabel.AutoSize = true;
+            this.resetLabel.ForeColor = System.Drawing.Color.DarkRed;
+            this.resetLabel.Location = new System.Drawing.Point(86, 24);
+            this.resetLabel.Name = "resetLabel";
+            this.resetLabel.Size = new System.Drawing.Size(91, 13);
+            this.resetLabel.TabIndex = 10;
+            this.resetLabel.Text = "фильтр сброшен";
             // 
             // resetButton
             // 
@@ -187,11 +199,11 @@
             // 
             this.logsListGrid.AllowUserToAddRows = false;
             this.logsListGrid.AllowUserToDeleteRows = false;
-            dataGridViewCellStyle2.BackColor = System.Drawing.Color.Silver;
-            dataGridViewCellStyle2.ForeColor = System.Drawing.Color.Black;
-            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.Color.RoyalBlue;
-            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.Color.White;
-            this.logsListGrid.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle1.BackColor = System.Drawing.Color.Silver;
+            dataGridViewCellStyle1.ForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.Color.RoyalBlue;
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.Color.White;
+            this.logsListGrid.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
             this.logsListGrid.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.logsListGrid.BackgroundColor = System.Drawing.SystemColors.ControlLight;
             this.logsListGrid.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
@@ -204,7 +216,7 @@
             this.logsListGrid.ReadOnly = true;
             this.logsListGrid.RowHeadersWidth = 40;
             this.logsListGrid.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.logsListGrid.Size = new System.Drawing.Size(800, 351);
+            this.logsListGrid.Size = new System.Drawing.Size(800, 347);
             this.logsListGrid.TabIndex = 5;
             // 
             // panel4
@@ -213,18 +225,18 @@
             this.panel4.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel4.Location = new System.Drawing.Point(0, 0);
             this.panel4.Name = "panel4";
-            this.panel4.Size = new System.Drawing.Size(800, 351);
+            this.panel4.Size = new System.Drawing.Size(800, 347);
             this.panel4.TabIndex = 6;
             // 
-            // resetLabel
+            // saveExcelButton
             // 
-            this.resetLabel.AutoSize = true;
-            this.resetLabel.ForeColor = System.Drawing.Color.DarkRed;
-            this.resetLabel.Location = new System.Drawing.Point(86, 24);
-            this.resetLabel.Name = "resetLabel";
-            this.resetLabel.Size = new System.Drawing.Size(91, 13);
-            this.resetLabel.TabIndex = 10;
-            this.resetLabel.Text = "фильтр сброшен";
+            this.saveExcelButton.Location = new System.Drawing.Point(8, 56);
+            this.saveExcelButton.Name = "saveExcelButton";
+            this.saveExcelButton.Size = new System.Drawing.Size(98, 35);
+            this.saveExcelButton.TabIndex = 9;
+            this.saveExcelButton.Text = "Сохранить в Excel";
+            this.saveExcelButton.UseVisualStyleBackColor = true;
+            this.saveExcelButton.Click += new System.EventHandler(this.saveExcelButton_Click);
             // 
             // LogsForm
             // 
@@ -266,5 +278,6 @@
         private System.Windows.Forms.Panel panel4;
         private System.Windows.Forms.Button resetButton;
         private System.Windows.Forms.Label resetLabel;
+        private System.Windows.Forms.Button saveExcelButton;
     }
 }

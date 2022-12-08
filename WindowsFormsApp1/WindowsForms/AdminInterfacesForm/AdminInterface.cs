@@ -30,7 +30,8 @@ namespace WindowsFormsApp1
             arrayButton[2] = viewingLogsButton;
             this.parentForm = parentForm;
             this.user = user;
-            
+            UserNameLabel.Text = user.Name;
+            UserSurnameLabel.Text = user.Surname;
         }
 
        

@@ -1,11 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
 using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 using WindowsFormsApp1.Classes;
 
@@ -15,7 +9,8 @@ namespace WindowsFormsApp1.WindowsForms.AdminInterfacesForm
     {
        private User user;
        private LogsDataAccesObject logDAO = new LogsDataAccesObject();
-        private UserDataAccesObject userDAO = new UserDataAccesObject(); 
+        private UserDataAccesObject userDAO = new UserDataAccesObject();
+        private DataTable dataTableLogs;
         private bool defaultDateFlag = true;
         public LogsForm(User user)
         {
@@ -24,7 +19,8 @@ namespace WindowsFormsApp1.WindowsForms.AdminInterfacesForm
 
 
             resetLabel.Text = "";
-            logsListGrid.DataSource = logDAO.selectLogs(); ;
+            dataTableLogs = logDAO.selectLogs();
+            logsListGrid.DataSource = dataTableLogs;
             logsListGrid.Update();
 
 
@@ -48,10 +44,11 @@ namespace WindowsFormsApp1.WindowsForms.AdminInterfacesForm
 
                 if (defaultDateFlag) 
                 {
-                    if (userComboBox.Text.Equals("")) logsListGrid.DataSource = logDAO.filterLogs(fromDateTimePicker.Value, toDateTimePicker.Value);
-                    else logsListGrid.DataSource = logDAO.filterLogs(fromDateTimePicker.Value, toDateTimePicker.Value, userComboBox.Text);
+                    if (userComboBox.Text.Equals("")) dataTableLogs = logDAO.filterLogs(fromDateTimePicker.Value, toDateTimePicker.Value);
+                    else  dataTableLogs= logDAO.filterLogs(fromDateTimePicker.Value, toDateTimePicker.Value, userComboBox.Text);
                 }
-                else logsListGrid.DataSource = logDAO.filterLogs(userComboBox.Text);
+                else dataTableLogs = logDAO.filterLogs(userComboBox.Text);
+                logsListGrid.DataSource = dataTableLogs;
                 logsListGrid.Update();
 
             }
@@ -69,6 +66,21 @@ namespace WindowsFormsApp1.WindowsForms.AdminInterfacesForm
             resetLabel.Text = "Фильтр сброшен";
             fromDateTimePicker.Value = DateTime.Now;
             toDateTimePicker.Value = DateTime.Now;
+        }
+
+        private void saveExcelButton_Click(object sender, EventArgs e)
+        {
+            SaveFileDialog saveFileDialog = new SaveFileDialog();
+            saveFileDialog.Filter = "Лист Excel (*.xlsx)|*.xlsx";
+            saveFileDialog.DefaultExt = "xlsx";
+
+            if (saveFileDialog.ShowDialog() == DialogResult.OK)
+            {
+                string fileName = saveFileDialog.FileName;
+                ConvertToExcel convert = new ConvertToExcel();
+                    convert.ConvertDataTable(dataTableLogs, fileName);
+
+            }
         }
     }
 }
