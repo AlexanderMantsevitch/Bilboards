@@ -15,6 +15,7 @@ namespace WindowsFormsApp1
         private string post;
         private string role;
         private string login;
+        private string status;
 
         public string Login { get => login; set => login = value; }
         public string Role { get => role; set => role = value; }
@@ -22,6 +23,7 @@ namespace WindowsFormsApp1
         public int Id { get => id; set => id = value; }
         public string Surname { get => surname; set => surname = value; }
         public string Name { get => name; set => name = value; }
+        public string Status { get => status; set => status = value; }
 
         public User ()
         {
@@ -32,6 +34,7 @@ namespace WindowsFormsApp1
             this.id = 0;
             this.post = "NULL";
             this.role = "NULL";
+            this.status = "Offline";
 
         }
 
@@ -43,6 +46,7 @@ namespace WindowsFormsApp1
             this.login = user.Login;
             this.post = user.Post;
             this.role = user.Role;
+            this.status = user.Status;
 
         }
        public User (DataRow dataRow)
@@ -53,6 +57,7 @@ namespace WindowsFormsApp1
             this.login = dataRow["login"].ToString(); 
             this.post = dataRow["post"].ToString();
             this.role = dataRow["role"].ToString();
+            this.status = dataRow["status"].ToString();
 
         }
         

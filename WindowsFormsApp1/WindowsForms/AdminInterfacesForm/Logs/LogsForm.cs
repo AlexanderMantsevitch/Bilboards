@@ -37,6 +37,7 @@ namespace WindowsFormsApp1.WindowsForms.AdminInterfacesForm
         private void okButton_Click(object sender, EventArgs e)
         {
            
+           
             
             if ( defaultDateFlag || !(userComboBox.Text.Equals ("")))
             {
@@ -52,6 +53,11 @@ namespace WindowsFormsApp1.WindowsForms.AdminInterfacesForm
                 logsListGrid.Update();
 
             }
+            else
+            {
+                logDAO.selectLogs();
+            }
+                    
         }
 
         private void fromDateTimePicker_MouseUp(object sender, MouseEventArgs e)

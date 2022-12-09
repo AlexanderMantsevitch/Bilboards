@@ -9,6 +9,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using WindowsFormsApp1.Classes;
+using WindowsFormsApp1.WindowsForms;
 using WindowsFormsApp1.WindowsForms.LoginForm;
 
 namespace WindowsFormsApp1
@@ -28,7 +29,7 @@ namespace WindowsFormsApp1
 
             try
             {
-
+                User user;
                 DataTable dataTable = new DataTable();
                 UserDataAccesObject dao = new UserDataAccesObject();
                 dataTable = dao.authorizathion(LogintextBox.Text, PasswordtextBox.Text);
@@ -46,12 +47,13 @@ namespace WindowsFormsApp1
 
                         if (!Convert.ToBoolean(a["first_entry"].ToString()))
                         {
+                            this.errorAuthorizathionLbl.Text = "";
                             NewPassword newPassword = new NewPassword(this);
                             newPassword.set_id(Convert.ToInt32(a["id"].ToString()));
 
                             newPassword.Show();
                             this.clear_textBox();
-                            this.errorAuthorizathionLbl.Text = "";
+                           
                             this.Hide();
 
 
@@ -61,9 +63,20 @@ namespace WindowsFormsApp1
                             if (a["role"].Equals("Admin"))
                             {
                                 this.Hide();
-                                User user = new User(a);
+                                user = new User(a);
                                 AdminInterface adminInterface = new AdminInterface(this, user);
                                 adminInterface.Show();
+
+                                dao.upDateStatus(user.Id, "online");
+                            }
+                            else
+                            {
+                                this.Hide();
+                                user = new User(a);
+                                UserInterfaceForm adminInterface = new UserInterfaceForm(user, this);
+                                adminInterface.Show();
+
+                                dao.upDateStatus(user.Id, "online");
 
 
                             }

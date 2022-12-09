@@ -27,6 +27,22 @@ namespace WindowsFormsApp1
 
 
         }
+
+        public DataTable select (string table, string field, string value)
+        {
+            DataTable dataTable = new DataTable();
+            db.openConnection();
+            MySqlCommand autorizathionSqlCommand = new MySqlCommand(" SELECT * FROM `" + table + "` WHERE `"+ field+"` = @v" , db.getConnection());
+            autorizathionSqlCommand.Parameters.Add("@v", MySqlDbType.VarChar).Value = value;
+         
+            adapter.SelectCommand = autorizathionSqlCommand;
+            adapter.Fill(dataTable);
+
+            db.closeConnection();
+            return dataTable;
+
+
+        }
         public void updateCell (string table, string field, int value, int id)
         {
             db.openConnection();

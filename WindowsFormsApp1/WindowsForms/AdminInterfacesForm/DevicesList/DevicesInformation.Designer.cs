@@ -109,9 +109,9 @@
             // panel3
             // 
             this.panel3.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.panel3.Location = new System.Drawing.Point(222, 366);
+            this.panel3.Location = new System.Drawing.Point(222, 234);
             this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(454, 84);
+            this.panel3.Size = new System.Drawing.Size(454, 216);
             this.panel3.TabIndex = 2;
             // 
             // panel4
@@ -119,7 +119,7 @@
             this.panel4.Dock = System.Windows.Forms.DockStyle.Right;
             this.panel4.Location = new System.Drawing.Point(628, 32);
             this.panel4.Name = "panel4";
-            this.panel4.Size = new System.Drawing.Size(48, 334);
+            this.panel4.Size = new System.Drawing.Size(48, 202);
             this.panel4.TabIndex = 3;
             // 
             // panel5
@@ -128,16 +128,16 @@
             this.panel5.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel5.Location = new System.Drawing.Point(222, 32);
             this.panel5.Name = "panel5";
-            this.panel5.Size = new System.Drawing.Size(406, 334);
+            this.panel5.Size = new System.Drawing.Size(406, 202);
             this.panel5.TabIndex = 4;
             // 
             // translationPictureBox
             // 
-            this.translationPictureBox.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.translationPictureBox.Dock = System.Windows.Forms.DockStyle.Left;
             this.translationPictureBox.Image = ((System.Drawing.Image)(resources.GetObject("translationPictureBox.Image")));
             this.translationPictureBox.Location = new System.Drawing.Point(0, 0);
             this.translationPictureBox.Name = "translationPictureBox";
-            this.translationPictureBox.Size = new System.Drawing.Size(406, 334);
+            this.translationPictureBox.Size = new System.Drawing.Size(406, 202);
             this.translationPictureBox.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.translationPictureBox.TabIndex = 0;
             this.translationPictureBox.TabStop = false;

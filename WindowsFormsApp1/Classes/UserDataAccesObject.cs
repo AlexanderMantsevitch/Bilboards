@@ -32,7 +32,7 @@ namespace WindowsFormsApp1.Classes
         {
             db.openConnection();
             DataTable dataTable = new DataTable();
-            MySqlCommand usersListCommand = new MySqlCommand(" SELECT `id`,`login`, `surname`, `name`,`post`,`role` FROM `users` ", db.getConnection());
+            MySqlCommand usersListCommand = new MySqlCommand(" SELECT `id`,`login`, `surname`, `name`,`post`,`role`,`status` FROM `users` ", db.getConnection());
             adapter.SelectCommand = usersListCommand;
             adapter.Fill(dataTable);
             db.closeConnection();
@@ -46,7 +46,7 @@ namespace WindowsFormsApp1.Classes
         {
             db.openConnection();
             DataTable dataTable = new DataTable();
-            MySqlCommand userListCommand = new MySqlCommand(" SELECT `id`,`login`, `surname`, `name`,`post`,`role` FROM `users` WHERE `id` = @id", db.getConnection());
+            MySqlCommand userListCommand = new MySqlCommand(" SELECT `id`,`login`, `surname`, `name`,`post`,`role`,`status` FROM `users` WHERE `id` = @id", db.getConnection());
             userListCommand.Parameters.Add("@id", MySqlDbType.Int32).Value = id;
             adapter.SelectCommand = userListCommand;
             adapter.Fill(dataTable);
@@ -109,6 +109,19 @@ namespace WindowsFormsApp1.Classes
             changePassword.Parameters.Add("@id", MySqlDbType.Int32).Value = id;
             changePassword.ExecuteNonQuery();
             db.closeConnection();
+        }
+
+        public void upDateStatus(int id, string status)
+        {
+
+            db.openConnection();
+            MySqlCommand changePassword = new MySqlCommand("UPDATE `users` SET `status` = @uS , " +
+                " `first_entry` = 1 WHERE `users`.`id` = @id", db.getConnection());
+            changePassword.Parameters.Add("@uS", MySqlDbType.VarChar).Value = status;
+            changePassword.Parameters.Add("@id", MySqlDbType.Int32).Value = id;
+            changePassword.ExecuteNonQuery();
+            db.closeConnection();
+
         }
     }
 }

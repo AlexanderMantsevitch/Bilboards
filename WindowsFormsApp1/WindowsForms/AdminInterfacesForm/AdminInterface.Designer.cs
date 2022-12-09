@@ -30,6 +30,10 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(AdminInterface));
             this.panel1 = new System.Windows.Forms.Panel();
+            this.panel4 = new System.Windows.Forms.Panel();
+            this.updateLabel = new System.Windows.Forms.LinkLabel();
+            this.workDeviceLabel = new System.Windows.Forms.Label();
+            this.onlineUsersLabel = new System.Windows.Forms.Label();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.panel3 = new System.Windows.Forms.Panel();
             this.UserNameLabel = new System.Windows.Forms.Label();
@@ -41,6 +45,7 @@
             this.usersListButton = new System.Windows.Forms.Button();
             this.adminInterfacePanel = new System.Windows.Forms.Panel();
             this.panel1.SuspendLayout();
+            this.panel4.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.panel3.SuspendLayout();
             this.panel2.SuspendLayout();
@@ -50,6 +55,7 @@
             // 
             this.panel1.BackColor = System.Drawing.SystemColors.Control;
             this.panel1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.panel1.Controls.Add(this.panel4);
             this.panel1.Controls.Add(this.pictureBox1);
             this.panel1.Controls.Add(this.panel3);
             this.panel1.Controls.Add(this.panel2);
@@ -62,6 +68,49 @@
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(214, 401);
             this.panel1.TabIndex = 0;
+            // 
+            // panel4
+            // 
+            this.panel4.Controls.Add(this.updateLabel);
+            this.panel4.Controls.Add(this.workDeviceLabel);
+            this.panel4.Controls.Add(this.onlineUsersLabel);
+            this.panel4.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.panel4.Location = new System.Drawing.Point(0, 347);
+            this.panel4.Name = "panel4";
+            this.panel4.Size = new System.Drawing.Size(212, 52);
+            this.panel4.TabIndex = 9;
+            // 
+            // updateLabel
+            // 
+            this.updateLabel.AutoSize = true;
+            this.updateLabel.Location = new System.Drawing.Point(11, 5);
+            this.updateLabel.Name = "updateLabel";
+            this.updateLabel.Size = new System.Drawing.Size(56, 13);
+            this.updateLabel.TabIndex = 2;
+            this.updateLabel.TabStop = true;
+            this.updateLabel.Text = "Обновить";
+            this.updateLabel.VisitedLinkColor = System.Drawing.Color.Blue;
+            this.updateLabel.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.updateLabel_LinkClicked);
+            // 
+            // workDeviceLabel
+            // 
+            this.workDeviceLabel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.workDeviceLabel.AutoSize = true;
+            this.workDeviceLabel.Location = new System.Drawing.Point(11, 31);
+            this.workDeviceLabel.Name = "workDeviceLabel";
+            this.workDeviceLabel.Size = new System.Drawing.Size(143, 13);
+            this.workDeviceLabel.TabIndex = 1;
+            this.workDeviceLabel.Text = "Работающих устройств: on";
+            // 
+            // onlineUsersLabel
+            // 
+            this.onlineUsersLabel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.onlineUsersLabel.AutoSize = true;
+            this.onlineUsersLabel.Location = new System.Drawing.Point(11, 18);
+            this.onlineUsersLabel.Name = "onlineUsersLabel";
+            this.onlineUsersLabel.Size = new System.Drawing.Size(151, 13);
+            this.onlineUsersLabel.TabIndex = 0;
+            this.onlineUsersLabel.Text = "Пользователей online: online";
             // 
             // pictureBox1
             // 
@@ -194,6 +243,8 @@
             this.Text = "Система управления билбордами";
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.AdminInterface_FormClosed);
             this.panel1.ResumeLayout(false);
+            this.panel4.ResumeLayout(false);
+            this.panel4.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.panel3.ResumeLayout(false);
             this.panel2.ResumeLayout(false);
@@ -214,5 +265,9 @@
         private System.Windows.Forms.Panel panel3;
         private System.Windows.Forms.Panel adminInterfacePanel;
         private System.Windows.Forms.PictureBox pictureBox1;
+        private System.Windows.Forms.Panel panel4;
+        private System.Windows.Forms.Label workDeviceLabel;
+        private System.Windows.Forms.Label onlineUsersLabel;
+        private System.Windows.Forms.LinkLabel updateLabel;
     }
 }
