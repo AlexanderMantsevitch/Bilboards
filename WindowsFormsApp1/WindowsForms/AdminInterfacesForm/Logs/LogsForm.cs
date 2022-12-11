@@ -9,7 +9,7 @@ namespace WindowsFormsApp1.WindowsForms.AdminInterfacesForm
     {
        private User user;
        private LogsDataAccesObject logDAO = new LogsDataAccesObject();
-        private UserDataAccesObject userDAO = new UserDataAccesObject();
+        private UsersList usersList = new UsersList();
         private DataTable dataTableLogs;
         private bool defaultDateFlag = true;
         public LogsForm(User user)
@@ -25,7 +25,7 @@ namespace WindowsFormsApp1.WindowsForms.AdminInterfacesForm
 
 
             DataTable dataTable = new DataTable();
-            dataTable = userDAO.selectDataUsers();
+            dataTable = usersList.select();
 
             foreach (DataRow dataRow in dataTable.Rows)
             {

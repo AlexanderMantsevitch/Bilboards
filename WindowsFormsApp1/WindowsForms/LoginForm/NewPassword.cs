@@ -14,27 +14,16 @@ namespace WindowsFormsApp1.WindowsForms.LoginForm
 {
     public partial class NewPassword : Form
     {
-        int id;
+        
         private Login parentForm;
-        public NewPassword(Login parentForm)
+        private User user;
+        public NewPassword(Login parentForm, User user)
         {
             InitializeComponent();
             this.parentForm = parentForm;
+            this.user = user;
             errorAuthorizathionLbl.Text = "";
         }
-
-       public void set_id (int id)
-        {
-            this.id = id;
-
-        }
-
-        private void NewPassword_FormClosed(object sender, FormClosedEventArgs e)
-        {
-            
-        }
-
-     
 
         private void newPasswordButton_Click(object sender, EventArgs e)
         {
@@ -49,8 +38,8 @@ namespace WindowsFormsApp1.WindowsForms.LoginForm
             {
                 if (PasswordtextBox.Text.Equals(dublicatePasswordTextBox.Text)) 
                 {
-                    UserDataAccesObject dao = new UserDataAccesObject();
-                    dao.changePassword(PasswordtextBox.Text, id);
+                   
+                    user.changePassword(user.Id, PasswordtextBox.Text);
                     parentForm.clear_textBox();
                     parentForm.Show();
                     parentForm.SignIn();

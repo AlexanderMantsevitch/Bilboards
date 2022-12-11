@@ -1,6 +1,8 @@
-﻿namespace WindowsFormsApp1.WindowsForms.AdminInterfacesForm.DevicesList
+﻿using System.Windows.Forms;
+
+namespace WindowsFormsApp1.WindowsForms.AdminInterfacesForm.DevicesList
 {
-    partial class DevicesInformation
+    partial class DevicesInformation:Form
     {
         /// <summary>
         /// Required designer variable.
@@ -30,6 +32,7 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(DevicesInformation));
             this.panel1 = new System.Windows.Forms.Panel();
+            this.statusLabel = new System.Windows.Forms.Label();
             this.typeLabel = new System.Windows.Forms.Label();
             this.ownerLabel = new System.Windows.Forms.Label();
             this.idLabel = new System.Windows.Forms.Label();
@@ -39,7 +42,6 @@
             this.panel4 = new System.Windows.Forms.Panel();
             this.panel5 = new System.Windows.Forms.Panel();
             this.translationPictureBox = new System.Windows.Forms.PictureBox();
-            this.statusLabel = new System.Windows.Forms.Label();
             this.panel1.SuspendLayout();
             this.panel5.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.translationPictureBox)).BeginInit();
@@ -57,6 +59,16 @@
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(222, 450);
             this.panel1.TabIndex = 0;
+            // 
+            // statusLabel
+            // 
+            this.statusLabel.AutoSize = true;
+            this.statusLabel.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.statusLabel.Location = new System.Drawing.Point(21, 140);
+            this.statusLabel.Name = "statusLabel";
+            this.statusLabel.Size = new System.Drawing.Size(100, 19);
+            this.statusLabel.TabIndex = 4;
+            this.statusLabel.Text = "Статус: status";
             // 
             // typeLabel
             // 
@@ -87,6 +99,7 @@
             this.idLabel.Size = new System.Drawing.Size(41, 19);
             this.idLabel.TabIndex = 1;
             this.idLabel.Text = "Id: id";
+          
             // 
             // deviceNameLabel
             // 
@@ -142,16 +155,6 @@
             this.translationPictureBox.TabIndex = 0;
             this.translationPictureBox.TabStop = false;
             // 
-            // statusLabel
-            // 
-            this.statusLabel.AutoSize = true;
-            this.statusLabel.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.statusLabel.Location = new System.Drawing.Point(21, 140);
-            this.statusLabel.Name = "statusLabel";
-            this.statusLabel.Size = new System.Drawing.Size(100, 19);
-            this.statusLabel.TabIndex = 4;
-            this.statusLabel.Text = "Статус: status";
-            // 
             // DevicesInformation
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -165,7 +168,7 @@
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "DevicesInformation";
             this.Text = "DevicesInformation";
-            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.DevicesInformation_FormClosed);
+        
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
             this.panel5.ResumeLayout(false);

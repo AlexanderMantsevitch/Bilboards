@@ -1,4 +1,4 @@
-﻿namespace WindowsFormsApp1.WindowsForms.AdminInterfacesForm.DevicesList
+﻿namespace WindowsFormsApp1.WindowsForms.AdminInterfacesForm.DevicesListForm
 {
     partial class AddDeviceForm
     {

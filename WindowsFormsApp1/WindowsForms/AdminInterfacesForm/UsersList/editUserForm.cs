@@ -38,11 +38,11 @@ namespace WindowsFormsApp1.WindowsForms.AdminInterfacesForm
         {
             if (!(surameTextBox.Text.Equals("") || nameTextBox.Text.Equals("")))
             {
-                UserDataAccesObject dao = new UserDataAccesObject();
+                
                 currentUser.Name = nameTextBox.Text;
                 currentUser.Surname = surameTextBox.Text;
                 currentUser.Post = postTextBox.Text;
-                dao.UpdateUser(nameTextBox.Text, surameTextBox.Text, postTextBox.Text, currentUser.Id);
+                currentUser.upDateUser(nameTextBox.Text, surameTextBox.Text, postTextBox.Text);
                 logDAO.addNotation(user, "Отредактирован профиль " + currentUser.Login);
                 parentForm.PanelForm(new UserInformationForm(currentUser, parentForm,user));
 

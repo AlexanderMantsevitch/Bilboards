@@ -4,6 +4,7 @@ using System.Data;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using WindowsFormsApp1.Classes.Exception;
 
 namespace WindowsFormsApp1.Classes
 {
@@ -14,6 +15,7 @@ namespace WindowsFormsApp1.Classes
         private string name;
         private string type;
         private string status;
+        private DeviceDataAccesObject dao = new DeviceDataAccesObject();
 
         public int Id { get => id; set => id = value; }
         public int Owner_id { get => owner_id; set => owner_id = value; }
@@ -49,6 +51,60 @@ namespace WindowsFormsApp1.Classes
             this.type = dataRow["type"].ToString();
             this.status = dataRow["status"].ToString();
 
+
+        }
+
+        public void addDeviceToUser (int idUser)
+        {
+           
+
+            if (this.Owner_id == 0)
+            {
+                dao.addDeviceToUser(this.Name, idUser);
+               
+            }
+            else
+            {
+                throw new AssignUserDeviceException();
+            }
+
+        }
+        public void updateCell(string field, int value, int id)
+        {
+            dao.updateCell(field, value, this.Id);
+
+
+        }
+        public void deleteRows(int id)
+
+        {
+            dao.deleteRows(this.Id);
+
+        }
+        public void addDevice(string name,  string type, int userId)
+        {
+            DeviceList devicesList = new DeviceList();
+            if (devicesList.selectDevice(name).Id == 0)
+            {
+                dao.addDevice (name, type, userId);
+
+            }
+            else
+            {
+                throw new AddException();
+
+            }
+
+        }
+
+        public void setInformation (DataRow dataRow)
+        {
+
+            this.name = dataRow["name"].ToString();
+            this.id = Convert.ToInt32(dataRow["id"].ToString());
+            this.owner_id = Convert.ToInt32(dataRow["owner_id"].ToString());
+            this.type = dataRow["type"].ToString();
+            this.status = dataRow["status"].ToString();
 
         }
     }

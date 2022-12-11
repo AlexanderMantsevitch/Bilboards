@@ -66,9 +66,20 @@ namespace WindowsFormsApp1.WindowsForms
 
         private void logOutButton_Click(object sender, EventArgs e)
         {
+            flagLogout = true;
             userDAO.upDateStatus(user.Id, "offline");
             parentForm.Show();
             this.Close();
+        }
+
+        private void UserInterfaceForm_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            if (!flagLogout)
+            {
+                userDAO.upDateStatus(user.Id, "offline");
+                Application.Exit();
+
+            }
         }
     }
 }

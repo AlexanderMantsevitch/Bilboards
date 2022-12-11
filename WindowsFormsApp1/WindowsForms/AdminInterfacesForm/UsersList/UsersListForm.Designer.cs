@@ -1,6 +1,6 @@
 ﻿namespace WindowsFormsApp1
 {
-    partial class UsersList
+    partial class UsersListForm
     {
         /// <summary>
         /// Required designer variable.

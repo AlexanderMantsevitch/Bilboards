@@ -18,7 +18,7 @@ namespace WindowsFormsApp1.WindowsForms.AdminInterfacesForm.DevicesList
     public partial class DevicesInformation : Form
     {
         private UdpClient client;
-        UserDataAccesObject userDAO = new UserDataAccesObject();
+        UsersList usersList = new UsersList();
         public DevicesInformation(Device device)
         {
             InitializeComponent();
@@ -27,7 +27,7 @@ namespace WindowsFormsApp1.WindowsForms.AdminInterfacesForm.DevicesList
             {
                 idLabel.Text = "Id: " + device.Id;
                 deviceNameLabel.Text = "Устройство: " + device.Name;
-                ownerLabel.Text = "Владелец: " + (userDAO.selectDataUser(device.Owner_id).Rows[0])["login"].ToString();
+                ownerLabel.Text = "Владелец: " + (usersList.selectDataUser(device.Owner_id).Login);
                 typeLabel.Text = "Тип: " + device.Type;
                 statusLabel.Text = "Статус: " + device.Status;
                 if (device.Status.Equals("on"))
@@ -116,6 +116,11 @@ namespace WindowsFormsApp1.WindowsForms.AdminInterfacesForm.DevicesList
 
 
             }
+        }
+
+        private void idLabel_Click(object sender, EventArgs e)
+        {
+
         }
     }
 

@@ -84,28 +84,34 @@
     <Compile Include="Classes\ConvertToExcel.cs" />
     <Compile Include="Classes\Device.cs" />
     <Compile Include="Classes\DeviceDataAccesObject.cs" />
+    <Compile Include="Classes\DeviceList.cs" />
+    <Compile Include="Classes\Exception\AddException.cs" />
+    <Compile Include="Classes\Exception\AssignUserDeviceException.cs" />
+    <Compile Include="Classes\Exception\AuthorizationException.cs" />
+    <Compile Include="Classes\Exception\FirstAuthorizationException.cs" />
     <Compile Include="Classes\LogsDataAccesObject.cs" />
     <Compile Include="Classes\UDPConnection.cs" />
     <Compile Include="Classes\User.cs" />
     <Compile Include="Classes\DataBase.cs" />
     <Compile Include="Classes\DataAccesObject.cs" />
     <Compile Include="Classes\UserDataAccesObject.cs" />
-    <Compile Include="WindowsForms\AdminInterfacesForm\DevicesList\AddDeviceForm.cs">
+    <Compile Include="Classes\UsersList.cs" />
+    <Compile Include="WindowsForms\AdminInterfacesForm\DevicesListForm\AddDeviceForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="WindowsForms\AdminInterfacesForm\DevicesList\AddDeviceForm.Designer.cs">
+    <Compile Include="WindowsForms\AdminInterfacesForm\DevicesListForm\AddDeviceForm.Designer.cs">
       <DependentUpon>AddDeviceForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="WindowsForms\AdminInterfacesForm\DevicesList\DevicesInformation.cs">
+    <Compile Include="WindowsForms\AdminInterfacesForm\DevicesListForm\DevicesInformation.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="WindowsForms\AdminInterfacesForm\DevicesList\DevicesInformation.Designer.cs">
+    <Compile Include="WindowsForms\AdminInterfacesForm\DevicesListForm\DevicesInformation.Designer.cs">
       <DependentUpon>DevicesInformation.cs</DependentUpon>
     </Compile>
-    <Compile Include="WindowsForms\AdminInterfacesForm\DevicesList\DevicesListForm.cs">
+    <Compile Include="WindowsForms\AdminInterfacesForm\DevicesListForm\DevicesListForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="WindowsForms\AdminInterfacesForm\DevicesList\DevicesListForm.Designer.cs">
+    <Compile Include="WindowsForms\AdminInterfacesForm\DevicesListForm\DevicesListForm.Designer.cs">
       <DependentUpon>DevicesListForm.cs</DependentUpon>
     </Compile>
     <Compile Include="WindowsForms\AdminInterfacesForm\Logs\LogsForm.cs">
@@ -146,11 +152,11 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="WindowsForms\AdminInterfacesForm\UsersList\UsersList.cs">
+    <Compile Include="WindowsForms\AdminInterfacesForm\UsersList\UsersListForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="WindowsForms\AdminInterfacesForm\UsersList\UsersList.Designer.cs">
-      <DependentUpon>UsersList.cs</DependentUpon>
+    <Compile Include="WindowsForms\AdminInterfacesForm\UsersList\UsersListForm.Designer.cs">
+      <DependentUpon>UsersListForm.cs</DependentUpon>
     </Compile>
     <Compile Include="WindowsForms\LoginForm\NewPassword.cs">
       <SubType>Form</SubType>
@@ -164,13 +170,13 @@
     <Compile Include="WindowsForms\UserInterface\UserInterfaceForm.Designer.cs">
       <DependentUpon>UserInterfaceForm.cs</DependentUpon>
     </Compile>
-    <EmbeddedResource Include="WindowsForms\AdminInterfacesForm\DevicesList\AddDeviceForm.resx">
+    <EmbeddedResource Include="WindowsForms\AdminInterfacesForm\DevicesListForm\AddDeviceForm.resx">
       <DependentUpon>AddDeviceForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="WindowsForms\AdminInterfacesForm\DevicesList\DevicesInformation.resx">
+    <EmbeddedResource Include="WindowsForms\AdminInterfacesForm\DevicesListForm\DevicesInformation.resx">
       <DependentUpon>DevicesInformation.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="WindowsForms\AdminInterfacesForm\DevicesList\DevicesListForm.resx">
+    <EmbeddedResource Include="WindowsForms\AdminInterfacesForm\DevicesListForm\DevicesListForm.resx">
       <DependentUpon>DevicesListForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="WindowsForms\AdminInterfacesForm\Logs\LogsForm.resx">
@@ -200,8 +206,8 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
-    <EmbeddedResource Include="WindowsForms\AdminInterfacesForm\UsersList\UsersList.resx">
-      <DependentUpon>UsersList.cs</DependentUpon>
+    <EmbeddedResource Include="WindowsForms\AdminInterfacesForm\UsersList\UsersListForm.resx">
+      <DependentUpon>UsersListForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="WindowsForms\LoginForm\NewPassword.resx">
       <DependentUpon>NewPassword.cs</DependentUpon>

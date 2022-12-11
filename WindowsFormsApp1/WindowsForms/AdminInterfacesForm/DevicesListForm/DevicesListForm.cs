@@ -9,14 +9,15 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using WindowsFormsApp1.Classes;
+using WindowsFormsApp1.WindowsForms.AdminInterfacesForm.DevicesList;
 
-namespace WindowsFormsApp1.WindowsForms.AdminInterfacesForm.DevicesList
+namespace WindowsFormsApp1.WindowsForms.AdminInterfacesForm.DevicesListForm
 {
     public partial class DevicesListForm : Form
     {
 
        
-        private DeviceDataAccesObject dao = new DeviceDataAccesObject();
+        private DeviceList deviceList = new DeviceList();
         private LogsDataAccesObject logDAO = new LogsDataAccesObject();
         private AdminInterface parentForm;
         private User user;
@@ -30,7 +31,7 @@ namespace WindowsFormsApp1.WindowsForms.AdminInterfacesForm.DevicesList
             try
             {
                
-                this.devicesListGrid.DataSource = dao.selectDataDevice();
+                this.devicesListGrid.DataSource = deviceList.select();
 
                 devicesListGrid.Update();
 
@@ -61,8 +62,8 @@ namespace WindowsFormsApp1.WindowsForms.AdminInterfacesForm.DevicesList
 
 
                     logDAO.addNotation(user, "Устройство " + devicesListGrid.CurrentRow.Cells["name"].Value + " было удалено");
-                    dao.deleteRows("devices", Convert.ToInt32(devicesListGrid.CurrentRow.Cells[0].Value));
-                    devicesListGrid.DataSource = dao.selectDataDevice();
+                    deviceList.deleteRows( Convert.ToInt32(devicesListGrid.CurrentRow.Cells[0].Value));
+                    devicesListGrid.DataSource = deviceList.select();
                     devicesListGrid.Update();
 
                 }
@@ -80,7 +81,7 @@ namespace WindowsFormsApp1.WindowsForms.AdminInterfacesForm.DevicesList
         {
 
             Console.WriteLine(devicesListGrid.CurrentRow.Cells[0].Value);
-            Device device = new Device(dao.selectDataDevice(Convert.ToInt32(devicesListGrid.CurrentRow.Cells[0].Value)).Rows[0]);
+            Device device = new Device(deviceList.selectDevice(Convert.ToInt32(devicesListGrid.CurrentRow.Cells[0].Value)));
             parentForm.PanelForm(new DevicesInformation(device));
         }
     }

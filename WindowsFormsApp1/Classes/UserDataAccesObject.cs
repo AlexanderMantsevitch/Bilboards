@@ -28,49 +28,6 @@ namespace WindowsFormsApp1.Classes
             return dataTable;
 
         }
-        public DataTable selectDataUsers()
-        {
-            db.openConnection();
-            DataTable dataTable = new DataTable();
-            MySqlCommand usersListCommand = new MySqlCommand(" SELECT `id`,`login`, `surname`, `name`,`post`,`role`,`status` FROM `users` ", db.getConnection());
-            adapter.SelectCommand = usersListCommand;
-            adapter.Fill(dataTable);
-            db.closeConnection();
-
-            return dataTable;
-
-
-        }
-
-        public DataTable selectDataUser(int id)
-        {
-            db.openConnection();
-            DataTable dataTable = new DataTable();
-            MySqlCommand userListCommand = new MySqlCommand(" SELECT `id`,`login`, `surname`, `name`,`post`,`role`,`status` FROM `users` WHERE `id` = @id", db.getConnection());
-            userListCommand.Parameters.Add("@id", MySqlDbType.Int32).Value = id;
-            adapter.SelectCommand = userListCommand;
-            adapter.Fill(dataTable);
-            db.closeConnection();
-
-            return dataTable;
-
-
-        }
-        public DataTable selectDataUser(string loginUser)
-        {
-            db.openConnection();
-            DataTable dataTable = new DataTable();
-            MySqlCommand userListCommand = new MySqlCommand(" SELECT `id`,`login`, `surname`, `name`,`post`,`role` FROM `users` WHERE `login` = @uL", db.getConnection());
-            userListCommand.Parameters.Add("@uL", MySqlDbType.VarChar).Value = loginUser;
-            adapter.SelectCommand = userListCommand;
-            adapter.Fill(dataTable);
-            db.closeConnection();
-
-            return dataTable;
-
-
-        }
-
         public void UpdateUser(string newName, string newSurname, string newPost, int id)
         {
             db.openConnection();
@@ -123,5 +80,26 @@ namespace WindowsFormsApp1.Classes
             db.closeConnection();
 
         }
-    }
+        public override void updateCell(string field, int value, int id)
+        {
+            db.openConnection();
+            MySqlCommand changeField = new MySqlCommand("UPDATE `devices` SET `" + field + "` = @v " +
+                " WHERE `devices`.`" + field + "` = @id", db.getConnection());
+            changeField.Parameters.Add("@v", MySqlDbType.Int32).Value = value;
+            changeField.Parameters.Add("@id", MySqlDbType.Int32).Value = id;
+            changeField.ExecuteNonQuery();
+            db.closeConnection();
+
+
+        }
+        public override void deleteRows(int id)
+         {
+            db.openConnection();
+            MySqlCommand deleteUser = new MySqlCommand("DELETE FROM `users` WHERE `ID` = @id;", db.getConnection());
+            deleteUser.Parameters.Add("@id", MySqlDbType.Int32).Value = id;
+            deleteUser.ExecuteNonQuery();
+            db.closeConnection();
+
+        }
+}
 }

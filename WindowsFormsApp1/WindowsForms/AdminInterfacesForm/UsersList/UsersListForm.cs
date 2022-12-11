@@ -14,15 +14,15 @@ using WindowsFormsApp1.WindowsForms.AdminInterfacesForm;
 
 namespace WindowsFormsApp1
 {
-    public partial class UsersList : Form
+    public partial class UsersListForm : Form
     {
-        private UserDataAccesObject dao = new UserDataAccesObject();
+        private UsersList usersList = new UsersList();
         private LogsDataAccesObject logDAO = new LogsDataAccesObject();
         private DataTable dataTable = new DataTable();
         private User user;
         
         AdminInterface parentForm;
-        public UsersList(AdminInterface parentForm, User user)
+        public UsersListForm(AdminInterface parentForm, User user)
         {
 
             InitializeComponent();
@@ -32,7 +32,7 @@ namespace WindowsFormsApp1
             try
             {
                
-                usersListGrid.DataSource = dao.selectDataUsers(); 
+                usersListGrid.DataSource = usersList.select(); 
                 usersListGrid.Update();
             }
             catch (MySqlException)
@@ -47,7 +47,7 @@ namespace WindowsFormsApp1
         private void removeUserButton_Click(object sender, EventArgs e)
         {
             
-           // try
+            try
             {
 
 
@@ -56,10 +56,10 @@ namespace WindowsFormsApp1
                 {
                   
                     logDAO.addNotation(user, "Пользователь " + usersListGrid.CurrentRow.Cells["login"].Value + " был удален");
-                   
-                    dao.updateCell("devices", "owner_id", 0, Convert.ToInt32(usersListGrid.CurrentRow.Cells[0].Value));
-                    dao.deleteRows("users", Convert.ToInt32(usersListGrid.CurrentRow.Cells[0].Value));
-                    usersListGrid.DataSource = dao.selectDataUsers();
+                    DeviceList devicesList = new DeviceList();
+                    devicesList.updateCell("owner_id", 0, Convert.ToInt32(usersListGrid.CurrentRow.Cells[0].Value));
+                    usersList.deleteRows(Convert.ToInt32(usersListGrid.CurrentRow.Cells[0].Value));
+                    usersListGrid.DataSource = usersList.select();
                     usersListGrid.Update();
                     
 
@@ -67,11 +67,11 @@ namespace WindowsFormsApp1
            
                 
             }
-            //catch (MySqlException)
-            //{
-            //    MessageBox.Show(" Нет соединения с базой данных");
+            catch (MySqlException)
+            {
+                MessageBox.Show(" Нет соединения с базой данных");
 
-            //}
+            }
         }
 
         private void addUserButton_Click(object sender, EventArgs e)
@@ -83,7 +83,7 @@ namespace WindowsFormsApp1
         {
             
             
-            User currentUser = new User (dao.selectDataUser(Convert.ToInt32(usersListGrid.CurrentRow.Cells[0].Value)).Rows[0]);
+            User currentUser = new User (usersList.selectDataUser(Convert.ToInt32(usersListGrid.CurrentRow.Cells[0].Value)));
             parentForm.PanelForm(new UserInformationForm(currentUser, parentForm, user));
             
             

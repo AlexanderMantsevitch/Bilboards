@@ -20,60 +20,7 @@ namespace WindowsFormsApp1.Classes
             addDevices.ExecuteNonQuery();
             db.closeConnection();
         }
-        public DataTable selectAvailableDevices(int owner_id)
-        {
-            DataTable dataTable = new DataTable();
-
-            db.openConnection();
-
-            MySqlCommand devicesListCommand = new MySqlCommand(" SELECT * FROM `devices`  WHERE `owner_id` = @id", db.getConnection());
-            devicesListCommand.Parameters.Add("@id", MySqlDbType.VarChar).Value = owner_id;
-            adapter.SelectCommand = devicesListCommand;
-            adapter.Fill(dataTable);
-            db.closeConnection();
-
-            return dataTable;
-
-        }
-        public DataTable selectDataDevice(string name)
-        {
-            db.openConnection();
-            DataTable dataTable = new DataTable();
-            MySqlCommand selectDataCommand = new MySqlCommand(" SELECT * FROM `devices` WHERE `name` = @dN", db.getConnection());
-            selectDataCommand.Parameters.Add("@dN", MySqlDbType.VarChar).Value = name;
-            adapter.SelectCommand = selectDataCommand;
-            adapter.Fill(dataTable);
-            db.closeConnection();
-
-            return dataTable;
-
-        }
-        public DataTable selectDataDevice(int id)
-        {
-            db.openConnection();
-            DataTable dataTable = new DataTable();
-            MySqlCommand selectDataCommand = new MySqlCommand(" SELECT * FROM `devices` WHERE `id` = @id", db.getConnection());
-            selectDataCommand.Parameters.Add("@id", MySqlDbType.Int32).Value = id;
-            adapter.SelectCommand = selectDataCommand;
-            adapter.Fill(dataTable);
-            Console.WriteLine("tut"); 
-            db.closeConnection();
-
-            return dataTable;
-
-        }
-        public DataTable selectDataDevice()
-        {
-            db.openConnection();
-            DataTable dataTable = new DataTable();
-            MySqlCommand selectDataCommand = new MySqlCommand(" SELECT * FROM `devices`", db.getConnection());
-            adapter.SelectCommand = selectDataCommand;
-            adapter.Fill(dataTable);
-            db.closeConnection();
-
-            return dataTable;
-
-        }
+      
         public void addDeviceToUser(string nameDevice, int idUser)
         {
             db.openConnection();
@@ -85,5 +32,27 @@ namespace WindowsFormsApp1.Classes
 
 
         }
-    }
+        public override void updateCell(string field, int value, int id)
+        {
+            db.openConnection();
+            MySqlCommand changeField = new MySqlCommand("UPDATE `devices` SET `" + field + "` = @v " +
+                " WHERE `devices`.`" + field + "` = @id", db.getConnection());
+            changeField.Parameters.Add("@v", MySqlDbType.Int32).Value = value;
+            changeField.Parameters.Add("@id", MySqlDbType.Int32).Value = id;
+            changeField.ExecuteNonQuery();
+            db.closeConnection();
+
+
+        }
+        public override void deleteRows(int id)
+       
+         {
+            db.openConnection();
+            MySqlCommand deleteUser = new MySqlCommand("DELETE FROM `devices` WHERE `ID` = @id;", db.getConnection());
+            deleteUser.Parameters.Add("@id", MySqlDbType.Int32).Value = id;
+            deleteUser.ExecuteNonQuery();
+            db.closeConnection();
+
+        }
+}
 }

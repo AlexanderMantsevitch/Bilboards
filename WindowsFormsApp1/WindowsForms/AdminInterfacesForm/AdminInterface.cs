@@ -11,6 +11,7 @@ using System.Windows.Forms;
 using WindowsFormsApp1.Classes;
 using WindowsFormsApp1.WindowsForms.AdminInterfacesForm;
 using WindowsFormsApp1.WindowsForms.AdminInterfacesForm.DevicesList;
+using WindowsFormsApp1.WindowsForms.AdminInterfacesForm.DevicesListForm;
 
 namespace WindowsFormsApp1
 {
@@ -21,8 +22,9 @@ namespace WindowsFormsApp1
         private const int countButton = 3;
         Button[] arrayButton = new Button[countButton];
         private Form parentForm = new Form();
-        private bool logOutFlag = false; 
-        UserDataAccesObject userDAO = new UserDataAccesObject();
+        private bool logOutFlag = false;
+        UsersList userList = new UsersList();
+        DeviceList devicesList = new DeviceList();
         
 
         public AdminInterface(Form parentForm, User user)
@@ -37,7 +39,8 @@ namespace WindowsFormsApp1
             this.user = user;
             UserNameLabel.Text = user.Name;
             UserSurnameLabel.Text = user.Surname;
-            
+            user.upDateStatus( "offline");
+
 
         }
 
@@ -49,8 +52,7 @@ namespace WindowsFormsApp1
         private void usersListButton_Click(object sender, EventArgs e)
         {
            
-        
-            this.PanelForm(new UsersList(this, user));
+            this.PanelForm(new UsersListForm(this, user));
             usersListButton.BackColor = Color.FromArgb(215,215,215);
             updateStats();
         }
@@ -79,7 +81,7 @@ namespace WindowsFormsApp1
         private void logOutButton_Click(object sender, EventArgs e)
         {
             logOutFlag = true;
-            userDAO.upDateStatus(user.Id, "offline");
+            user.upDateStatus("offline");
             parentForm.Show();
             this.Close();
 
@@ -103,13 +105,9 @@ namespace WindowsFormsApp1
 
         {
             
-           
-                
-                onlineUsersLabel.Text = "Пользователей online:" + userDAO.select("users", "status", "online").Rows.Count;
-                workDeviceLabel.Text = "Работающих устройств:" + userDAO.select("devices", "status", "on").Rows.Count;
+                onlineUsersLabel.Text = "Пользователей online:" + userList.select("status", "online").Rows.Count;
+                workDeviceLabel.Text = "Работающих устройств:" + devicesList.select("status", "on").Rows.Count;
                
-            
-
         }
 
         private void updateLabel_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
@@ -119,7 +117,11 @@ namespace WindowsFormsApp1
 
         private void AdminInterface_FormClosed(object sender, FormClosedEventArgs e)
         {
-            if (!logOutFlag) Application.Exit();
+            if (!logOutFlag)
+            {
+                user.upDateStatus( "offline");
+                Application.Exit(); 
+            }
         }
     }
 }

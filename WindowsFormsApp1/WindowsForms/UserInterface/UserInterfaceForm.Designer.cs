@@ -189,6 +189,7 @@
             this.MinimumSize = new System.Drawing.Size(740, 440);
             this.Name = "UserInterfaceForm";
             this.Text = "UserInterfaceForm";
+            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.UserInterfaceForm_FormClosed);
             this.menuPanel.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.panel3.ResumeLayout(false);
