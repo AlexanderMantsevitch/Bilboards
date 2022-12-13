@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace WindowsFormsApp1.Classes
 {
-    class DeviceList
+    class DeviceList: DataAccesObject
     {
         DataTable dataTable;
         DataBase db = new DataBase();
@@ -81,7 +81,7 @@ namespace WindowsFormsApp1.Classes
             return dataTable;
 
         }
-        public void deleteRows(int id)
+        public override void deleteRows(int id)
         {
             db.openConnection();
             MySqlCommand deleteUser = new MySqlCommand("DELETE FROM `devices` WHERE `ID` = @id;", db.getConnection());
@@ -90,7 +90,7 @@ namespace WindowsFormsApp1.Classes
             db.closeConnection();
 
         }
-        public void updateCell(string field, int value, int id)
+        public override void updateCell(string field, int value, int id)
         {
             db.openConnection();
             MySqlCommand changeField = new MySqlCommand("UPDATE `devices` SET `" + field + "` = @v " +

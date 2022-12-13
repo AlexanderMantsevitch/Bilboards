@@ -90,12 +90,12 @@
     <Compile Include="Classes\Exception\AuthorizationException.cs" />
     <Compile Include="Classes\Exception\FirstAuthorizationException.cs" />
     <Compile Include="Classes\LogsDataAccesObject.cs" />
-    <Compile Include="Classes\UDPConnection.cs" />
     <Compile Include="Classes\User.cs" />
     <Compile Include="Classes\DataBase.cs" />
     <Compile Include="Classes\DataAccesObject.cs" />
     <Compile Include="Classes\UserDataAccesObject.cs" />
     <Compile Include="Classes\UsersList.cs" />
+    <Compile Include="Classes\VideoClass.cs" />
     <Compile Include="WindowsForms\AdminInterfacesForm\DevicesListForm\AddDeviceForm.cs">
       <SubType>Form</SubType>
     </Compile>

@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -61,7 +62,7 @@ namespace WindowsFormsApp1.WindowsForms
 
         private void devicesListButton_Click(object sender, EventArgs e)
         {
-
+            
         }
 
         private void logOutButton_Click(object sender, EventArgs e)
@@ -78,6 +79,22 @@ namespace WindowsFormsApp1.WindowsForms
             {
                 userDAO.upDateStatus(user.Id, "offline");
                 Application.Exit();
+
+            }
+        }
+
+        private void exportVideoButton_Click(object sender, EventArgs e)
+        {
+            OpenFileDialog openFileDialog = new OpenFileDialog();
+            openFileDialog.Filter = "MP# (*.mp3)|*.mp3";
+            
+
+            if (openFileDialog.ShowDialog() == DialogResult.OK)
+            {
+                string fileName = Path.GetFileName (openFileDialog.FileName);
+                VideoClass video = new VideoClass();
+                video.createNewVideo(fileName);
+               
 
             }
         }

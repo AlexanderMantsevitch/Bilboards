@@ -12,7 +12,12 @@ namespace WindowsFormsApp1.Classes
             var sheet = workBook.Worksheets.Add("login");
             for (int i = 0; i < dataTable.Rows.Count; i++)
             {
-                for (int j = 0; j < dataTable.Columns.Count; j++) sheet.Cell(i + 1, j+1).SetValue((dataTable.Rows[i])[j]);
+
+                for (int j = 0; j < dataTable.Columns.Count; j++)
+                {
+                   // if (j == 0) sheet.Cell(i + 1, j+1).SetDataType(XLDataType.DateTime);
+                    sheet.Cell(i + 1, j + 1).SetValue((dataTable.Rows[i])[j]); 
+                }
                
 
 
