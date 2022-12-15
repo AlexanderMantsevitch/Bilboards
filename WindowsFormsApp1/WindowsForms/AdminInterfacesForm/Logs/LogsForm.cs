@@ -84,8 +84,8 @@ namespace WindowsFormsApp1.WindowsForms.AdminInterfacesForm
             {
                 string fileName = saveFileDialog.FileName;
               
-                ConvertToExcel convert = new ConvertToExcel();
-                    convert.ConvertDataTable(dataTableLogs, fileName);
+                
+                    ConvertExcel.DataTableInExcel(dataTableLogs, fileName);
 
             }
         }

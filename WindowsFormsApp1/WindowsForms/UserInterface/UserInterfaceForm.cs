@@ -62,7 +62,20 @@ namespace WindowsFormsApp1.WindowsForms
 
         private void devicesListButton_Click(object sender, EventArgs e)
         {
-            
+            OpenFileDialog saveFileDialog = new OpenFileDialog();
+            saveFileDialog.Filter = "Лист Excel (*.xlsx)|*.xlsx";
+          
+
+            if (saveFileDialog.ShowDialog() == DialogResult.OK)
+            {
+                string fileName = saveFileDialog.FileName;
+
+                Schedule schedule = new Schedule();
+                schedule.downloadSchedule(saveFileDialog.FileName);
+               
+                
+
+            }
         }
 
         private void logOutButton_Click(object sender, EventArgs e)
@@ -91,9 +104,9 @@ namespace WindowsFormsApp1.WindowsForms
 
             if (openFileDialog.ShowDialog() == DialogResult.OK)
             {
-                string fileName = Path.GetFileName (openFileDialog.FileName);
-                VideoClass video = new VideoClass();
-                video.createNewVideo(fileName);
+                string filePath =openFileDialog.FileName;
+                Videotape video = new Videotape();
+                video.createNewVideo(filePath);
                
 
             }

@@ -11,18 +11,18 @@ using System.Windows.Media.Imaging;
 
 namespace WindowsFormsApp1.Classes
 {
-    public class VideoClass
+    public class Videotape
     {
         private int id;
         private string name;
         private StringBuilder data = new StringBuilder("");
-        public VideoClass ()
+        public Videotape ()
         {
             name = "NULL";
             data.Append ("NULL");
         }
 
-        public VideoClass (VideoClass video)
+        public Videotape (Videotape video)
         {
             name = video.Name;
             this.data.Append(video.Data);
@@ -46,7 +46,13 @@ namespace WindowsFormsApp1.Classes
             addVideo.ExecuteNonQuery();
             dataBase.closeConnection();
 
-            
+
+            FileStream fileStream = new FileStream(filePath, FileMode.Open);
+            FileStream fileNew = new FileStream("E:\\Программирование\\Третий курс\\WindowsFormsApp1\\WindowsFormsApp1\\Server\\video\\"+ Path.GetFileName(filePath), FileMode.Create, FileAccess.Write);
+            fileStream.CopyTo(fileNew);
+
+            fileNew?.Close();
+            fileStream?.Close();
 
         }
 
