@@ -42,6 +42,8 @@ namespace WindowsFormsApp1.WindowsForms.AdminInterfacesForm.DevicesList
             this.panel4 = new System.Windows.Forms.Panel();
             this.panel5 = new System.Windows.Forms.Panel();
             this.translationPictureBox = new System.Windows.Forms.PictureBox();
+            this.scheduleLabel = new System.Windows.Forms.Label();
+            this.scheduleLinkLabel = new System.Windows.Forms.LinkLabel();
             this.panel1.SuspendLayout();
             this.panel5.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.translationPictureBox)).BeginInit();
@@ -49,6 +51,8 @@ namespace WindowsFormsApp1.WindowsForms.AdminInterfacesForm.DevicesList
             // 
             // panel1
             // 
+            this.panel1.Controls.Add(this.scheduleLinkLabel);
+            this.panel1.Controls.Add(this.scheduleLabel);
             this.panel1.Controls.Add(this.statusLabel);
             this.panel1.Controls.Add(this.typeLabel);
             this.panel1.Controls.Add(this.ownerLabel);
@@ -57,7 +61,7 @@ namespace WindowsFormsApp1.WindowsForms.AdminInterfacesForm.DevicesList
             this.panel1.Dock = System.Windows.Forms.DockStyle.Left;
             this.panel1.Location = new System.Drawing.Point(0, 0);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(222, 450);
+            this.panel1.Size = new System.Drawing.Size(268, 450);
             this.panel1.TabIndex = 0;
             // 
             // statusLabel
@@ -99,7 +103,6 @@ namespace WindowsFormsApp1.WindowsForms.AdminInterfacesForm.DevicesList
             this.idLabel.Size = new System.Drawing.Size(41, 19);
             this.idLabel.TabIndex = 1;
             this.idLabel.Text = "Id: id";
-          
             // 
             // deviceNameLabel
             // 
@@ -114,17 +117,17 @@ namespace WindowsFormsApp1.WindowsForms.AdminInterfacesForm.DevicesList
             // panel2
             // 
             this.panel2.Dock = System.Windows.Forms.DockStyle.Top;
-            this.panel2.Location = new System.Drawing.Point(222, 0);
+            this.panel2.Location = new System.Drawing.Point(268, 0);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(454, 32);
+            this.panel2.Size = new System.Drawing.Size(408, 32);
             this.panel2.TabIndex = 1;
             // 
             // panel3
             // 
             this.panel3.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.panel3.Location = new System.Drawing.Point(222, 234);
+            this.panel3.Location = new System.Drawing.Point(268, 234);
             this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(454, 216);
+            this.panel3.Size = new System.Drawing.Size(408, 216);
             this.panel3.TabIndex = 2;
             // 
             // panel4
@@ -139,9 +142,9 @@ namespace WindowsFormsApp1.WindowsForms.AdminInterfacesForm.DevicesList
             // 
             this.panel5.Controls.Add(this.translationPictureBox);
             this.panel5.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel5.Location = new System.Drawing.Point(222, 32);
+            this.panel5.Location = new System.Drawing.Point(268, 32);
             this.panel5.Name = "panel5";
-            this.panel5.Size = new System.Drawing.Size(406, 202);
+            this.panel5.Size = new System.Drawing.Size(360, 202);
             this.panel5.TabIndex = 4;
             // 
             // translationPictureBox
@@ -150,10 +153,31 @@ namespace WindowsFormsApp1.WindowsForms.AdminInterfacesForm.DevicesList
             this.translationPictureBox.Image = ((System.Drawing.Image)(resources.GetObject("translationPictureBox.Image")));
             this.translationPictureBox.Location = new System.Drawing.Point(0, 0);
             this.translationPictureBox.Name = "translationPictureBox";
-            this.translationPictureBox.Size = new System.Drawing.Size(406, 202);
+            this.translationPictureBox.Size = new System.Drawing.Size(291, 202);
             this.translationPictureBox.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.translationPictureBox.TabIndex = 0;
             this.translationPictureBox.TabStop = false;
+            // 
+            // scheduleLabel
+            // 
+            this.scheduleLabel.AutoSize = true;
+            this.scheduleLabel.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.scheduleLabel.Location = new System.Drawing.Point(21, 169);
+            this.scheduleLabel.Name = "scheduleLabel";
+            this.scheduleLabel.Size = new System.Drawing.Size(155, 19);
+            this.scheduleLabel.TabIndex = 5;
+            this.scheduleLabel.Text = "Текущее расписание:";
+            // 
+            // scheduleLinkLabel
+            // 
+            this.scheduleLinkLabel.AutoSize = true;
+            this.scheduleLinkLabel.Location = new System.Drawing.Point(182, 173);
+            this.scheduleLinkLabel.Name = "scheduleLinkLabel";
+            this.scheduleLinkLabel.Size = new System.Drawing.Size(78, 13);
+            this.scheduleLinkLabel.TabIndex = 6;
+            this.scheduleLinkLabel.TabStop = true;
+            this.scheduleLinkLabel.Text = "nameSchedule";
+            this.scheduleLinkLabel.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.scheduleLinkLabel_LinkClicked);
             // 
             // DevicesInformation
             // 
@@ -168,7 +192,6 @@ namespace WindowsFormsApp1.WindowsForms.AdminInterfacesForm.DevicesList
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "DevicesInformation";
             this.Text = "DevicesInformation";
-        
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
             this.panel5.ResumeLayout(false);
@@ -190,5 +213,7 @@ namespace WindowsFormsApp1.WindowsForms.AdminInterfacesForm.DevicesList
         private System.Windows.Forms.Panel panel5;
         private System.Windows.Forms.PictureBox translationPictureBox;
         private System.Windows.Forms.Label statusLabel;
+        private LinkLabel scheduleLinkLabel;
+        private Label scheduleLabel;
     }
 }

@@ -8,7 +8,7 @@ namespace WindowsFormsApp1.Classes
     public abstract class ConvertExcel
     {
 
-        public  static void DataTableInExcel (DataTable dataTable, string path)
+        public static void DataTableInExcel (DataTable dataTable, string path)
         {
             var workBook = new XLWorkbook();
             var sheet = workBook.Worksheets.Add("login");
@@ -45,7 +45,7 @@ namespace WindowsFormsApp1.Classes
 
 
             }) ;
-
+            stream?.Close();
             dataTable = table.Tables[0];
             return dataTable;
         }

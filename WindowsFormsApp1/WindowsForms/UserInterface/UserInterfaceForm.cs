@@ -9,6 +9,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using WindowsFormsApp1.Classes;
+using WindowsFormsApp1.Classes.Exception;
 
 namespace WindowsFormsApp1.WindowsForms
 {
@@ -99,15 +100,40 @@ namespace WindowsFormsApp1.WindowsForms
         private void exportVideoButton_Click(object sender, EventArgs e)
         {
             OpenFileDialog openFileDialog = new OpenFileDialog();
-            openFileDialog.Filter = "MP# (*.mp3)|*.mp3";
-            
-
-            if (openFileDialog.ShowDialog() == DialogResult.OK)
+            openFileDialog.Filter = "MP4 (*.mp4)|*.mp4";
+            try
             {
-                string filePath =openFileDialog.FileName;
-                Videotape video = new Videotape();
-                video.createNewVideo(filePath);
-               
+                
+
+
+                if (openFileDialog.ShowDialog() == DialogResult.OK)
+                {
+                    string filePath = openFileDialog.FileName;
+                    Videotape video = new Videotape();
+                    video.createNewVideo(filePath);
+
+
+                }
+            }
+            catch (AddException)
+            {
+                DialogResult dialogResult = MessageBox.Show("Файл с таким именем уже существует. Вы хотите его заменить?", " ", MessageBoxButtons.YesNo);
+                if (dialogResult == DialogResult.Yes)
+                {
+
+                    try
+                    {
+                        Videotape.deleteVideo(Path.GetFileName(openFileDialog.FileName));
+                        Videotape video = new Videotape();
+                        video.createNewVideo(openFileDialog.FileName);
+                    }
+                    catch (System.IO.IOException)
+                    {
+
+                        MessageBox.Show("Вы не можете загрузить этот файл");
+
+                    }
+                }
 
             }
         }

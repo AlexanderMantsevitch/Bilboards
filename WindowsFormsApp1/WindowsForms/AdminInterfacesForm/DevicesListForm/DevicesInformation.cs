@@ -19,17 +19,20 @@ namespace WindowsFormsApp1.WindowsForms.AdminInterfacesForm.DevicesList
     {
         private UdpClient client;
         UsersList usersList = new UsersList();
+        Device device;
         public DevicesInformation(Device device)
         {
             InitializeComponent();
             try
 
             {
+                this.device = device;
                 idLabel.Text = "Id: " + device.Id;
                 deviceNameLabel.Text = "Устройство: " + device.Name;
                 ownerLabel.Text = "Владелец: " + (usersList.selectDataUser(device.Owner_id).Login);
                 typeLabel.Text = "Тип: " + device.Type;
                 statusLabel.Text = "Статус: " + device.Status;
+                scheduleLinkLabel.Text = device.Schedule.Name;
                 if (device.Status.Equals("on"))
                 {
                     SendMessageFromSocket(48655);
@@ -121,6 +124,30 @@ namespace WindowsFormsApp1.WindowsForms.AdminInterfacesForm.DevicesList
         private void idLabel_Click(object sender, EventArgs e)
         {
 
+        }
+
+        private void scheduleLinkLabel_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+            
+                SaveFileDialog saveFileDialog = new SaveFileDialog();
+                saveFileDialog.Filter = "Лист Excel (*.xlsx)|*.xlsx";
+                saveFileDialog.DefaultExt = "xlsx";
+
+                if (saveFileDialog.ShowDialog() == DialogResult.OK)
+                {
+                    string fileName = saveFileDialog.FileName;
+
+
+                    FileStream fileStream = new FileStream("E:\\Программирование\\Третий курс\\WindowsFormsApp1\\WindowsFormsApp1\\Server\\schedule\\" +
+                        device.Schedule.Name + ".xlsx", FileMode.Open);
+                    FileStream fileNew = new FileStream(fileName, FileMode.Create, FileAccess.Write);
+                    fileStream.CopyTo(fileNew);
+
+                    fileNew?.Close();
+                    fileStream?.Close();
+
+            }
+            
         }
     }
 

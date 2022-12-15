@@ -16,12 +16,14 @@ namespace WindowsFormsApp1.Classes
         private string type;
         private string status;
         private DeviceDataAccesObject dao = new DeviceDataAccesObject();
+        private Schedule schedule = new Schedule();
 
         public int Id { get => id; set => id = value; }
         public int Owner_id { get => owner_id; set => owner_id = value; }
         public string Name { get => name; set => name = value; }
         public string Type { get => type; set => type = value; }
         public string Status { get => status; set => status = value; }
+        public Schedule Schedule { get => schedule; set => schedule = value; }
 
         public Device ()
         {
@@ -39,6 +41,7 @@ namespace WindowsFormsApp1.Classes
             this.owner_id = device.Owner_id;
             this.type = device.Type;
             this.status = device.Status;
+            this.schedule = device.Schedule;
 
 
         }
@@ -50,7 +53,8 @@ namespace WindowsFormsApp1.Classes
             this.owner_id = Convert.ToInt32(dataRow["owner_id"].ToString());
             this.type = dataRow["type"].ToString();
             this.status = dataRow["status"].ToString();
-
+            if (int.Parse(dataRow["schedule_id"].ToString()) != 0) this.schedule = new Schedule().GetSchedule(int.Parse(dataRow["schedule_id"].ToString()));
+                
 
         }
 
