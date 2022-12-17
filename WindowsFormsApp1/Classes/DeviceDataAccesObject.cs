@@ -36,7 +36,7 @@ namespace WindowsFormsApp1.Classes
         {
             db.openConnection();
             MySqlCommand changeField = new MySqlCommand("UPDATE `devices` SET `" + field + "` = @v " +
-                " WHERE `devices`.`" + field + "` = @id", db.getConnection());
+                " WHERE `devices`.`id` = @id", db.getConnection());
             changeField.Parameters.Add("@v", MySqlDbType.Int32).Value = value;
             changeField.Parameters.Add("@id", MySqlDbType.Int32).Value = id;
             changeField.ExecuteNonQuery();

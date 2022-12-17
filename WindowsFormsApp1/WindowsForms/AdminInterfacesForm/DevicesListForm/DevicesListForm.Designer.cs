@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             this.panel5 = new System.Windows.Forms.Panel();
             this.panel3 = new System.Windows.Forms.Panel();
             this.chooseDeviceButton = new System.Windows.Forms.Button();
@@ -47,9 +47,9 @@
             this.panel5.Controls.Add(this.panel3);
             this.panel5.Controls.Add(this.panel2);
             this.panel5.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.panel5.Location = new System.Drawing.Point(0, 340);
+            this.panel5.Location = new System.Drawing.Point(0, 346);
             this.panel5.Name = "panel5";
-            this.panel5.Size = new System.Drawing.Size(798, 88);
+            this.panel5.Size = new System.Drawing.Size(798, 82);
             this.panel5.TabIndex = 6;
             // 
             // panel3
@@ -60,7 +60,7 @@
             this.panel3.Dock = System.Windows.Forms.DockStyle.Right;
             this.panel3.Location = new System.Drawing.Point(232, 0);
             this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(564, 47);
+            this.panel3.Size = new System.Drawing.Size(564, 41);
             this.panel3.TabIndex = 3;
             // 
             // chooseDeviceButton
@@ -96,7 +96,7 @@
             // panel2
             // 
             this.panel2.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.panel2.Location = new System.Drawing.Point(0, 47);
+            this.panel2.Location = new System.Drawing.Point(0, 41);
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(796, 39);
             this.panel2.TabIndex = 2;
@@ -105,11 +105,11 @@
             // 
             this.devicesListGrid.AllowUserToAddRows = false;
             this.devicesListGrid.AllowUserToDeleteRows = false;
-            dataGridViewCellStyle2.BackColor = System.Drawing.Color.Silver;
-            dataGridViewCellStyle2.ForeColor = System.Drawing.Color.Black;
-            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.Color.RoyalBlue;
-            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.Color.White;
-            this.devicesListGrid.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle1.BackColor = System.Drawing.Color.Silver;
+            dataGridViewCellStyle1.ForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.Color.RoyalBlue;
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.Color.White;
+            this.devicesListGrid.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
             this.devicesListGrid.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.devicesListGrid.BackgroundColor = System.Drawing.SystemColors.ControlLight;
             this.devicesListGrid.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
@@ -122,7 +122,7 @@
             this.devicesListGrid.ReadOnly = true;
             this.devicesListGrid.RowHeadersWidth = 40;
             this.devicesListGrid.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.devicesListGrid.Size = new System.Drawing.Size(798, 340);
+            this.devicesListGrid.Size = new System.Drawing.Size(798, 346);
             this.devicesListGrid.TabIndex = 7;
             // 
             // DevicesListForm

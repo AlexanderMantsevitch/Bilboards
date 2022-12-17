@@ -82,7 +82,7 @@ namespace WindowsFormsApp1.WindowsForms.AdminInterfacesForm.DevicesListForm
 
             Console.WriteLine(devicesListGrid.CurrentRow.Cells[0].Value);
             Device device = new Device(deviceList.selectDevice(Convert.ToInt32(devicesListGrid.CurrentRow.Cells[0].Value)));
-            parentForm.PanelForm(new DevicesInformation(device));
+            parentForm.PanelForm(new DevicesInformationUserInterface(device));
         }
     }
 }

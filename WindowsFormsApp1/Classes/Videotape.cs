@@ -17,25 +17,28 @@ namespace WindowsFormsApp1.Classes
     {
         private int id;
         private string name;
-        private StringBuilder data = new StringBuilder("");
+        private string data;
         public Videotape ()
         {
             name = "NULL";
-            data.Append ("NULL");
+            data = "NULL" ;
         }
 
         public Videotape (Videotape video)
         {
             name = video.Name;
-            this.data.Append(video.Data);
+            this.data  = video.Data;
         }
 
         
 
 
+
+
         public int Id { get => id; set => id = value; }
         public string Name { get => name; set => name = value; }
-        public StringBuilder Data { get => data; }
+       
+        public string Data { get => data; }
 
         public void createNewVideo (string filePath)
         {
@@ -43,23 +46,16 @@ namespace WindowsFormsApp1.Classes
             dataBase.openConnection();
             if (!chekRepeat(Path.GetFileName(filePath)))
             {
-                
-                    MySqlCommand addVideo = new MySqlCommand("INSERT INTO `video` ( `name`) " +
-                        "VALUES (@n)", dataBase.getConnection());
+                 data = Convert.ToBase64String(File.ReadAllBytes(filePath));
+                MySqlCommand addVideo = new MySqlCommand("INSERT INTO `video` ( `name`, `data`) " +
+                        "VALUES (@n, @d)", dataBase.getConnection());
                     addVideo.Parameters.Add("@n", MySqlDbType.VarChar).Value = Path.GetFileName(filePath);
+                    addVideo.Parameters.Add("@d", MySqlDbType.LongBlob).Value = data;
                     addVideo.ExecuteNonQuery();
                     dataBase.closeConnection();
 
+                    name = Path.GetFileName(filePath);
 
-                    FileStream fileStream = new FileStream(filePath, FileMode.Open);
-                    FileStream fileNew = new FileStream("E:\\Программирование\\Третий курс\\WindowsFormsApp1\\WindowsFormsApp1\\Server\\video\\" + Path.GetFileName(filePath), FileMode.Create, FileAccess.Write);
-                    fileStream.CopyTo(fileNew);
-
-                    fileNew?.Close();
-                    fileStream?.Close();
-                
-              
-               
             }
             else throw new AddException();
 
@@ -95,6 +91,72 @@ namespace WindowsFormsApp1.Classes
             
         }
 
+        public void saveOnPC ()
+        {
+
+            File.WriteAllBytes("E:\\Программирование\\Третий курс\\WindowsFormsApp1\\WindowsFormsApp1\\Server\\video\\" + this.name, 
+                Convert.FromBase64String(this.data));
+
+
+        }
        
+        public void downloadVideo (int id)
+        {
+            DataBase db = new DataBase();
+            MySqlDataAdapter adapter = new MySqlDataAdapter();
+            db.openConnection();
+            DataTable dataTable = new DataTable();
+            MySqlCommand usersListCommand = new MySqlCommand(" SELECT * FROM `video`" +
+                "WHERE `id` = @id", db.getConnection());
+            usersListCommand.Parameters.Add("@id", MySqlDbType.Int32).Value = id;
+            adapter.SelectCommand = usersListCommand;
+            adapter.Fill(dataTable);
+            db.closeConnection();
+
+            this.id = id;
+            this.name = dataTable.Rows[0]["name"].ToString();
+            this.data = dataTable.Rows[0]["data"].ToString();
+
+        }
+
+        public Videotape select (string name)
+        {
+            DataBase db = new DataBase();
+            MySqlDataAdapter adapter = new MySqlDataAdapter();
+            db.openConnection();
+            DataTable dataTable = new DataTable();
+            MySqlCommand usersListCommand = new MySqlCommand(" SELECT * FROM `video`" +
+                "WHERE `name` = @n", db.getConnection());
+            usersListCommand.Parameters.Add("@n", MySqlDbType.VarChar).Value = name;
+            adapter.SelectCommand = usersListCommand;
+            adapter.Fill(dataTable);
+            db.closeConnection();
+
+            if (dataTable.Rows.Count > 0)
+            {
+                this.id = int.Parse( dataTable.Rows[0]["id"].ToString()); 
+                this.name = name;
+             //   this.data = dataTable.Rows[0]["data"].ToString();
+            }
+            return this;
+        }
+
+        public static string get_name(int id)
+        {
+            DataBase db = new DataBase();
+            MySqlDataAdapter adapter = new MySqlDataAdapter();
+            db.openConnection();
+            DataTable dataTable = new DataTable();
+            MySqlCommand getNameCommand = new MySqlCommand(" SELECT * FROM `video`" +
+                "WHERE `id` = @id", db.getConnection());
+            getNameCommand.Parameters.Add("@id", MySqlDbType.Int32).Value = id;
+            adapter.SelectCommand = getNameCommand;
+            adapter.Fill(dataTable);
+            db.closeConnection();
+
+           
+            return dataTable.Rows[0]["name"].ToString();
+        }
+
     }
 }

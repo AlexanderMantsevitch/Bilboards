@@ -12,13 +12,21 @@ namespace WindowsFormsApp1.Classes
         {
             var workBook = new XLWorkbook();
             var sheet = workBook.Worksheets.Add("login");
+
+            for (int j = 0; j < dataTable.Columns.Count; j++)
+            {
+                // if (j == 0) sheet.Cell(i + 1, j+1).SetDataType(XLDataType.DateTime);
+                sheet.Cell(1, j + 1).SetValue(dataTable.Columns[j].ColumnName);
+            }
+
+
             for (int i = 0; i < dataTable.Rows.Count; i++)
             {
 
                 for (int j = 0; j < dataTable.Columns.Count; j++)
                 {
                    // if (j == 0) sheet.Cell(i + 1, j+1).SetDataType(XLDataType.DateTime);
-                    sheet.Cell(i + 1, j + 1).SetValue((dataTable.Rows[i])[j]); 
+                    sheet.Cell(i + 2, j + 1).SetValue((dataTable.Rows[i])[j]); 
                 }
                
 

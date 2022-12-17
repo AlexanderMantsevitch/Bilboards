@@ -172,10 +172,22 @@
     <Compile Include="WindowsForms\LoginForm\NewPassword.Designer.cs">
       <DependentUpon>NewPassword.cs</DependentUpon>
     </Compile>
-    <Compile Include="WindowsForms\UserInterface\UserInterfaceForm.cs">
+    <Compile Include="WindowsForms\UserInterface\DevicesInformationUserInterface.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="WindowsForms\UserInterface\UserInterfaceForm.Designer.cs">
+    <Compile Include="WindowsForms\UserInterface\DevicesInformationUserInterface.Designer.cs">
+      <DependentUpon>DevicesInformationUserInterface.cs</DependentUpon>
+    </Compile>
+    <Compile Include="WindowsForms\UserInterface\DevicesListUserInterface.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="WindowsForms\UserInterface\DevicesListUserInterface.Designer.cs">
+      <DependentUpon>DevicesListUserInterface.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UserInterfaceForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UserInterfaceForm.Designer.cs">
       <DependentUpon>UserInterfaceForm.cs</DependentUpon>
     </Compile>
     <EmbeddedResource Include="WindowsForms\AdminInterfacesForm\DevicesListForm\AddDeviceForm.resx">
@@ -220,7 +232,13 @@
     <EmbeddedResource Include="WindowsForms\LoginForm\NewPassword.resx">
       <DependentUpon>NewPassword.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="WindowsForms\UserInterface\UserInterfaceForm.resx">
+    <EmbeddedResource Include="WindowsForms\UserInterface\DevicesInformationUserInterface.resx">
+      <DependentUpon>DevicesInformationUserInterface.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="WindowsForms\UserInterface\DevicesListUserInterface.resx">
+      <DependentUpon>DevicesListUserInterface.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UserInterfaceForm.resx">
       <DependentUpon>UserInterfaceForm.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="packages.config" />
@@ -244,6 +262,25 @@
   </ItemGroup>
   <ItemGroup>
     <WCFMetadata Include="Connected Services\" />
+  </ItemGroup>
+  <ItemGroup>
+    <COMReference Include="AxWMPLib">
+      <Guid>{6BF52A50-394A-11D3-B153-00C04F79FAA6}</Guid>
+      <VersionMajor>1</VersionMajor>
+      <VersionMinor>0</VersionMinor>
+      <Lcid>0</Lcid>
+      <WrapperTool>aximp</WrapperTool>
+      <Isolated>False</Isolated>
+    </COMReference>
+    <COMReference Include="WMPLib">
+      <Guid>{6BF52A50-394A-11D3-B153-00C04F79FAA6}</Guid>
+      <VersionMajor>1</VersionMajor>
+      <VersionMinor>0</VersionMinor>
+      <Lcid>0</Lcid>
+      <WrapperTool>tlbimp</WrapperTool>
+      <Isolated>False</Isolated>
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+    </COMReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Import Project="..\packages\ExcelDna.Interop.15.0.0\build\ExcelDna.Interop.targets" Condition="Exists('..\packages\ExcelDna.Interop.15.0.0\build\ExcelDna.Interop.targets')" />

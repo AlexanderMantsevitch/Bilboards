@@ -12,15 +12,16 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using WindowsFormsApp1.Classes;
+using WindowsFormsApp1.Classes.Exception;
 
 namespace WindowsFormsApp1.WindowsForms.AdminInterfacesForm.DevicesList
 {
-    public partial class DevicesInformation : Form
+    public partial class DevicesInformationUserInterface : Form
     {
         private UdpClient client;
         UsersList usersList = new UsersList();
         Device device;
-        public DevicesInformation(Device device)
+        public DevicesInformationUserInterface(Device device)
         {
             InitializeComponent();
             try
@@ -146,9 +147,37 @@ namespace WindowsFormsApp1.WindowsForms.AdminInterfacesForm.DevicesList
                     fileNew?.Close();
                     fileStream?.Close();
 
-            }
+                }
             
         }
+
+        //private void addSchedule_Click(object sender, EventArgs e)
+        //{
+        //    OpenFileDialog openFileDialog = new OpenFileDialog();
+        //    openFileDialog.Filter = "Лист Excel (*.xlsx)|*.xlsx";
+
+        //    if (openFileDialog.ShowDialog() == DialogResult.OK)
+        //    {
+        //        try
+        //        {
+        //            string fileName = openFileDialog.FileName;
+        //            Schedule schedule = new Schedule();
+        //            schedule.downloadSchedule(fileName);
+        //        }
+        //        catch (AddException)
+        //        {
+
+        //            MessageBox.Show("Неверный формат файла");
+
+        //        }
+            
+
+               
+            
+
+        //    }
+
+        //}
     }
 
    

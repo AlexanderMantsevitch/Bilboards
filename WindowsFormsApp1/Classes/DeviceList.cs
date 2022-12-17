@@ -11,8 +11,7 @@ namespace WindowsFormsApp1.Classes
     class DeviceList: DataAccesObject
     {
         DataTable dataTable;
-        DataBase db = new DataBase();
-        MySqlDataAdapter adapter = new MySqlDataAdapter();
+      
 
         public DeviceList()
         {
@@ -39,6 +38,33 @@ namespace WindowsFormsApp1.Classes
             return dataTable;
 
         }
+
+        public DataTable selectAvailableDevicesFromUser(int owner_id)
+        {
+            DataTable dataTable = new DataTable();
+
+            db.openConnection();
+
+            MySqlCommand devicesListCommand = new MySqlCommand(" SELECT `name`, `type`,`schedule_id`,`status` FROM `devices`  WHERE `owner_id` = @id", db.getConnection());
+            devicesListCommand.Parameters.Add("@id", MySqlDbType.VarChar).Value = owner_id;
+            adapter.SelectCommand = devicesListCommand;
+            adapter.Fill(dataTable);
+            db.closeConnection();
+
+            dataTable.Columns.Add("schedule");
+            Schedule schedule = new Schedule();
+            foreach (DataRow dataRow in dataTable.Rows)
+            {
+
+             if (!dataRow["schedule_id"].ToString().Equals("0"))   dataRow["schedule"] = schedule.GetSchedule(int.Parse(dataRow["schedule_id"].ToString())).Name;
+
+            }
+
+            dataTable.Columns.Remove("schedule_id"); 
+            return dataTable;
+
+        }
+
         public Device selectDevice(string name)
         {
             Device device = new Device();

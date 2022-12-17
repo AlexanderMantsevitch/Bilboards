@@ -2,7 +2,7 @@
 
 namespace WindowsFormsApp1.WindowsForms.AdminInterfacesForm.DevicesList
 {
-    partial class DevicesInformation:Form
+    partial class DevicesInformationUserInterface:Form
     {
         /// <summary>
         /// Required designer variable.
@@ -30,8 +30,10 @@ namespace WindowsFormsApp1.WindowsForms.AdminInterfacesForm.DevicesList
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(DevicesInformation));
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(DevicesInformationUserInterface));
             this.panel1 = new System.Windows.Forms.Panel();
+            this.scheduleLinkLabel = new System.Windows.Forms.LinkLabel();
+            this.scheduleLabel = new System.Windows.Forms.Label();
             this.statusLabel = new System.Windows.Forms.Label();
             this.typeLabel = new System.Windows.Forms.Label();
             this.ownerLabel = new System.Windows.Forms.Label();
@@ -42,8 +44,6 @@ namespace WindowsFormsApp1.WindowsForms.AdminInterfacesForm.DevicesList
             this.panel4 = new System.Windows.Forms.Panel();
             this.panel5 = new System.Windows.Forms.Panel();
             this.translationPictureBox = new System.Windows.Forms.PictureBox();
-            this.scheduleLabel = new System.Windows.Forms.Label();
-            this.scheduleLinkLabel = new System.Windows.Forms.LinkLabel();
             this.panel1.SuspendLayout();
             this.panel5.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.translationPictureBox)).BeginInit();
@@ -63,6 +63,27 @@ namespace WindowsFormsApp1.WindowsForms.AdminInterfacesForm.DevicesList
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(268, 450);
             this.panel1.TabIndex = 0;
+            // 
+            // scheduleLinkLabel
+            // 
+            this.scheduleLinkLabel.AutoSize = true;
+            this.scheduleLinkLabel.Location = new System.Drawing.Point(182, 173);
+            this.scheduleLinkLabel.Name = "scheduleLinkLabel";
+            this.scheduleLinkLabel.Size = new System.Drawing.Size(78, 13);
+            this.scheduleLinkLabel.TabIndex = 6;
+            this.scheduleLinkLabel.TabStop = true;
+            this.scheduleLinkLabel.Text = "nameSchedule";
+            this.scheduleLinkLabel.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.scheduleLinkLabel_LinkClicked);
+            // 
+            // scheduleLabel
+            // 
+            this.scheduleLabel.AutoSize = true;
+            this.scheduleLabel.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.scheduleLabel.Location = new System.Drawing.Point(21, 169);
+            this.scheduleLabel.Name = "scheduleLabel";
+            this.scheduleLabel.Size = new System.Drawing.Size(155, 19);
+            this.scheduleLabel.TabIndex = 5;
+            this.scheduleLabel.Text = "Текущее расписание:";
             // 
             // statusLabel
             // 
@@ -158,28 +179,7 @@ namespace WindowsFormsApp1.WindowsForms.AdminInterfacesForm.DevicesList
             this.translationPictureBox.TabIndex = 0;
             this.translationPictureBox.TabStop = false;
             // 
-            // scheduleLabel
-            // 
-            this.scheduleLabel.AutoSize = true;
-            this.scheduleLabel.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.scheduleLabel.Location = new System.Drawing.Point(21, 169);
-            this.scheduleLabel.Name = "scheduleLabel";
-            this.scheduleLabel.Size = new System.Drawing.Size(155, 19);
-            this.scheduleLabel.TabIndex = 5;
-            this.scheduleLabel.Text = "Текущее расписание:";
-            // 
-            // scheduleLinkLabel
-            // 
-            this.scheduleLinkLabel.AutoSize = true;
-            this.scheduleLinkLabel.Location = new System.Drawing.Point(182, 173);
-            this.scheduleLinkLabel.Name = "scheduleLinkLabel";
-            this.scheduleLinkLabel.Size = new System.Drawing.Size(78, 13);
-            this.scheduleLinkLabel.TabIndex = 6;
-            this.scheduleLinkLabel.TabStop = true;
-            this.scheduleLinkLabel.Text = "nameSchedule";
-            this.scheduleLinkLabel.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.scheduleLinkLabel_LinkClicked);
-            // 
-            // DevicesInformation
+            // DevicesInformationUserInterface
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -190,7 +190,7 @@ namespace WindowsFormsApp1.WindowsForms.AdminInterfacesForm.DevicesList
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.panel1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
-            this.Name = "DevicesInformation";
+            this.Name = "DevicesInformationUserInterface";
             this.Text = "DevicesInformation";
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();

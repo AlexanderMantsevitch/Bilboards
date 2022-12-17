@@ -75,7 +75,7 @@ namespace WindowsFormsApp1.Classes
         }
         public void updateCell(string field, int value, int id)
         {
-            dao.updateCell(field, value, this.Id);
+            dao.updateCell(field, value, id);
 
 
         }
