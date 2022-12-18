@@ -82,34 +82,39 @@ namespace WindowsFormsApp1.Classes
             adapter.SelectCommand = selectDataCommand;
             adapter.Fill(dt2);
             dataBase.closeConnection();
-
-            int id_device = int.Parse ( dt2.Rows[0]["id_device"].ToString());
-            dt2.Columns.Add("Ролик");
-            dt2.Columns.Add("Частота");
-            for (int i = 0; i < dt2.Rows.Count; i++)
+            Schedule schedule = new Schedule();
+            if (dt2.Rows.Count > 0)
             {
-                if (int.Parse(dt2.Rows[i]["id_device"].ToString()) != id_device)
+                int id_device = int.Parse(dt2.Rows[0]["id_device"].ToString());
+                dt2.Columns.Add("Ролик");
+                dt2.Columns.Add("Частота");
+                for (int i = 0; i < dt2.Rows.Count; i++)
                 {
-                    dt2.Rows[i].Delete();
+                    if (int.Parse(dt2.Rows[i]["id_device"].ToString()) != id_device)
+                    {
+                        dt2.Rows[i].Delete();
+                    }
+
+                    dt2.Rows[i]["Ролик"] = Videotape.get_name(int.Parse(dt2.Rows[i]["id_video"].ToString()));
+                    dt2.Rows[i]["Частота"] = int.Parse(dt2.Rows[i]["freqyency"].ToString());
                 }
-               
-                dt2.Rows[i]["Ролик"] = Videotape.get_name(int.Parse(dt2.Rows[i]["id_video"].ToString()));
-                dt2.Rows[i]["Частота"] = int.Parse(dt2.Rows[i]["freqyency"].ToString());
+
+                dt2.Columns.Remove("id_schedule");
+                dt2.Columns.Remove("id_device");
+                dt2.Columns.Remove("id_video");
+                dt2.Columns.Remove("freqyency");
+                
+                schedule.name = dt.Rows[0]["name"].ToString();
+                schedule.id = Convert.ToInt32(dt.Rows[0]["id"]);
+                schedule.dataTable = dt2;
             }
-
-            dt2.Columns.Remove("id_schedule");
-            dt2.Columns.Remove("id_device");
-            dt2.Columns.Remove("id_video");
-            dt2.Columns.Remove("freqyency");
-
-            this.name = dt.Rows[0]["name"].ToString();
-            this.id = Convert.ToInt32 (dt.Rows[0]["id"]);
-            this.dataTable = dt2;
-            
             
            
-            return this;
+            return schedule;
         }
+
+
+
 
         private int GetId (string name)
         {

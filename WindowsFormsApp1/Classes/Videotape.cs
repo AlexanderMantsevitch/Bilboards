@@ -91,6 +91,18 @@ namespace WindowsFormsApp1.Classes
             
         }
 
+        public static void deleteVideo(int id)
+        {
+            DataBase db = new DataBase();
+            db.openConnection();
+            MySqlCommand deleteUser = new MySqlCommand("DELETE FROM `video` WHERE `id` = @id;", db.getConnection());
+            deleteUser.Parameters.Add("@id", MySqlDbType.Int32).Value = id;
+            deleteUser.ExecuteNonQuery();
+            db.closeConnection();
+
+
+        }
+
         public void saveOnPC ()
         {
 
@@ -116,10 +128,30 @@ namespace WindowsFormsApp1.Classes
             this.id = id;
             this.name = dataTable.Rows[0]["name"].ToString();
             this.data = dataTable.Rows[0]["data"].ToString();
+            saveOnPC();
 
         }
 
-        public Videotape select (string name)
+        public void downloadVideo(string name)
+        {
+            DataBase db = new DataBase();
+            MySqlDataAdapter adapter = new MySqlDataAdapter();
+            db.openConnection();
+            DataTable dataTable = new DataTable();
+            MySqlCommand usersListCommand = new MySqlCommand(" SELECT * FROM `video`" +
+                "WHERE `name` = @name", db.getConnection());
+            usersListCommand.Parameters.Add("@name", MySqlDbType.VarChar).Value = name;
+            adapter.SelectCommand = usersListCommand;
+            adapter.Fill(dataTable);
+            db.closeConnection();
+
+            this.id = id;
+            this.name = dataTable.Rows[0]["name"].ToString();
+            this.data = dataTable.Rows[0]["data"].ToString();
+            saveOnPC();
+        }
+
+            public Videotape select (string name)
         {
             DataBase db = new DataBase();
             MySqlDataAdapter adapter = new MySqlDataAdapter();

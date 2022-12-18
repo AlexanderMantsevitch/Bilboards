@@ -34,6 +34,28 @@
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|x86'">
+    <DebugSymbols>true</DebugSymbols>
+    <OutputPath>bin\x86\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <DebugType>full</DebugType>
+    <PlatformTarget>x86</PlatformTarget>
+    <LangVersion>7.3</LangVersion>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+    <Prefer32Bit>true</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|x86'">
+    <OutputPath>bin\x86\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <Optimize>true</Optimize>
+    <DebugType>pdbonly</DebugType>
+    <PlatformTarget>x86</PlatformTarget>
+    <LangVersion>7.3</LangVersion>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+    <Prefer32Bit>true</Prefer32Bit>
+  </PropertyGroup>
   <ItemGroup>
     <Reference Include="ClosedXML, Version=0.96.0.0, Culture=neutral, PublicKeyToken=fd1eb21b62ae805b, processorArchitecture=MSIL">
       <HintPath>..\packages\ClosedXML.0.96.0\lib\net46\ClosedXML.dll</HintPath>
@@ -49,6 +71,12 @@
     </Reference>
     <Reference Include="ExcelNumberFormat, Version=1.1.0.0, Culture=neutral, PublicKeyToken=23c6f5d73be07eca, processorArchitecture=MSIL">
       <HintPath>..\packages\ExcelNumberFormat.1.1.0\lib\net20\ExcelNumberFormat.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.DirectX">
+      <HintPath>..\Microsoft.DirectX.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.DirectX.AudioVideoPlayback">
+      <HintPath>..\Microsoft.DirectX.AudioVideoPlayback.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.IO.RecyclableMemoryStream, Version=1.4.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\packages\Microsoft.IO.RecyclableMemoryStream.1.4.1\lib\net46\Microsoft.IO.RecyclableMemoryStream.dll</HintPath>
@@ -75,6 +103,7 @@
     <Reference Include="System.Core" />
     <Reference Include="System.IO.Compression" />
     <Reference Include="System.Security" />
+    <Reference Include="System.ServiceProcess" />
     <Reference Include="System.Threading.Tasks" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
@@ -97,6 +126,7 @@
     <Compile Include="Classes\Exception\AuthorizationException.cs" />
     <Compile Include="Classes\Exception\FirstAuthorizationException.cs" />
     <Compile Include="Classes\LogsDataAccesObject.cs" />
+    <Compile Include="Classes\Rotation.cs" />
     <Compile Include="Classes\Schedule.cs" />
     <Compile Include="Classes\User.cs" />
     <Compile Include="Classes\DataBase.cs" />
@@ -104,6 +134,12 @@
     <Compile Include="Classes\UserDataAccesObject.cs" />
     <Compile Include="Classes\UsersList.cs" />
     <Compile Include="Classes\Videotape.cs" />
+    <Compile Include="Service1.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Service1.Designer.cs">
+      <DependentUpon>Service1.cs</DependentUpon>
+    </Compile>
     <Compile Include="WindowsForms\AdminInterfacesForm\DevicesListForm\AddDeviceForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -172,6 +208,12 @@
     <Compile Include="WindowsForms\LoginForm\NewPassword.Designer.cs">
       <DependentUpon>NewPassword.cs</DependentUpon>
     </Compile>
+    <Compile Include="WindowsForms\TranslationsForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="WindowsForms\TranslationsForm.Designer.cs">
+      <DependentUpon>TranslationsForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="WindowsForms\UserInterface\DevicesInformationUserInterface.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -184,12 +226,15 @@
     <Compile Include="WindowsForms\UserInterface\DevicesListUserInterface.Designer.cs">
       <DependentUpon>DevicesListUserInterface.cs</DependentUpon>
     </Compile>
-    <Compile Include="UserInterfaceForm.cs">
+    <Compile Include="WindowsForms\UserInterface\UserInterfaceForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="UserInterfaceForm.Designer.cs">
+    <Compile Include="WindowsForms\UserInterface\UserInterfaceForm.Designer.cs">
       <DependentUpon>UserInterfaceForm.cs</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="Service1.resx">
+      <DependentUpon>Service1.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="WindowsForms\AdminInterfacesForm\DevicesListForm\AddDeviceForm.resx">
       <DependentUpon>AddDeviceForm.cs</DependentUpon>
     </EmbeddedResource>
@@ -232,13 +277,16 @@
     <EmbeddedResource Include="WindowsForms\LoginForm\NewPassword.resx">
       <DependentUpon>NewPassword.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="WindowsForms\TranslationsForm.resx">
+      <DependentUpon>TranslationsForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="WindowsForms\UserInterface\DevicesInformationUserInterface.resx">
       <DependentUpon>DevicesInformationUserInterface.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="WindowsForms\UserInterface\DevicesListUserInterface.resx">
       <DependentUpon>DevicesListUserInterface.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="UserInterfaceForm.resx">
+    <EmbeddedResource Include="WindowsForms\UserInterface\UserInterfaceForm.resx">
       <DependentUpon>UserInterfaceForm.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="packages.config" />
