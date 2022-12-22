@@ -53,7 +53,7 @@ namespace WindowsFormsApp1.Classes
 
         private bool checkFormat ()
         {
-            Console.WriteLine(this.dataTable.Columns[0].ColumnName + (this.dataTable.Columns[0].ColumnName));
+          //  Console.WriteLine(this.dataTable.Columns[0].ColumnName + (this.dataTable.Columns[0].ColumnName));
             if (this.dataTable.Columns[0].ColumnName.Equals("Ролик"))
             {
                 if (this.dataTable.Columns[1].ColumnName.Equals("Частота")) return true;

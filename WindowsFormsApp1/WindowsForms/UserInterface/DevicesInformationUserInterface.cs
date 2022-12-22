@@ -19,9 +19,12 @@ namespace WindowsFormsApp1.WindowsForms.UserInterface
     public partial class DevicesInformationUserInterface : Form
     {
         private UdpClient client;
-        UsersList usersList = new UsersList();
-        Device device;
-        public DevicesInformationUserInterface(Device device)
+        private UsersList usersList = new UsersList();
+        private Device device;
+        private User user;
+        private LogsDataAccesObject logDAO = new LogsDataAccesObject();
+        
+        public DevicesInformationUserInterface(Device device, User user)
         {
             InitializeComponent();
             try
@@ -29,6 +32,7 @@ namespace WindowsFormsApp1.WindowsForms.UserInterface
             {
 
                 this.device = device;
+                this.user = user;
                 idLabel.Text = "Id: " + device.Id;
                 deviceNameLabel.Text = "Устройство: " + device.Name;
                 ownerLabel.Text = "Владелец: " + (usersList.selectDataUser(device.Owner_id).Login);
@@ -159,6 +163,8 @@ namespace WindowsFormsApp1.WindowsForms.UserInterface
                     schedule.downloadSchedule(fileName);
                     schedule.AssignSchedule(device);
                     scheduleLinkLabel.Text = device.Schedule.Name;
+                    logDAO.addNotation(user, "Устройству " + device.Name + " назначено расписание" + device.Schedule.Name );
+
                 }
                 catch (AddException)
                 {
@@ -166,7 +172,11 @@ namespace WindowsFormsApp1.WindowsForms.UserInterface
                     MessageBox.Show("Неверный формат файла");
 
                 }
+                catch (System.IO.IOException)
+                {
+                    MessageBox.Show("Закройте выбранный файл");
 
+                }
 
 
 

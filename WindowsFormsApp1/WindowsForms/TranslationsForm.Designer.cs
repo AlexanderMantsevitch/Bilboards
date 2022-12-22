@@ -52,8 +52,7 @@
             this.axWindowsMediaPlayer1.Name = "axWindowsMediaPlayer1";
             this.axWindowsMediaPlayer1.OcxState = ((System.Windows.Forms.AxHost.State)(resources.GetObject("axWindowsMediaPlayer1.OcxState")));
             this.axWindowsMediaPlayer1.Size = new System.Drawing.Size(800, 450);
-            this.axWindowsMediaPlayer1.TabIndex = 0;
-          
+            this.axWindowsMediaPlayer1.TabIndex = 2;
             // 
             // TranslationsForm
             // 
@@ -63,6 +62,8 @@
             this.Controls.Add(this.panel1);
             this.Name = "TranslationsForm";
             this.Text = "TranslationsForm";
+            this.Load += new System.EventHandler(this.TranslationsForm_Load);
+            this.Shown += new System.EventHandler(this.TranslationsForm_Shown);
             this.panel1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.axWindowsMediaPlayer1)).EndInit();
             this.ResumeLayout(false);

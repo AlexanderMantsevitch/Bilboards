@@ -55,6 +55,18 @@ namespace WindowsFormsApp1
 
                 }
 
+                Thread clearFideotapeList = new Thread( ()=>
+                {
+                    Videotape.deleteUnAviable();
+                    
+                   // Thread.Sleep(3600000);
+                    Thread.CurrentThread.Abort();
+
+                }
+
+
+                    );
+                clearFideotapeList.Start();
 
             }
 

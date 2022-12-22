@@ -26,7 +26,7 @@ namespace WindowsFormsApp1
                 {
 
 
-                    Application.Run(new TranslationsForm());
+                   Application.Run(new TranslationsForm(48));
                 };
                 action();
 
@@ -37,7 +37,7 @@ namespace WindowsFormsApp1
 
             
               Application.Run(new Login());
-
+            
 
 
         }

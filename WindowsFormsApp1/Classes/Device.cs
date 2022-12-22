@@ -1,4 +1,5 @@
-﻿using System;
+﻿using MySql.Data.MySqlClient;
+using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Linq;
@@ -83,6 +84,19 @@ namespace WindowsFormsApp1.Classes
 
         {
             dao.deleteRows(this.Id);
+
+        }
+
+        public void upDateStatus (string status)
+        {
+            DataBase db = new DataBase();
+            db.openConnection();
+            MySqlCommand changeField = new MySqlCommand("UPDATE `devices` SET `status` = @v " +
+                " WHERE `devices`.`id` = @id", db.getConnection());
+            changeField.Parameters.Add("@v", MySqlDbType.VarChar).Value= status;
+            changeField.Parameters.Add("@id", MySqlDbType.Int32).Value = this.Id;
+            changeField.ExecuteNonQuery();
+            db.closeConnection();
 
         }
         public void addDevice(string name,  string type, int userId)

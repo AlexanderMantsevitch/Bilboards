@@ -21,8 +21,9 @@ namespace WindowsFormsApp1.WindowsForms
         private const int countButton = 3;
         private Button[] arrayButton = new Button[countButton];
         private Form parentForm;
-        bool flagLogout = false;
-        UserDataAccesObject userDAO = new UserDataAccesObject();
+        private bool flagLogout = false;
+        private UserDataAccesObject userDAO = new UserDataAccesObject();
+        private LogsDataAccesObject logDAO = new LogsDataAccesObject();
 
 
         public UserInterfaceForm(User user, Form parentForm)
@@ -102,11 +103,11 @@ namespace WindowsFormsApp1.WindowsForms
             }
         }
 
-        private void exportVideoButton_Click(object sender, EventArgs e)
+        private void importVideoButton_Click(object sender, EventArgs e)
         {
            
                 OpenFileDialog openFileDialog = new OpenFileDialog();
-                openFileDialog.Filter = "MP3 (*.mp4)|*.mp4";
+                openFileDialog.Filter = "MP3 (*.mp3)|*.mp3";
                 try
                 {
 
@@ -118,6 +119,8 @@ namespace WindowsFormsApp1.WindowsForms
                         Videotape video = new Videotape();
                         video.createNewVideo(filePath);
                         MessageBox.Show("Видео успешно загружено");
+                        logDAO.addNotation(user, "Загружено видео" + video.Name + " на сервер");
+                       
 
                     }
                     
@@ -134,7 +137,8 @@ namespace WindowsFormsApp1.WindowsForms
                             Videotape video = new Videotape();
                             video.createNewVideo(openFileDialog.FileName);
                             MessageBox.Show("Видео успешно загружено");
-                        }
+                            logDAO.addNotation(user, "Загружено видео" + video.Name + " на сервер");
+                    }
                         catch (System.IO.IOException)
                         {
 

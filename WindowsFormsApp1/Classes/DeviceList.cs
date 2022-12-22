@@ -88,7 +88,7 @@ namespace WindowsFormsApp1.Classes
             selectDataCommand.Parameters.Add("@id", MySqlDbType.Int32).Value = id;
             adapter.SelectCommand = selectDataCommand;
             adapter.Fill(dataTable);
-            Console.WriteLine("tut");
+          //  Console.WriteLine("tut");
             db.closeConnection();
 
             Device device = new Device(dataTable.Rows[0]);

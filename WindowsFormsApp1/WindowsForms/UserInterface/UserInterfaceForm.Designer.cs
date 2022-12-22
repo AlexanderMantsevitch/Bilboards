@@ -170,7 +170,7 @@
             this.exportVideoButton.Text = "Загрузить видеоролик";
             this.exportVideoButton.TextImageRelation = System.Windows.Forms.TextImageRelation.TextAboveImage;
             this.exportVideoButton.UseVisualStyleBackColor = false;
-            this.exportVideoButton.Click += new System.EventHandler(this.exportVideoButton_Click);
+            this.exportVideoButton.Click += new System.EventHandler(this.importVideoButton_Click);
             // 
             // userInterfacePanel
             // 

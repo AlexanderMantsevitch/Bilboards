@@ -30,7 +30,6 @@ namespace WindowsFormsApp1.WindowsForms.UserInterface
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(DevicesInformationUserInterface));
             this.panel1 = new System.Windows.Forms.Panel();
             this.addSchedule = new System.Windows.Forms.Button();
             this.scheduleLinkLabel = new System.Windows.Forms.LinkLabel();
@@ -44,10 +43,7 @@ namespace WindowsFormsApp1.WindowsForms.UserInterface
             this.panel3 = new System.Windows.Forms.Panel();
             this.panel4 = new System.Windows.Forms.Panel();
             this.panel5 = new System.Windows.Forms.Panel();
-            this.axWindowsMediaPlayer1 = new AxWMPLib.AxWindowsMediaPlayer();
             this.panel1.SuspendLayout();
-            this.panel5.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.axWindowsMediaPlayer1)).BeginInit();
             this.SuspendLayout();
             // 
             // panel1
@@ -63,7 +59,7 @@ namespace WindowsFormsApp1.WindowsForms.UserInterface
             this.panel1.Dock = System.Windows.Forms.DockStyle.Left;
             this.panel1.Location = new System.Drawing.Point(0, 0);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(268, 450);
+            this.panel1.Size = new System.Drawing.Size(419, 450);
             this.panel1.TabIndex = 0;
             // 
             // addSchedule
@@ -150,17 +146,17 @@ namespace WindowsFormsApp1.WindowsForms.UserInterface
             // panel2
             // 
             this.panel2.Dock = System.Windows.Forms.DockStyle.Top;
-            this.panel2.Location = new System.Drawing.Point(268, 0);
+            this.panel2.Location = new System.Drawing.Point(419, 0);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(408, 32);
+            this.panel2.Size = new System.Drawing.Size(257, 32);
             this.panel2.TabIndex = 1;
             // 
             // panel3
             // 
             this.panel3.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.panel3.Location = new System.Drawing.Point(268, 274);
+            this.panel3.Location = new System.Drawing.Point(419, 274);
             this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(408, 176);
+            this.panel3.Size = new System.Drawing.Size(257, 176);
             this.panel3.TabIndex = 2;
             // 
             // panel4
@@ -173,21 +169,11 @@ namespace WindowsFormsApp1.WindowsForms.UserInterface
             // 
             // panel5
             // 
-            this.panel5.Controls.Add(this.axWindowsMediaPlayer1);
             this.panel5.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel5.Location = new System.Drawing.Point(268, 32);
+            this.panel5.Location = new System.Drawing.Point(419, 32);
             this.panel5.Name = "panel5";
-            this.panel5.Size = new System.Drawing.Size(360, 242);
+            this.panel5.Size = new System.Drawing.Size(209, 242);
             this.panel5.TabIndex = 4;
-            // 
-            // axWindowsMediaPlayer1
-            // 
-            this.axWindowsMediaPlayer1.Enabled = true;
-            this.axWindowsMediaPlayer1.Location = new System.Drawing.Point(0, 0);
-            this.axWindowsMediaPlayer1.Name = "axWindowsMediaPlayer1";
-            this.axWindowsMediaPlayer1.OcxState = ((System.Windows.Forms.AxHost.State)(resources.GetObject("axWindowsMediaPlayer1.OcxState")));
-            this.axWindowsMediaPlayer1.Size = new System.Drawing.Size(360, 236);
-            this.axWindowsMediaPlayer1.TabIndex = 1;
             // 
             // DevicesInformationUserInterface
             // 
@@ -204,8 +190,6 @@ namespace WindowsFormsApp1.WindowsForms.UserInterface
             this.Text = "DevicesInformation";
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
-            this.panel5.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.axWindowsMediaPlayer1)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -225,6 +209,5 @@ namespace WindowsFormsApp1.WindowsForms.UserInterface
         private LinkLabel scheduleLinkLabel;
         private Label scheduleLabel;
         private Button addSchedule;
-        private AxWMPLib.AxWindowsMediaPlayer axWindowsMediaPlayer1;
     }
 }

@@ -39,23 +39,25 @@ namespace WindowsFormsApp1.Classes
 
         public static DataTable ExcelInDataTable (string path)
         {
-            DataTable dataTable = new DataTable();
-            FileStream stream = new FileStream(path, FileMode.Open, FileAccess.Read);
-            IExcelDataReader reader = ExcelReaderFactory.CreateReader(stream);
+            
+                DataTable dataTable = new DataTable();
+                FileStream stream = new FileStream(path, FileMode.Open, FileAccess.Read);
+                IExcelDataReader reader = ExcelReaderFactory.CreateReader(stream);
 
-            DataSet table = reader.AsDataSet(new ExcelDataSetConfiguration()
-            {
-                ConfigureDataTable = (x) => new ExcelDataTableConfiguration()
+                DataSet table = reader.AsDataSet(new ExcelDataSetConfiguration()
                 {
-                    UseHeaderRow = true
+                    ConfigureDataTable = (x) => new ExcelDataTableConfiguration()
+                    {
+                        UseHeaderRow = true
 
-                }
+                    }
 
 
-            }) ;
-            stream?.Close();
-            dataTable = table.Tables[0];
-            return dataTable;
+                });
+                stream?.Close();
+                dataTable = table.Tables[0];
+                return dataTable;
+           
         }
 
     }
