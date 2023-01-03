@@ -20,7 +20,7 @@ namespace WindowsFormsApp1.WindowsForms
        private List<string> rotation = new List<string>();
        private Schedule schedule = new Schedule();
         private Dictionary<string, Semaphore> semaphors = new Dictionary<string, Semaphore>();
-        private Dictionary<string, int> counter = new Dictionary<string, int>();
+     
         private Semaphore semaphore = new Semaphore(1,1);
         string directory = "";
         public TranslationsForm(int id_device)
@@ -44,43 +44,49 @@ namespace WindowsFormsApp1.WindowsForms
 
                 try
                 {
-                    foreach (DataRow dataRow in schedule.DataTable.Rows)
-
+                    if (schedule.DataTable.Rows.Count > 0)
                     {
+                        foreach (DataRow dataRow in schedule.DataTable.Rows)
 
-                        semaphors.Add(dataRow["Ролик"].ToString(), new Semaphore(1, 1));
-                        counter.Add(dataRow["Ролик"].ToString(), 0);
+                        {
+
+                            semaphors.Add(dataRow["Ролик"].ToString(), new Semaphore(1, 1));
+                            Console.WriteLine("Hi");
 
 
+                        }
                     }
                     semaphors.Add("", new Semaphore(1, 1));
                 }
                 catch { }
                 Thread downloadVideo = new Thread(() =>
                     {
-
+                        Thread.Sleep(500);
                         try
                         {
                             Directory.Delete(directory, true);
                         }
-                        catch 
+                        catch
                         {
 
                         }
-                       
+
                         Directory.CreateDirectory(directory);
-                        
 
 
-                        foreach (DataRow dataRow in schedule.DataTable.Rows)
+                        if (schedule.DataTable.Rows.Count > 0)
                         {
-                            semaphors[dataRow["Ролик"].ToString()].WaitOne();
-                            Videotape videoTape = new Videotape();
-                            videoTape.downloadVideo(dataRow["Ролик"].ToString(), device);
-                            semaphors[dataRow["Ролик"].ToString()].Release();
-                        }
+                            foreach (DataRow dataRow in schedule.DataTable.Rows)
+                            {
+                                semaphors[dataRow["Ролик"].ToString()].WaitOne();
+                                Videotape videoTape = new Videotape();
+                                videoTape.downloadVideo(dataRow["Ролик"].ToString(), device);
+                                semaphors[dataRow["Ролик"].ToString()].Release();
+                            }
 
-                        Thread.CurrentThread.Abort();
+                        }
+                            Thread.CurrentThread.Abort();
+                        
                     }
 
                 );
@@ -97,35 +103,80 @@ namespace WindowsFormsApp1.WindowsForms
                         {
                             try
                             {
-                                Thread.Sleep(15000);
-                                device = deviceList.selectDevice(48);
+                                Thread.Sleep(1500);
+                                
+                                device = deviceList.selectDevice(id_device);
                                 Schedule newschedule = new Schedule();
                                 newschedule = schedule.GetSchedule(device.Schedule.Id);
                                 //  Console.WriteLine(newschedule.Id + " " + schedule.Id);
+                              //  Console.WriteLine(device.Schedule.Id);
                                 if (newschedule.Id != schedule.Id)
                                 {
-                                    rotation = Rotation.createRotation(48);
+                                    Console.WriteLine("Tut");
+                                    semaphore.WaitOne();
+                                    rotation = Rotation.createRotation(device.Id);
+                                    semaphore.Release();
                                     schedule = newschedule;
+                                    if (schedule.DataTable.Rows.Count > 0)
+                                    {
+                                        foreach (DataRow dataRow in newschedule.DataTable.Rows)
+
+                                        {
+
+                                            semaphors.Add(dataRow["Ролик"].ToString(), new Semaphore(1, 1));
+
+
+
+                                        }
+                                    }
+
                                     try
                                     {
-                                        downloadVideo.Start();
+                                        Thread downloadVideoNewSchedule = new Thread(() =>
+                                        {
+
+                                            try
+                                            {
+                                                Directory.Delete(directory, true);
+                                            }
+                                            catch
+                                            {
+
+                                            }
+
+                                            Directory.CreateDirectory(directory);
+
+
+
+                                            foreach (DataRow dataRow in newschedule.DataTable.Rows)
+                                            {
+                                                semaphors[dataRow["Ролик"].ToString()].WaitOne();
+                                                Videotape videoTape = new Videotape();
+                                                videoTape.downloadVideo(dataRow["Ролик"].ToString(), device);
+                                                semaphors[dataRow["Ролик"].ToString()].Release();
+                                            }
+
+                                            Thread.CurrentThread.Abort();
+                                        } );
+                                        downloadVideoNewSchedule.Start();
                                     }
                                     catch (ThreadAbortException)
                                     {
+                                        Console.WriteLine("Error2");
 
                                     }
 
                                 }
 
-                                if (axWindowsMediaPlayer1.status.Equals("Остановлен")) ;
+                                if (axWindowsMediaPlayer1.status.Equals("Остановлен")) Console.WriteLine("Закончил работу");
                             }
-                            catch
+                           catch
                             {
-
+                                Console.WriteLine("checkNeScheduleAbort");
                                 Thread.CurrentThread.Abort();
 
                             }
-                        }
+        }
                     };
                     action();
                 });
@@ -153,30 +204,29 @@ namespace WindowsFormsApp1.WindowsForms
 
                                
                                 previous_name = rotation.ElementAt(id);
-                                
                                 semaphors[rotation.ElementAt(id)].WaitOne();
-                                
+                                semaphore.WaitOne();
                                 axWindowsMediaPlayer1.URL = directory + rotation.ElementAt(id);
                                 axWindowsMediaPlayer1.Ctlcontrols.play();
                                 device.upDateStatus(rotation.ElementAt(id));
                                 Videotape.upDateStats(rotation.ElementAt(id), 1);  
 
 
-                                semaphore.WaitOne();
-                                counter[rotation.ElementAt(id)]++;
-                                semaphore.Release();
+                               
 
                                 rotation.Add(rotation.ElementAt(id));
                                 previous_name = rotation.ElementAt(id);                                
                                 rotation.RemoveAt(id);
                                 flag = false;
-                                
-                                
+                                semaphore.Release();
+
                             }
                             else
                             {
+                                semaphore.WaitOne();
                                 rotation.Add(rotation.ElementAt(id));
                                 rotation.RemoveAt(id);
+                                semaphore.Release();
                             }
                         }
                         
@@ -184,33 +234,41 @@ namespace WindowsFormsApp1.WindowsForms
                         {
                             try
                             {
-                                Thread.Sleep(100);
+                                Thread.Sleep(500);
 
                                 if (axWindowsMediaPlayer1.status.Equals("Остановлено"))
                                 {
-                                  //  Console.WriteLine("Остановлено");
-                                    semaphors[previous_name].Release();
-                                 
-                                    semaphors[rotation.ElementAt(id)].WaitOne();
+                                    //  Console.WriteLine("Остановлено");
+                                    if (previous_name.Equals(rotation.ElementAt(id)))
+                                    {
+                                        rotation.RemoveAt(id);
+                                    }
+                                    else
+                                    {
+                                        semaphors[previous_name].Release();
+                                        semaphore.WaitOne();
+                                        semaphors[rotation.ElementAt(id)].WaitOne();
 
-                                    axWindowsMediaPlayer1.URL = directory + rotation.ElementAt(id);
+                                        axWindowsMediaPlayer1.URL = directory + rotation.ElementAt(id);
 
-                                    device.upDateStatus(rotation.ElementAt(id));
-                                    Videotape.upDateStats(rotation.ElementAt(id), 1);
-                                    axWindowsMediaPlayer1.Ctlcontrols.play();
-                                    semaphore.WaitOne();
-                                    counter[rotation.ElementAt(id)]++;
-                                    semaphore.Release();
-                                    rotation.Add(rotation.ElementAt(id));
-                                    previous_name = rotation.ElementAt(id);
-                                    rotation.RemoveAt(id);
+                                        device.upDateStatus(rotation.ElementAt(id));
+                                        Videotape.upDateStats(rotation.ElementAt(id), 1);
+                                        axWindowsMediaPlayer1.Ctlcontrols.play();
 
+                                        rotation.Add(rotation.ElementAt(id));
+                                        previous_name = rotation.ElementAt(id);
+                                        rotation.RemoveAt(id);
+                                        semaphore.Release();
+
+                                    }
                                     
+
                                 }
                             }
-                          catch
+                            catch
                             {
-                                
+                                device.upDateStatus("off");
+                                Console.WriteLine("Error");
                                 Thread.CurrentThread.Abort();
 
                             }

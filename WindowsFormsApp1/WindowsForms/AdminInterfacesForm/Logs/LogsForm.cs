@@ -11,7 +11,7 @@ namespace WindowsFormsApp1.WindowsForms.AdminInterfacesForm
        private LogsDataAccesObject logDAO = new LogsDataAccesObject();
         private UsersList usersList = new UsersList();
         private DataTable dataTableLogs;
-        private bool defaultDateFlag = true;
+        private bool defaultDateFlag = false;
         public LogsForm(User user)
         {
             InitializeComponent();

@@ -68,13 +68,14 @@ namespace WindowsFormsApp1.Classes
         public Device selectDevice(string name)
         {
             Device device = new Device();
-            db.openConnection();
+            DataBase dataBase = new DataBase();
+            dataBase.openConnection();
             DataTable dataTable = new DataTable();
-            MySqlCommand selectDataCommand = new MySqlCommand(" SELECT * FROM `devices` WHERE `name` = @dN", db.getConnection());
+            MySqlCommand selectDataCommand = new MySqlCommand(" SELECT * FROM `devices` WHERE `name` = @dN", dataBase.getConnection());
             selectDataCommand.Parameters.Add("@dN", MySqlDbType.VarChar).Value = name;
             adapter.SelectCommand = selectDataCommand;
             adapter.Fill(dataTable);
-            db.closeConnection();
+            dataBase.closeConnection();
             if(dataTable.Rows.Count > 0)
             device = new Device(dataTable.Rows[0]);
             return device;

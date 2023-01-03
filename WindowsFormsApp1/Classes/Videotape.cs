@@ -18,10 +18,12 @@ namespace WindowsFormsApp1.Classes
         private int id;
         private string name;
         private string data;
+        private int id_user;
         public Videotape ()
         {
             name = "NULL";
             data = "NULL" ;
+            id_user = 0;
         }
 
         public Videotape (Videotape video)
@@ -39,19 +41,21 @@ namespace WindowsFormsApp1.Classes
         public string Name { get => name; set => name = value; }
        
         public string Data { get => data; }
+        public int Id_user { get => id_user; set => id_user = value; }
 
-        public void createNewVideo (string filePath)
+        public void createNewVideo (string filePath, int id_user)
         {
             DataBase dataBase = new DataBase();
             dataBase.openConnection();
             if (!chekRepeat(Path.GetFileName(filePath)))
             {
                  data = Convert.ToBase64String(File.ReadAllBytes(filePath));
-                MySqlCommand addVideo = new MySqlCommand("INSERT INTO `video` ( `name`, `data`) " +
-                        "VALUES (@n, @d)", dataBase.getConnection());
+                MySqlCommand addVideo = new MySqlCommand("INSERT INTO `video` ( `name`,`data`,`id_user`) " +
+                        "VALUES (@n, @d,@id)", dataBase.getConnection());
                     addVideo.Parameters.Add("@n", MySqlDbType.VarChar).Value = Path.GetFileName(filePath);
                     addVideo.Parameters.Add("@d", MySqlDbType.LongBlob).Value = data;
-                    addVideo.ExecuteNonQuery();
+                    addVideo.Parameters.Add("@id", MySqlDbType.Int32).Value = id_user;
+                addVideo.ExecuteNonQuery();
                     dataBase.closeConnection();
 
                     name = Path.GetFileName(filePath);
@@ -145,9 +149,10 @@ namespace WindowsFormsApp1.Classes
             adapter.Fill(dataTable);
             db.closeConnection();
 
-            this.id = id;
+            
             this.name = dataTable.Rows[0]["name"].ToString();
             this.data = dataTable.Rows[0]["data"].ToString();
+            this.id_user = int.Parse(dataTable.Rows[0]["id_user"].ToString());
             saveOnPC(device.Name);
         }
 
@@ -214,7 +219,7 @@ namespace WindowsFormsApp1.Classes
 
             foreach (DataRow dataRow in dataTable.Rows)
             {
-                db.openConnection();
+                
                 bool flag = true;
                foreach (DataRow dr in dt.Rows)
                 {
@@ -236,6 +241,7 @@ namespace WindowsFormsApp1.Classes
             db.openConnection();
             MySqlCommand deleteUser = new MySqlCommand("DELETE FROM `video` WHERE `ID` = @id;", db.getConnection());
             deleteUser.Parameters.Add("@id", MySqlDbType.Int32).Value = id;
+
             deleteUser.ExecuteNonQuery();
             db.closeConnection();
 
@@ -249,18 +255,41 @@ namespace WindowsFormsApp1.Classes
             MySqlDataAdapter adapter = new MySqlDataAdapter();
             DataTable dt = new DataTable();
 
-
-            MySqlCommand getPreviousValues = new MySqlCommand("SELECT `repeat` FROM `video` WHERE `name` = @n", db.getConnection());
-            getPreviousValues.Parameters.Add("@n", MySqlDbType.VarChar).Value = name;
-
-            adapter.SelectCommand = getPreviousValues;
+            MySqlCommand checkDate = new MySqlCommand("SELECT * FROM `statistic` WHERE `date` = @d AND `name_video` = @n", db.getConnection());
+            checkDate.Parameters.Add("@d", MySqlDbType.Date).Value = DateTime.Now.Date;
+            checkDate.Parameters.Add("@n", MySqlDbType.VarChar).Value = name;
+            adapter.SelectCommand = checkDate;
             adapter.Fill(dt);
 
-            MySqlCommand upDateStatus = new MySqlCommand("UPDATE `video` SET `repeat` = @v " +
-                " WHERE `video`.`name` = @n", db.getConnection());
-            upDateStatus.Parameters.Add("@v", MySqlDbType.Int32).Value = int.Parse(dt.Rows[0]["repeat"].ToString()) + count;
-            upDateStatus.Parameters.Add("@n", MySqlDbType.VarChar).Value = name;
-            upDateStatus.ExecuteNonQuery();
+            if (dt.Rows.Count > 0)
+
+            {
+                dt = new DataTable();
+                MySqlCommand getPreviousValues = new MySqlCommand("SELECT `repeat` FROM `statistic` WHERE `name_video` = @n", db.getConnection());
+                getPreviousValues.Parameters.Add("@n", MySqlDbType.VarChar).Value = name;
+
+                adapter.SelectCommand = getPreviousValues;
+                adapter.Fill(dt);
+
+                MySqlCommand upDateStatus = new MySqlCommand("UPDATE `statistic` SET `repeat` = @v " +
+                    " WHERE `statistic`.`name_video` = @n AND `date` = @d", db.getConnection());
+                upDateStatus.Parameters.Add("@v", MySqlDbType.Int32).Value = int.Parse(dt.Rows[0]["repeat"].ToString()) + count;
+                upDateStatus.Parameters.Add("@n", MySqlDbType.VarChar).Value = name;
+                upDateStatus.Parameters.Add("@d", MySqlDbType.Date).Value = DateTime.Now.Date;
+                upDateStatus.ExecuteNonQuery();
+            }
+
+            else
+            {
+
+                MySqlCommand addRow = new MySqlCommand("INSERT INTO `statistic` (`date`, `name_video`, `repeat`) " + "VALUES (@d, @n,@r)", db.getConnection());
+        
+                addRow.Parameters.Add("@n", MySqlDbType.VarChar).Value = name;
+                addRow.Parameters.Add("@r", MySqlDbType.Int32).Value = count;
+                addRow.Parameters.Add("@d", MySqlDbType.Date).Value = DateTime.Now.Date;
+                addRow.ExecuteNonQuery();
+
+            }
             db.closeConnection();
 
 

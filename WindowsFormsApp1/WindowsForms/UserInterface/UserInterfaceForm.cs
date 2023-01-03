@@ -108,7 +108,8 @@ namespace WindowsFormsApp1.WindowsForms
            
                 OpenFileDialog openFileDialog = new OpenFileDialog();
                 openFileDialog.Filter = "MP3 (*.mp3)|*.mp3";
-                try
+                openFileDialog.Filter = "MP4 (*.mp4)|*.mp4";
+            try
                 {
 
 
@@ -117,7 +118,7 @@ namespace WindowsFormsApp1.WindowsForms
                     {
                         string filePath = openFileDialog.FileName;
                         Videotape video = new Videotape();
-                        video.createNewVideo(filePath);
+                        video.createNewVideo(filePath, user.Id);
                         MessageBox.Show("Видео успешно загружено");
                         logDAO.addNotation(user, "Загружено видео" + video.Name + " на сервер");
                        
@@ -135,7 +136,7 @@ namespace WindowsFormsApp1.WindowsForms
                         {
                             Videotape.deleteVideo(Path.GetFileName(openFileDialog.FileName));
                             Videotape video = new Videotape();
-                            video.createNewVideo(openFileDialog.FileName);
+                            video.createNewVideo(openFileDialog.FileName, user.Id);
                             MessageBox.Show("Видео успешно загружено");
                             logDAO.addNotation(user, "Загружено видео" + video.Name + " на сервер");
                     }
@@ -150,6 +151,11 @@ namespace WindowsFormsApp1.WindowsForms
                 }
             
           
+        }
+
+        private void statsButton_Click(object sender, EventArgs e)
+        {
+            PanelForm(new StatisticForm(user));
         }
     }
 }

@@ -29,39 +29,6 @@ namespace WindowsFormsApp1.WindowsForms.UserInterface
             dataTable = devicesList.select();
 
 
-            DataTable data = new DataTable();
-            data = devicesList.select();
-            Thread chechChanges = new Thread(() =>
-
-            {
-                
-                Action action = () =>
-                {
-                    Thread.Sleep(5000);
-
-                    DataTable newdata = new DataTable();
-                    data = devicesList.select();
-                    for (int i = 0; i < data.Rows.Count; i++)
-                    {
-
-                        if (!data.Rows[i]["status"].ToString().Equals(devicesListGrid.Rows[i].Cells["status"].Value.ToString()))
-                        {
-                            devicesList.selectDevice(devicesListGrid.Rows[i].Cells["name"].Value.ToString()).upDateStatus("off");
-
-                        }
-
-                    }
-
-                };
-               
-
-            }
-
-
-              );
-            chechChanges.Start();
-
-
         }
 
         private void chooseDeviceButton_Click(object sender, EventArgs e)
@@ -74,32 +41,86 @@ namespace WindowsFormsApp1.WindowsForms.UserInterface
 
         private void onDeviceButton_Click(object sender, EventArgs e)
         {
+            if (devicesList.selectDevice(devicesListGrid.CurrentRow.Cells[0].Value.ToString()).Status.Equals("off"))
+            {
+                Thread thread = new Thread(() =>
 
-            Thread thread = new Thread(() =>
-
-           {
-               Action actionCreate = () =>
                {
+                   Action actionCreate = () =>
+                   {
 
-                   TranslationsForm translationsForm = new TranslationsForm(devicesList.selectDevice(devicesListGrid.CurrentRow.Cells[0].Value.ToString()).Id);
-                   Application.Run(translationsForm);
-                   
+                       TranslationsForm translationsForm = new TranslationsForm(devicesList.selectDevice(devicesListGrid.CurrentRow.Cells[0].Value.ToString()).Id);
+                       Application.Run(translationsForm);
 
-               };
-               actionCreate();
 
-           }
-            );
-            thread.SetApartmentState(ApartmentState.STA);
-            thread.Start();
+                   };
+                   actionCreate();
 
-            
+               }
+                );
+                thread.SetApartmentState(ApartmentState.STA);
+                thread.Start();
+                devicesListGrid.DataSource = devicesList.selectAvailableDevicesFromUser(user.Id);
+                devicesListGrid.Update();
+
+            }
         }
 
         private void upDateButton_Click(object sender, EventArgs e)
         {
             devicesListGrid.DataSource = devicesList.selectAvailableDevicesFromUser(user.Id);
             devicesListGrid.Update();
+        }
+
+        private void DevicesListUserInterface_Load(object sender, EventArgs e)
+        {
+            Thread checkChanges = new Thread(() =>
+
+            {
+
+                Action action = () =>
+                {
+                    try
+                    {
+
+                        while (true)
+                        {
+                            Thread.Sleep(60000);
+
+                            DataTable newdata = new DataTable();
+                            newdata = devicesList.selectAvailableDevicesFromUser(user.Id);
+                            int n = 0;
+                            if (newdata.Rows.Count < devicesListGrid.Rows.Count) n = newdata.Rows.Count;
+                            else n = devicesListGrid.Rows.Count;
+                            for (int i = 0; i < n; i++)
+                            {
+
+                                if (newdata.Rows[i]["status"].ToString().Equals(devicesListGrid.Rows[i].Cells[2].Value.ToString()))
+                                {
+
+                                    devicesList.selectDevice(devicesListGrid.Rows[i].Cells["name"].Value.ToString()).upDateStatus("off");
+
+                                }
+
+                            }
+
+                            devicesListGrid.Invoke(new Action(() => { devicesListGrid.DataSource = newdata; devicesListGrid.Update(); }));
+
+                        }
+                    }
+                    catch
+                    {
+                        Thread.CurrentThread.Abort();
+
+                    }
+                };
+
+                action();
+            }
+
+
+             );
+            checkChanges.Start();
         }
     }
 }

@@ -28,14 +28,14 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             this.panel5 = new System.Windows.Forms.Panel();
             this.panel3 = new System.Windows.Forms.Panel();
+            this.upDateButton = new System.Windows.Forms.Button();
+            this.onDeviceButton = new System.Windows.Forms.Button();
             this.chooseDeviceButton = new System.Windows.Forms.Button();
             this.panel2 = new System.Windows.Forms.Panel();
             this.devicesListGrid = new System.Windows.Forms.DataGridView();
-            this.onDeviceButton = new System.Windows.Forms.Button();
-            this.upDateButton = new System.Windows.Forms.Button();
             this.panel5.SuspendLayout();
             this.panel3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.devicesListGrid)).BeginInit();
@@ -63,6 +63,26 @@
             this.panel3.Size = new System.Drawing.Size(564, 41);
             this.panel3.TabIndex = 3;
             // 
+            // upDateButton
+            // 
+            this.upDateButton.Location = new System.Drawing.Point(73, 5);
+            this.upDateButton.Name = "upDateButton";
+            this.upDateButton.Size = new System.Drawing.Size(110, 30);
+            this.upDateButton.TabIndex = 4;
+            this.upDateButton.Text = "Обновить";
+            this.upDateButton.UseVisualStyleBackColor = true;
+            this.upDateButton.Click += new System.EventHandler(this.upDateButton_Click);
+            // 
+            // onDeviceButton
+            // 
+            this.onDeviceButton.Location = new System.Drawing.Point(192, 5);
+            this.onDeviceButton.Name = "onDeviceButton";
+            this.onDeviceButton.Size = new System.Drawing.Size(180, 30);
+            this.onDeviceButton.TabIndex = 3;
+            this.onDeviceButton.Text = "Запустить устройство";
+            this.onDeviceButton.UseVisualStyleBackColor = true;
+            this.onDeviceButton.Click += new System.EventHandler(this.onDeviceButton_Click);
+            // 
             // chooseDeviceButton
             // 
             this.chooseDeviceButton.Location = new System.Drawing.Point(381, 5);
@@ -85,11 +105,11 @@
             // 
             this.devicesListGrid.AllowUserToAddRows = false;
             this.devicesListGrid.AllowUserToDeleteRows = false;
-            dataGridViewCellStyle2.BackColor = System.Drawing.Color.Silver;
-            dataGridViewCellStyle2.ForeColor = System.Drawing.Color.Black;
-            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.Color.RoyalBlue;
-            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.Color.White;
-            this.devicesListGrid.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle1.BackColor = System.Drawing.Color.Silver;
+            dataGridViewCellStyle1.ForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.Color.RoyalBlue;
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.Color.White;
+            this.devicesListGrid.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
             this.devicesListGrid.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.devicesListGrid.BackgroundColor = System.Drawing.SystemColors.ControlLight;
             this.devicesListGrid.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
@@ -105,26 +125,6 @@
             this.devicesListGrid.Size = new System.Drawing.Size(800, 368);
             this.devicesListGrid.TabIndex = 8;
             // 
-            // onDeviceButton
-            // 
-            this.onDeviceButton.Location = new System.Drawing.Point(192, 5);
-            this.onDeviceButton.Name = "onDeviceButton";
-            this.onDeviceButton.Size = new System.Drawing.Size(180, 30);
-            this.onDeviceButton.TabIndex = 3;
-            this.onDeviceButton.Text = "Запустить устройство";
-            this.onDeviceButton.UseVisualStyleBackColor = true;
-            this.onDeviceButton.Click += new System.EventHandler(this.onDeviceButton_Click);
-            // 
-            // upDateButton
-            // 
-            this.upDateButton.Location = new System.Drawing.Point(73, 5);
-            this.upDateButton.Name = "upDateButton";
-            this.upDateButton.Size = new System.Drawing.Size(110, 30);
-            this.upDateButton.TabIndex = 4;
-            this.upDateButton.Text = "Обновить";
-            this.upDateButton.UseVisualStyleBackColor = true;
-            this.upDateButton.Click += new System.EventHandler(this.upDateButton_Click);
-            // 
             // DevicesListUserInterface
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -135,6 +135,7 @@
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "DevicesListUserInterface";
             this.Text = "DeviecesListUserInterface";
+            this.Load += new System.EventHandler(this.DevicesListUserInterface_Load);
             this.panel5.ResumeLayout(false);
             this.panel3.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.devicesListGrid)).EndInit();

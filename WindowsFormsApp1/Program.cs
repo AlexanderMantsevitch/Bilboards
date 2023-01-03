@@ -19,21 +19,21 @@ namespace WindowsFormsApp1
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Thread translationThread = new Thread(() =>
-            {
+         //   Thread translationThread = new Thread(() =>
+         //   {
 
-                Action action = () =>
-                {
+         //       Action action = () =>
+         //       {
 
 
-                   Application.Run(new TranslationsForm(48));
-                };
-                action();
+         //          Application.Run(new TranslationsForm(48));
+         //       };
+         //       action();
 
-            }
-         );
-            translationThread.SetApartmentState(ApartmentState.STA);
-            translationThread.Start();
+         //   }
+         //);
+            //translationThread.SetApartmentState(ApartmentState.STA);
+            //translationThread.Start();
 
             
               Application.Run(new Login());

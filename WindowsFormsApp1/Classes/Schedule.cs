@@ -19,7 +19,7 @@ namespace WindowsFormsApp1.Classes
        public Schedule ()
         {
             id = 0;
-            dataTable = null;
+            dataTable = new DataTable();
             name = "Расписания нет";
         }
 
@@ -90,13 +90,16 @@ namespace WindowsFormsApp1.Classes
                 dt2.Columns.Add("Частота");
                 for (int i = 0; i < dt2.Rows.Count; i++)
                 {
+
                     if (int.Parse(dt2.Rows[i]["id_device"].ToString()) != id_device)
                     {
                         dt2.Rows[i].Delete();
                     }
-
-                    dt2.Rows[i]["Ролик"] = Videotape.get_name(int.Parse(dt2.Rows[i]["id_video"].ToString()));
-                    dt2.Rows[i]["Частота"] = int.Parse(dt2.Rows[i]["freqyency"].ToString());
+                    else
+                    {
+                        dt2.Rows[i]["Ролик"] = Videotape.get_name(int.Parse(dt2.Rows[i]["id_video"].ToString()));
+                        dt2.Rows[i]["Частота"] = int.Parse(dt2.Rows[i]["freqyency"].ToString());
+                    }
                 }
 
                 dt2.Columns.Remove("id_schedule");

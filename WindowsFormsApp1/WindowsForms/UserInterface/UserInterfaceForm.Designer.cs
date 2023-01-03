@@ -140,6 +140,7 @@
             this.statsButton.TabIndex = 3;
             this.statsButton.Text = "Статистика";
             this.statsButton.UseVisualStyleBackColor = false;
+            this.statsButton.Click += new System.EventHandler(this.statsButton_Click);
             // 
             // devicesListButton
             // 

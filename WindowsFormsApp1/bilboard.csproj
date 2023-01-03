@@ -134,6 +134,7 @@
     <Compile Include="Classes\UserDataAccesObject.cs" />
     <Compile Include="Classes\UsersList.cs" />
     <Compile Include="Classes\Videotape.cs" />
+    <Compile Include="Classes\VideoTapeList.cs" />
     <Compile Include="Service1.cs">
       <SubType>Component</SubType>
     </Compile>
@@ -226,6 +227,12 @@
     <Compile Include="WindowsForms\UserInterface\DevicesListUserInterface.Designer.cs">
       <DependentUpon>DevicesListUserInterface.cs</DependentUpon>
     </Compile>
+    <Compile Include="WindowsForms\UserInterface\StatisticForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="WindowsForms\UserInterface\StatisticForm.Designer.cs">
+      <DependentUpon>StatisticForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="WindowsForms\UserInterface\UserInterfaceForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -285,6 +292,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="WindowsForms\UserInterface\DevicesListUserInterface.resx">
       <DependentUpon>DevicesListUserInterface.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="WindowsForms\UserInterface\StatisticForm.resx">
+      <DependentUpon>StatisticForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="WindowsForms\UserInterface\UserInterfaceForm.resx">
       <DependentUpon>UserInterfaceForm.cs</DependentUpon>
