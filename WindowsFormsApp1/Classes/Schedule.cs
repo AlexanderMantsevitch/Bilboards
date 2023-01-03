@@ -34,12 +34,37 @@ namespace WindowsFormsApp1.Classes
             if (!checkFormat()) throw new AddException();
 
             dataBase.openConnection();
+            bool flag = true;
+            int index = 0;
+           
+            string[] fileNameArray = Path.GetFileName(filePath).Split('.');
+            string fileName = fileNameArray[0];
+            StringBuilder stringBuilder = new StringBuilder();
+            stringBuilder.Append(fileName);
+            MySqlDataAdapter adapter = new MySqlDataAdapter();
+           
+            while (flag)
+            {
+                DataTable dt = new DataTable();
+                MySqlCommand checkRepeat = new MySqlCommand("SELECT * FROM `schedule` WHERE `name` = @n", dataBase.getConnection());
+                checkRepeat.Parameters.Add("@n", MySqlDbType.VarChar).Value = stringBuilder;
+                adapter.SelectCommand = checkRepeat;
+                adapter.Fill(dt);
+                index++;
+                if (dt.Rows.Count > 0)
+                {
+                    stringBuilder.Clear();
+                    stringBuilder.Append(fileName + index);
+                    Console.WriteLine(dt.Rows[0]["name"]);
+                }
+                else flag = false;
+            }
 
+            fileName = stringBuilder.ToString();
             MySqlCommand addVideo = new MySqlCommand("INSERT INTO `schedule` (`name`) " +
                 "VALUES (@n)", dataBase.getConnection());
 
-            string[] fileNameArray = Path.GetFileName(filePath).Split('.');
-            string fileName = fileNameArray[0];
+          
         
             addVideo.Parameters.Add("@n", MySqlDbType.VarChar).Value = fileName;
             addVideo.ExecuteNonQuery();
